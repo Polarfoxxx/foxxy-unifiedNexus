@@ -21,7 +21,7 @@ function NavigateBar(): JSX.Element {
     };
 
     return (
-        <div className=" w-full h-auto p-2 flex flex-row lg:flex-col justify-center items-center gap-4">
+        <div className=" w-full h-auto p-2 flex flex-row xl:flex-col justify-center items-center gap-4">
             {
                 allApplicationFordisplay.map((item, key) =>
                     <div

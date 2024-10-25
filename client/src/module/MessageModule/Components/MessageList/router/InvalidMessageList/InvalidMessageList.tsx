@@ -55,7 +55,7 @@ function InvalidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.E
 
     return (
         <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col">
-            <div className="w-[100%] h-[7%] flex justify-between items-center bg-thems-currentMessCount_Background pl-5 pr-5">
+            <div className="w-[100%] h-[7%] flex justify-between items-center pl-5 pr-5">
                 <div className="w-[600px] h-[100%]  flex justify-center items-center ">
                     <form
                         className="w-[100%] h-[100%]  flex justify-center items-center flex-row gap-5">

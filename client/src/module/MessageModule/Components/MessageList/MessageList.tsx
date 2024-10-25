@@ -16,12 +16,11 @@ function MessageList(): JSX.Element {
     const [newMessage, setNewMessage] = React.useState<any>({ start: "", end: "" });
     const { handleSubmit, reset } = useInputValue();
     const divRef = React.useRef<HTMLDivElement>(null);
-    //! redux
     const dispatch = useDispatch();
     const allMessages = useSelector((state: Type_RootState) => state.allMessages);
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
 
-    //! function add a new messasge
+    //! function add a new messasge............................
     const submit = async (v: TypeForInputsObject["v"]): Promise<void> => {
         const NEW_REQ = new NewRequest({
             startDate_message: new Date(),
@@ -60,7 +59,7 @@ function MessageList(): JSX.Element {
             className='w-full h-full flex items-center justify-center'>
             <div className="w-full h-full flex items-center justify-start flex-col bg-thems-messageContent_background">
                 <div className="  w-full h-[10%] min-h-[80px] flex items-center justify-between flex-row">
-                    <div className=" w-[100%] h-[100%] bg-thems-minBackg_content flex items-center justify-center  rounded-tl-[10px] rounded-tr-[10px]">
+                    <div className=" w-[100%] h-[100%] bg-thems-appThemeColor flex items-center justify-center  rounded-tl-[10px] rounded-tr-[10px]">
                         <h2 className="text-[25px] text-thems-defaultTextColor">
                             Message
                         </h2>
@@ -124,25 +123,25 @@ function MessageList(): JSX.Element {
                         <div className="w-full h-[100%] flex justify-center items-center flex-row">
                             <div className="w-full h-full flex justify-center items-center">
                                 <button
-                                    className=" w-[280px] h-[36px] border border-thems-minBackg_content rounded-xl bg-thems-background_button text-thems-defaultTextColorDark hover:bg-thems-background_button_hover"
+                                    className=" w-[280px] h-[36px] border border-thems-appThemeColor rounded-xl bg-thems-background_button text-thems-defaultTextColorDark hover:bg-thems-background_button_hover"
                                     type="submit">
                                     Create new message
                                 </button>
                             </div>
                             <div className=" w-full h-full flex items-center justify-around bg-thems-newMessageForm_Background">
                                 <NavLink
-                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-minBackg_content rounded-xl  hover:bg-thems-background_button_hover"
+                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-xl  hover:bg-thems-background_button_hover"
                                     style={({ isActive }) => ({
-                                        backgroundColor: isActive ? 'var(--minBackg_content)' : 'var(--background_button)',
+                                        backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--background_button)',
                                         color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
                                     })}
                                     to="ValidMessageList">
                                     Your note
                                 </NavLink>
                                 <NavLink
-                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-minBackg_content rounded-xl hover:bg-thems-background_button_hover"
+                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-xl hover:bg-thems-background_button_hover"
                                     style={({ isActive }) => ({
-                                        backgroundColor: isActive ? 'var(--minBackg_content)' : 'var(--background_button)',
+                                        backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--background_button)',
                                         color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
                                     })}
                                     to="InvalidMessageList"
@@ -150,7 +149,7 @@ function MessageList(): JSX.Element {
                                 </NavLink>
                             </div>
                             <div className="w-full h-full flex justify-center items-center ">
-                                <div className="w-[50%] h-[50%] flex justify-center items-center flex-row bg-thems-minBackg_content rounded-lg gap-6">
+                                <div className="w-[50%] h-[50%] flex justify-center items-center flex-row bg-thems-appThemeColor rounded-lg gap-6">
                                     <div className="w-[100%] h-[100%] flex justify-end items-center">
                                         <h2 className=" text-thems-defaultTextColor text-[14px]">
                                             All message count:
@@ -167,7 +166,7 @@ function MessageList(): JSX.Element {
                     </form>
                 </div>
                 <div className=" w-full h-[700px] h-max-[700px] overflow-x-auto min-h-[500px] flex items-start justify-center" >
-                    <div className=" w-[100%] h-[100%] flex justify-center items-center  bg-thems-calendarContent_background rounded-br-[10px] rounded-bl-[10px]">
+                    <div className=" w-[100%] h-[100%] flex justify-center items-center  bg-thems-appThemeColorTertiary rounded-br-[10px] rounded-bl-[10px]">
                         <Routes>
                             <Route
                                 path="ValidMessageList"

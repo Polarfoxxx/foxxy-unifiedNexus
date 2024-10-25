@@ -1,6 +1,5 @@
 div[data-theme="light"] {
     /*! buttonStyle */
-    --background_button: rgb(123, 32, 188);
     --background_button_hover: rgb(220, 220, 220);
     --color_button: rgb(0, 0, 0);
     --miniNavigationButton: rgb(245, 245, 245);
@@ -11,21 +10,17 @@ div[data-theme="light"] {
     --background_App: url('/public/image/lightAppBacgr.jpg');
     --parentComponentBackg: rgba(139, 139, 139, 0.778);
     --parentComponentBorder: rgb(238, 238, 238);
+    --appThemeColor: rgb(25, 97, 91);
+    --appThemeColorSecondary: rgb(255, 255, 255);
+    --appThemeColorTertiary: rgb(255, 255, 255);
+    --background_button: rgb(25, 97, 91);
+
 
     /*! CalendarBackGround */
-    --dayBackground_hover: rgb(170, 170, 170);
-    --dayBackground_header: rgb(255, 255, 255);
     --current_time_line: rgb(255, 0, 0);
-    --eventBackground: rgb(27, 138, 129);
-    --eventBackground_selected: rgb(12, 100, 0);
-    --minBackg_content: rgb(123, 32, 188);
-    --minBackg_Two_content: rgb(195, 121, 230);
-    --background_block: rgb(255, 255, 255);
-    --calendarContent_background: rgb(255, 255, 255);
-    --InvalidDay_Background: rgba(201, 201, 201, 0.668);
-    --drakInLightTheme: rgb(192, 176, 225);
-    --currentDayBlock: rgb(118, 54, 246);
-    --allEventsCalendarList: white;
+    --eventBackground_selected: rgb(232, 6, 6);
+    --InvalidDay_Background: rgba(200, 38, 38, 0.668);
+    --currentDayBlock: rgb(113, 59, 222);
 
     /*! littleComponents */
     --littleComponent_Background: rgb(246, 246, 246);
@@ -36,13 +31,12 @@ div[data-theme="light"] {
     --newMessageForm_Background: rgb(143, 142, 142);
     --item_Background: rgba(218, 218, 218, 0.679);
     --itemHeader_Background: rgb(179, 95, 218);
-    --currentMessCount_Background: rgba(70, 70, 70, 0.507);
 
     /*! textColor */
     --defaultTextColor: rgb(255, 255, 255);
     --defaultTextColorTwo: rgb(0, 0, 0);
-    --current_day: rgb(172, 7, 255);
-    --miniNavigateBar: rgb(123, 32, 188);
+    --current_day: rgb(172, 136, 190);
+    --miniNavigateBar: rgb(0, 0, 0);
 
     /*! inputStyle */
     --inputBorder: rgba(128, 0, 128, 0.438);

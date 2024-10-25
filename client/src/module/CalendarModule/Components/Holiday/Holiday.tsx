@@ -1,13 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Type_RootState } from "../../../../redux";
-import { Type_for_holiday } from "./types";
 import { Type_for_dayAndHoliday } from "./types";
 import { findNextHoliday } from "./services";
+import { useSelector } from "react-redux";
 
 
-function Holiday({ allHoliday }: Type_for_holiday): JSX.Element {
+function Holiday(): JSX.Element {
     const [holiday, setHoliday] = React.useState<Type_for_dayAndHoliday>();
+    const allHoliday = useSelector((state: Type_RootState) => state.allHoliday);
 
     React.useMemo(() => {
         const next_holiday = findNextHoliday(allHoliday);
@@ -17,9 +17,9 @@ function Holiday({ allHoliday }: Type_for_holiday): JSX.Element {
 
     return (
         <div className=" w-full h-full flex items-center justify-center">
-            <div className=" w-full h-full bg-transparent flex justify-start items-start flex-col shadow-maxShadow p-1">
+            <div className=" w-full h-full bg-transparent flex justify-start items-start flex-col  p-1">
                 <div className=" w-[auto] h-[40px] min-h-[40px] gap-0 flex flex-row border-b-2 border-b-slate-400 bg-transparent items-center justify-start pl-4">
-                    <div className=" w-[110px] text-thems-defaultTextColor  flex items-center justify-center bg-thems-minBackg_content rounded-[2px] font-oswald">
+                    <div className=" w-[110px] text-thems-defaultTextColor  flex items-center justify-center bg-thems-appThemeColor rounded-[2px] font-oswald">
                         <h6>
                             Next holiday:
                         </h6>
@@ -48,9 +48,4 @@ function Holiday({ allHoliday }: Type_for_holiday): JSX.Element {
 };
 
 
-const mapStateToProps = (state: Type_RootState) => ({
-    allHoliday: state.allHoliday
-});
-
-export default connect(mapStateToProps)(Holiday);
-
+export default Holiday;

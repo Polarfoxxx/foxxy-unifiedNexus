@@ -98,22 +98,18 @@ function CalendarMod(): JSX.Element {
       })
     }, [appData.allEvents.length]); */
 
-  React.useEffect(() => {
-    console.log(allEvents);
-
-  }, [])
 
   return (
-    <div className='absulute w-full h-auto lg:h-full flex flex-col lg:flex-row  items-center justify-center  bg-thems-calendarContent_background shadow-miniApp'>
+    <div className=' w-full h-auto xl:h-full flex flex-col xl:flex-row  items-center justify-center  bg-thems-appThemeColorTertiary shadow-miniApp'>
       {/* event----------------------------------------------------------------------- */}
-      <div className=' w-[100%] lg:order-1 order-2 lg:w-[60%] lg:h-full bg-thems-drakInLightTheme flex justify-center items-center flex-col lg:flex-row'>
-        <div className=' w-[100%] lg:[10%] h-full  bg-thems-minBackg_content items-center justify-center'>
+      <div className=' w-[100%] xl:order-1 order-2 xl:w-[60%] xl:h-full bg-thems-appThemeColorSecondary flex justify-center items-center flex-col xl:flex-row'>
+        <div className=' w-[100%] xl:w-[15%] h-full  bg-thems-appThemeColor items-center justify-center'>
           <NavigateBar />
         </div>
         <div className='w-full h-full bg-transparent flex justify-center items-center flex-col gap-1'>
           <div className=' w-full h-[15%] flex items-center justify-center pl-[100px]'>
             <div className=' w-full h-full flex gap-1 justify-start items-center'>
-              <span className=' w-auto h-[55px] bg-thems-minBackg_content rounded-[10px] text-thems-defaultTextColor font-oswald text-[45px] p-4 leading-[55px] flex items-center justify-center'>
+              <span className=' w-auto h-[55px] bg-thems-appThemeColor rounded-[10px] text-thems-defaultTextColor font-oswald text-[45px] p-4 leading-[55px] flex items-center justify-center'>
                 YOU
               </span>
               <h1 className=' text-[40px]'>
@@ -121,8 +117,8 @@ function CalendarMod(): JSX.Element {
               </h1>
             </div>
           </div>
-          <div className=' w-full h-full  overflow-hidden'>
-            <NewEvent/>
+          <div className=' w-full h-[70%]  overflow-hidden'>
+            <NewEvent />
           </div>
           <div className=' w-full h-[20%] overflow-hidden'>
             <Holiday />
@@ -134,14 +130,14 @@ function CalendarMod(): JSX.Element {
         </div>
       </div>
       {/* calendar--------------------------------------------------------------------- */}
-      <div className='w-full lg:h-full order-1 lg:order-2 h-[500px] flex items-end justify-center p-4 '>
+      <div className='w-full xl:h-full order-1 xl:order-2 h-[500px] flex items-end justify-center p-4 '>
         <Calendar
           formats={formats}
           localizer={localizer}
           startAccessor="start"
           endAccessor="end"
           events={LocalAllEvent}
-          style={{ height: "95%", width: "100%"}}
+          style={{ height: "95%", width: "100%" }}
           className="hover-effect-calendar"
           onSelectEvent={handleEventClick} />
         {/* -------- */}

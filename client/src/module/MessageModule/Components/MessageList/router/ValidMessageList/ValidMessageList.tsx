@@ -38,7 +38,7 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
 
     return (
         <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col">
-            <div className="w-[100%] h-[7%] flex justify-end items-center bg-thems-currentMessCount_Background pl-5 pr-5 gap-4">
+            <div className="w-[100%] h-[7%] flex justify-end items-center pl-5 pr-5 gap-4">
                 <h2 className=" text-thems-defaultTextColor">
                     Current message in linst:
                 </h2>

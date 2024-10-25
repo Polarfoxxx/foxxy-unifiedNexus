@@ -5,7 +5,7 @@ function CurrentAllEvent(): JSX.Element {
 
   
     return (
-        <div className=" w-full h-full p-1 bg-thems-minBackg_content rounded-full flex items-center justify-center ">
+        <div className=" w-full h-full p-1 bg-thems-appThemeColor rounded-full flex items-center justify-center ">
             <div className=" w-[80%] h-full flex items-center justify-center flex-row gap-2">
                 <div className="w-full h-full flex justify-center items-center">
                     <h3 className=" text-thems-defaultTextColor">

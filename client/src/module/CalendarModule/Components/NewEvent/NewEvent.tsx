@@ -69,14 +69,14 @@ function NewEvent(): JSX.Element {
     return (
         <div className=" w-full h-full relative">
             <div className=" w-full h-full flex items-center justify-start flex-col">
-                <div className=" w-full min-h-[50px] flex justify-center items-center bg-thems-minBackg_content ">
+                <div className=" w-full min-h-[50px] flex justify-center items-center bg-thems-appThemeColor ">
                     <h2 className=" text-[22px] text-thems-defaultTextColor">
                         Set new event
                     </h2>
                 </div>
                 <form
                     onSubmit={(e) => handleSubmit(e, submit)}
-                    className=" w-full h-[100%] shadow-maxShadow flex justify-center items-center flex-col bg-transparent  ">
+                    className=" w-full h-[100%]  flex justify-center items-center flex-col bg-transparent  ">
                     <div className=" w-[80%] h-[100%]  flex justify-center items-start flex-col ">
                         <div className="w-full h-[100%] flex justify-center items-start flex-col gap-1">
                             <div className=" w-[60%] h-auto">
@@ -157,8 +157,8 @@ function NewEvent(): JSX.Element {
                     <div className=" w-[80%] h-full flex justify-start items-center">
                     <ButtonComponent.ButtonBox>
                     <ButtonComponent.Button
-                        button_text='my button'
-                        variant_btn='alertButton' />
+                        button_text='Save new event'
+                        variant_btn='primaryButton' />
                 </ButtonComponent.ButtonBox>
                     </div>
                 </form>

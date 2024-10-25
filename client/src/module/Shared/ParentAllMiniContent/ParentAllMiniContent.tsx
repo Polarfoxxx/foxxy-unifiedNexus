@@ -21,13 +21,13 @@ function ParentAllMiniContent(props: Type_for_ParentAllMiniContent): JSX.Element
     return (
         <div
             onClick={handleClickHomePage}
-            className='absolute w-screen h-screen bg-thems-parentComponentBackg left-0 top-0 bottom-0 z-[998] flex items-center justify-center shadow-miniApp'>
-            <div className=" w-[auto] lg:h-[90%] h-full border-[1px] border-thems-parentComponentBorder overflow-hidden rounded-[30px] relative">
-                <div className=" w-auto h-auto absolute right-[40px] top-[15px]">
+            className=' fixed bg-thems-parentComponentBackg left-0 top-0 bottom-0 right-0 z-[998] flex items-center justify-center shadow-miniApp'>
+            <div className="xl:w-[80%] w-full h-full xl:h-[75%] border-[1px] border-thems-parentComponentBorder overflow-y-scroll lg:overflow-hidden rounded-[30px] relative">
+                <div className=" w-auto h-auto absolute right-[5px] top-[0px]">
                 <ButtonComponent.ButtonBox>
                     <ButtonComponent.Button
                     sm_button
-                        button_text='my button'
+                        button_text='close'
                         variant_btn='alertButton'
                         onClick={handleClickHomePage} />
                 </ButtonComponent.ButtonBox>  
