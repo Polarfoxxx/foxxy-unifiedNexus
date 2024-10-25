@@ -1,0 +1,24 @@
+{
+  "name": "foxxy-calendar-netlify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \" cd server && npm run dev\" \"cd client && npm run start\"",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build"
+  },
+  "author": "foxxy",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "concurrently": "^7.6.0",
+    "date-fns": "^3.3.1"
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.22.3"
+  }
+}

@@ -1,0 +1,76 @@
+div[data-theme="light"] {
+    /*! buttonStyle */
+    --background_button: rgb(123, 32, 188);
+    --background_button_hover: rgb(220, 220, 220);
+    --color_button: rgb(0, 0, 0);
+    --miniNavigationButton: rgb(245, 245, 245);
+
+    /*! appBackGround */
+    --background_content: rgb(255, 255, 255);
+    --background_content_header: rgba(63, 56, 191, 0.507);
+    --background_App: url('/public/image/lightAppBacgr.jpg');
+    --parentComponentBackg: rgba(139, 139, 139, 0.778);
+    --parentComponentBorder: rgb(238, 238, 238);
+
+    /*! CalendarBackGround */
+    --dayBackground_hover: rgb(170, 170, 170);
+    --dayBackground_header: rgb(255, 255, 255);
+    --current_time_line: rgb(255, 0, 0);
+    --eventBackground: rgb(27, 138, 129);
+    --eventBackground_selected: rgb(12, 100, 0);
+    --minBackg_content: rgb(123, 32, 188);
+    --minBackg_Two_content: rgb(195, 121, 230);
+    --background_block: rgb(255, 255, 255);
+    --calendarContent_background: rgb(255, 255, 255);
+    --InvalidDay_Background: rgba(201, 201, 201, 0.668);
+    --drakInLightTheme: rgb(192, 176, 225);
+    --currentDayBlock: rgb(118, 54, 246);
+    --allEventsCalendarList: white;
+
+    /*! littleComponents */
+    --littleComponent_Background: rgb(246, 246, 246);
+    --littleComponent_border: rgba(164, 164, 164, 0.839);
+
+    /*! MessageBackGround */
+    --messageContent_background: white;
+    --newMessageForm_Background: rgb(143, 142, 142);
+    --item_Background: rgba(218, 218, 218, 0.679);
+    --itemHeader_Background: rgb(179, 95, 218);
+    --currentMessCount_Background: rgba(70, 70, 70, 0.507);
+
+    /*! textColor */
+    --defaultTextColor: rgb(255, 255, 255);
+    --defaultTextColorTwo: rgb(0, 0, 0);
+    --current_day: rgb(172, 7, 255);
+    --miniNavigateBar: rgb(123, 32, 188);
+
+    /*! inputStyle */
+    --inputBorder: rgba(128, 0, 128, 0.438);
+}
+
+
+div[data-theme="dark"] {
+    /* buttonStyle */
+    --background_button: rgb(194, 86, 8);
+    --background_button_hover: rgb(245, 245, 245);
+    --color_button: rgb(255, 255, 255);
+    /* appBackGround */
+    --background_header: rgb(30, 30, 30);
+    --background_content: rgb(0, 34, 77);
+    --background_newEventContent: rgb(65, 65, 65);
+    /* textColor */
+    --defaultTextColor: rgb(192, 192, 192);
+    /* inputStyle */
+    --inputBorder: purple;
+
+}
+
+
+
+/* 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightLong } from '@fortawesome/free-solid-svg-icons';
+
+
+*/
