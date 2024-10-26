@@ -22,7 +22,7 @@ function Clock(): JSX.Element {
     }, []);
 
     return (
-        <div className="w-auto h-[70%] flex flex-col items-center justify-center text-thems-defaultTextColorDark">
+        <div className="w-auto h-[80%] p-3 rounded-[10px] flex flex-col items-center justify-center bg-thems-appThemeColor text-thems-defaultTextColor">
             <div className=" w-auto h-full flex items-center justify-center">
                 <h1 className="text-[16px]">
                     {time}

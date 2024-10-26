@@ -63,7 +63,12 @@ function CalendarMod(): JSX.Element {
       const TRANSLATE_DATA: Type_for_newEventFrom_DB[] = allEvents.map(item => {
         const START_DATE = new Date(item.start);
         const END_DATE = new Date(item.end);
-        return { start: START_DATE, end: END_DATE, title: item.title, comment: item.comment };
+        return {
+          start: START_DATE,
+          end: END_DATE,
+          title: item.title,
+          comment: item.comment
+        };
       });
       setLocalAllEvent(TRANSLATE_DATA)
     };
@@ -100,7 +105,7 @@ function CalendarMod(): JSX.Element {
 
 
   return (
-    <div className=' w-full h-auto xl:h-full flex flex-col xl:flex-row  items-center justify-center  bg-thems-appThemeColorTertiary shadow-miniApp'>
+    <div className=' w-full h-auto xl:h-full flex flex-col xl:flex-row  items-center justify-center  bg-thems-appThemeColorTertiary'>
       {/* event----------------------------------------------------------------------- */}
       <div className=' w-[100%] xl:order-1 order-2 xl:w-[60%] xl:h-full bg-thems-appThemeColorSecondary flex justify-center items-center flex-col xl:flex-row'>
         <div className=' w-[100%] xl:w-[15%] h-full  bg-thems-appThemeColor items-center justify-center'>

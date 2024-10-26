@@ -96,7 +96,7 @@ function Content(): JSX.Element {
                 <header className=" w-full h-[70px] min-h-[70px] flex items-center justify-center p-2 ">
                   <Header />
                 </header>
-                <nav className="w-full h-[auto] flex items-start justify-start p-3  bg-orange-400">
+                <nav className="w-full h-[auto] flex items-start justify-start p-3 ">
                     <div className="w-full flex items-start justify-center flex-wrap gap-3">
                         {/* calendar----------------------------------------------------------------- */}
                         <div className="w-[500px] h-[300px] rounded-[15px] border border-thems-littleComponent_border relative overflow-hidden shadow-miniApp">

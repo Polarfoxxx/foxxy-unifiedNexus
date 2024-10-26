@@ -21,12 +21,12 @@ function NavigateBar(): JSX.Element {
     };
 
     return (
-        <div className=" w-full h-auto p-2 flex flex-row xl:flex-col justify-center items-center gap-4">
+        <div className=" w-full h-20px xl:h-full p-2 flex flex-row xl:flex-col justify-center items-center gap-4">
             {
                 allApplicationFordisplay.map((item, key) =>
                     <div
                         onClick={() => handleClick(item)}
-                        className=" w-[40px] h-[40px] bg-thems-miniNavigationButton text-thems-miniNavigateBar font-bold rounded-[50%] flex items-center justify-center cursor-pointer hover:scale-[1.08]"
+                        className=" w-[40px] h-[40px] bg-thems-miniNavigationButton text-thems-defaultTextColorTwo font-bold rounded-[50%] flex items-center justify-center cursor-pointer hover:scale-[1.08]"
                         key={key}>
                         <h1> {item.icon}</h1>
                     </div>

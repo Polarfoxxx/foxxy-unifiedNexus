@@ -1,6 +1,6 @@
-import { Type_for_newMesssageFrom_DB } from "../../../MessageModule/Components/MessageList/types";
+import { Type_for_newMesssageFrom_DB } from "../../../../MessageModule/Components/MessageList/types";
 
-export type Type_for_deleteData_forAPI = {
+export type Type_for_deleteMessage_forAPI = {
     loginUserName: string,
     itemData: Type_for_newMesssageFrom_DB
 };

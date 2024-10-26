@@ -21,52 +21,49 @@ module.exports = {
         'fullNewEvent': '1000px',
         "fullApp": "100vw",
       },
-      
+
       backgroundImage: {
         'loginBackg': "url('/public/image/loginimg.jpg')",
         'background_App': "var(--background_App)",
       },
       colors: {
         thems: {
-          //! buttonStyle
+          //! appBackGround.....................
+          background_content: "var(--background_content)",
+          parentComponentBackg: "var(--parentComponentBackg)",
+          parentComponentBorder: "var(--parentComponentBorder)",
+          appThemeColor: "var(--appThemeColor)",
+          appThemeColorSecondary: "var(--appThemeColorSecondary)",
+          appThemeColorTertiary: "var(--appThemeColorTertiary)",
+          appThemeColorFourth: "var(--appThemeColorFourth)",
+          //! textColor........................
+          defaultTextColor: 'var(--defaultTextColor)',
+          defaultTextColorDark: 'var(--defaultTextColorDark)',
+          current_day: "var(--current_day)",
+          //! inputStyle........................
+          inputBorder: "var(--inputBorder)",
+          //! buttonStyle.......................
           background_button: 'var(--background_button)',
           color_button: 'var(--color_button)',
           background_button_hover: "var(--background_button_hover)",
           miniNavigationButton: "var(--miniNavigationButton)",
-          parentComponentBorder: "var(--parentComponentBorder)",
 
-          //! appBackGround 
-          background_content: "var(--background_content)",
-          background_content_header: "var(--background_content_header)",
-          parentComponentBackg: "var(--parentComponentBackg)",
-          appThemeColor: "var(--appThemeColor)",
-          appThemeColorSecondary: "var(--appThemeColorSecondary)",
-          appThemeColorTertiary: "var(--appThemeColorTertiary)",
 
-          //! CalendarBackGround
+          /* -------------------------- */
+          //! CalendarBackGround.............
           eventBackground_selected: "var(--eventBackground_selected)",
           current_time_line: "var(--current_time_line)",
           InvalidDay_Background: "var(--InvalidDay_Background)",
           currentDayBlock: "var(--currentDayBlock)",
-
-          //! littleComponent
+          //! littleComponent...............
           littleComponent_Background: "var(--littleComponent_Background)",
           littleComponent_border: "var(--littleComponent_border)",
-
-          //! MessageBackGround
+          littleComponent_oppositeColor: "var(--littleComponent_oppositeColor)",
+          //! MessageBackGround.............
           messageContent_background: "var(--messageContent_background)",
           newMessageForm_Background: "var(--newMessageForm_Background)",
           itemHeader_Background: "var(--itemHeader_Background)",
           item_Background: "var(--item_Background)",
-
-          //! textColor
-          defaultTextColor: 'var(--defaultTextColor)',
-          defaultTextColorDark: 'var(--defaultTextColorDark)',
-          current_day: "var(--current_day)",
-          miniNavigateBar: "var(--miniNavigateBar)",
-
-          //! inputStyle
-          inputBorder: "var(--inputBorder)",
 
         },
       },

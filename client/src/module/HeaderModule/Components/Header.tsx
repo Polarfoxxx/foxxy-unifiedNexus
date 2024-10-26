@@ -10,7 +10,7 @@ function Header(): JSX.Element {
 
 
     return (
-        <div className=" w-full h-full flex items-center justify-between bg-thems-littleComponent_Background shadow-miniApp border border-thems-littleComponent_border rounded-[10px] overflow-hidden">
+        <div className=" w-full h-full flex items-center justify-between bg-thems-littleComponent_Background border border-thems-littleComponent_border rounded-[10px] overflow-hidden">
             <div className=" w-[100%] h-[100%] flex items-center justify-start">
                 <div className="w-auto h-[100%] flex items-center justify-center">
                     <LogOut />

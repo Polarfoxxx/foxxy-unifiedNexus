@@ -1,30 +1,21 @@
 import { Type_forCalendarEvents } from "./types";
 import React from "react";
 import { ButtonComponent } from "foxxy-package/dist";
-
-
-export type Type_for_CalEvents_for_display = {
-    title: string,
-    comment: string,
-    start: {
-        date: string,
-        time: string
-    },
-    end: {
-        date: string,
-        time: string
-    }
-};
+import { Type_for_CalEvents_for_display } from "./types";
+import { deleteEvent_API } from "../../../APIs/userDataCRUD_API";
+import { Type_RootState } from "../../../../redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setAllEvent } from "../../../../redux";
 
 
 
-function CalendarEvents(
-    props: Type_forCalendarEvents
-): JSX.Element {
-    const [allEventsForDisplay, setAllEventsForDisplay] = React.useState<Type_for_CalEvents_for_display[]>([]);
+function CalendarEvents(props: Type_forCalendarEvents): JSX.Element {
+const user = useSelector((state:Type_RootState)=> state.userLogData.userName);
+const allEvents = useSelector((state:Type_RootState)=> state.allEvents);
+const dispatch = useDispatch()
 
-    React.useEffect(() => {
-        const changeDateFormat: Type_for_CalEvents_for_display[] = props.allEvents.map((item) => {
+    const allEventsForDisplay: Type_for_CalEvents_for_display[] = React.useMemo(() => {
+        return props.allEvents.map((item) => {
             const date_start = new Date(item.start);
             const formattedDate_start = date_start.toLocaleDateString(); // Formátovaný dátum
             const formattedTime_start = date_start.toLocaleTimeString(); // Formátovaný čas
@@ -45,9 +36,30 @@ function CalendarEvents(
                 },
             };
         });
-        setAllEventsForDisplay(changeDateFormat)
     }, [props.allEvents]);
 
+
+    const handleDeleteEvent= (e: React.MouseEvent<HTMLButtonElement>, item: Type_for_CalEvents_for_display):void => {
+       const itemData = {
+        title:item.title,
+        comment:item.comment
+       };
+
+       deleteEvent();
+       async function deleteEvent() {
+        try {
+            const response = await deleteEvent_API({user, itemData})
+            if(response?.status === 201) {
+                const updateEvent = response.updateEvent;
+                dispatch(setAllEvent(updateEvent))
+            }
+        } catch (error) {
+            console.log("error delete event", error);
+            
+        }
+       }
+
+    };
 
     return (
         <div className=" w-full h-full flex items-center justify-center">
@@ -73,57 +85,58 @@ function CalendarEvents(
                         {
                             allEventsForDisplay.map((item, key) =>
                                 <div key={key}
-                                    className=" w-[90%] h-[60px] p-[5px] bg-thems-appThemeColorTertiary rounded-xl flex items-start justify-around flex-row">
-                                    <div className=" w-full h-full flex items-center justify-center flex-col">
-                                        <div className=" w-full h-full bg-slate-200">
+                                    className=" w-[90%] h-[60px] min-h-[60px] bg-thems-appThemeColor text-thems-defaultTextColor rounded-[5px] flex items-start justify-around flex-row border overflow-hidden">
+                                    <div className=" w-[100%] h-full flex items-center justify-center flex-col">
+                                        <div className=" w-full h-full flex justify-center items-center">
                                             <h1 className="">
                                                 Event title
                                             </h1>
                                         </div>
-                                        <div className=" w-full h-full bg-slate-300">
+                                        <div className=" w-full h-full flex justify-center items-center">
                                             <h1 className=" text-[12px]">
                                                 {item.title}
                                             </h1>
                                         </div>
                                     </div>
-                                    <div className=" w-full h-full flex items-center justify-center flex-col">
-                                        <div className=" w-full h-full bg-slate-500 text-[10px]">
+                                    <div className=" w-[50%] h-full flex items-center justify-center flex-col">
+                                        <div className=" w-full h-full text-[10px] flex justify-center items-center">
                                             <p>
                                                 Start start
                                             </p>
                                         </div>
-                                        <div className=" w-full h-full bg-slate-300">
-                                            <div className="text-[10px]">
+                                        <div className=" w-full h-full">
+                                            <div className="text-[10px] flex justify-center items-center">
                                                 <p>
                                                     {item.start.date}
                                                 </p>
                                             </div>
-                                            <div className="text-[10px]">
+                                            <div className="text-[10px] flex justify-center items-center">
                                                 <p>{item.start.time}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className=" w-full h-full flex items-center justify-center flex-col">
-                                        <div className=" w-full h-full bg-slate-500 text-[10px]">
+                                    <div className=" w-[50%] h-full flex items-center justify-center flex-col">
+                                        <div className=" w-full h-full text-[10px] flex justify-center items-center">
                                             <p>
                                                 Event end
                                             </p>
                                         </div>
-                                        <div className=" w-full h-full bg-slate-300">
-                                            <div className="text-[10px]">
+                                        <div className=" w-full h-full">
+                                            <div className="text-[10px] flex justify-center items-center">
                                                 <p>
                                                     {item.end.date}
                                                 </p>
                                             </div>
-                                            <div className="text-[10px]">
+                                            <div className="text-[10px] flex justify-center items-center">
                                                 {item.end.time}
                                             </div>
                                         </div>
                                     </div>
-                                    <div className=" w-[50%] h-full flex items-center justify-center pr-[15px]">
+                                    <div className=" w-[50%] h-full flex items-center justify-center">
                                         <ButtonComponent.ButtonBox>
                                             <ButtonComponent.Button
-                                                button_text="delete"
+                                            onClick={(e)=>{handleDeleteEvent(e,item)}}
+                                                button_text="Delete"
                                                 variant_btn="alertButton"
                                                 sm_button />
                                         </ButtonComponent.ButtonBox>

@@ -9,7 +9,7 @@
 .rbc-day-bg {
     cursor: pointer;
     position: relative;
-
+    background-color: var(--appThemeColorSecondary)
 }
 
 .rbc-date-cell {
@@ -29,11 +29,11 @@
     height: 100%;
     font-weight: bold;
     font-size: 15px;
-    background-color: rgb(204, 204, 204);
+    background-color: var(--appThemeColorSecondary)
 }
 
 .rbc-date-cell .rbc-button-link:hover {
-    color: var(--defaultTextColor);
+    color: var(--current_day);
 }
 
 .rbc-date-cell.rbc-now.rbc-current>button {
@@ -91,8 +91,8 @@
 /* hlavicka kalendara */
 .rbc-row.rbc-month-header>div {
     font-weight: lighter;
-    background-color: rgb(90, 52, 116);
-    color: white;
+    background-color: var(--appThemeColorFourth);
+    color: var(--defaultTextColor);
 }
 
 /* calendar content */

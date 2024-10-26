@@ -1,7 +1,7 @@
 import { Type_for_newMesssageFrom_DB } from "../../types";
 import React from "react";
 import { Type_for_ItemMessage, services_messageColorAlert } from "../";
-import { deleteData_API, updateData_API } from "../../../../../APIs/index.";
+import { deleteMessage_API, updateData_API } from "../../../../../APIs/index.";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { setAllMessages, Type_forSetAllMessage, Type_RootState } from "../../../../../../redux";
@@ -44,7 +44,7 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
         const loginUserName = userName;
 
         try {
-            const deleteItem = await deleteData_API({ loginUserName, itemData });
+            const deleteItem = await deleteMessage_API({ loginUserName, itemData });
             if (deleteItem?.updateMessages) {
                 setColorUpdateAndDelete({
                     backgroundColor: "red"

@@ -22,7 +22,6 @@ import "foxxy-package/dist/foxxy_package_dis.css"
 function NewEvent(): JSX.Element {
     const [newEvent, setNewEvent] = React.useState<any>({ title: "", comment: "", start: "", end: "" });
     const { handleSubmit, reset } = useInputValue();
-    //!redux
     const dispatch = useDispatch();
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
 
@@ -77,7 +76,7 @@ function NewEvent(): JSX.Element {
                 <form
                     onSubmit={(e) => handleSubmit(e, submit)}
                     className=" w-full h-[100%]  flex justify-center items-center flex-col bg-transparent  ">
-                    <div className=" w-[80%] h-[100%]  flex justify-center items-start flex-col ">
+                    <div className=" w-[90%] h-[100%]  flex justify-center items-start flex-col ">
                         <div className="w-full h-[100%] flex justify-center items-start flex-col gap-1">
                             <div className=" w-[60%] h-auto">
                             <h4 className=" text-[14px] font-bold">
@@ -123,7 +122,7 @@ function NewEvent(): JSX.Element {
                         </div>
                     </div>
 
-                    <div className=" w-[80%] h-full flex flex-col justify-center items-center gap-1">
+                    <div className=" w-[90%] h-full flex flex-col justify-center items-center gap-1">
                         <div className="w-full h-full flex items-start justify-center flex-col gap-1">
                             <div className=" w-[60%] h-auto">
                                 <h4 className=" text-[14px] font-bold">
@@ -154,7 +153,7 @@ function NewEvent(): JSX.Element {
                             </div>
                         </div>
                     </div>
-                    <div className=" w-[80%] h-full flex justify-start items-center">
+                    <div className=" w-[90%] h-full flex justify-start items-center">
                     <ButtonComponent.ButtonBox>
                     <ButtonComponent.Button
                         button_text='Save new event'

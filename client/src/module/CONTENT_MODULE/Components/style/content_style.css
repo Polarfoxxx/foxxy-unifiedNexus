@@ -1,46 +1,45 @@
 div[data-theme="light"] {
-    /*! buttonStyle */
-    --background_button_hover: rgb(220, 220, 220);
-    --color_button: rgb(0, 0, 0);
-    --miniNavigationButton: rgb(245, 245, 245);
-
     /*! appBackGround */
-    --background_content: rgb(255, 255, 255);
-    --background_content_header: rgba(63, 56, 191, 0.507);
+    --background_content: rgb(196, 196, 196);
     --background_App: url('/public/image/lightAppBacgr.jpg');
     --parentComponentBackg: rgba(139, 139, 139, 0.778);
     --parentComponentBorder: rgb(238, 238, 238);
     --appThemeColor: rgb(25, 97, 91);
     --appThemeColorSecondary: rgb(255, 255, 255);
     --appThemeColorTertiary: rgb(255, 255, 255);
+    --appThemeColorFourth: rgb(90, 90, 90);
+    /*! textColor */
+    --defaultTextColor: rgb(255, 255, 255);
+    --defaultTextColorTwo: rgb(0, 0, 0);
+    --current_day: rgb(255, 0, 0);
+    /*! inputStyle */
+    --inputBorder: rgb(41, 41, 41);
+    /*! buttonStyle */
+    --color_button: rgb(0, 0, 0);
+    --miniNavigationButton: rgb(245, 245, 245);
     --background_button: rgb(25, 97, 91);
+    --background_button_hover: rgb(220, 220, 220);
 
 
+    
+    /* ------------------------------- */
     /*! CalendarBackGround */
     --current_time_line: rgb(255, 0, 0);
     --eventBackground_selected: rgb(232, 6, 6);
     --InvalidDay_Background: rgba(200, 38, 38, 0.668);
-    --currentDayBlock: rgb(113, 59, 222);
-
+    --currentDayBlock: rgb(116, 255, 111);
     /*! littleComponents */
     --littleComponent_Background: rgb(246, 246, 246);
     --littleComponent_border: rgba(164, 164, 164, 0.839);
-
+    --littleComponent_oppositeColor: rgb(87, 87, 228);
     /*! MessageBackGround */
     --messageContent_background: white;
     --newMessageForm_Background: rgb(143, 142, 142);
     --item_Background: rgba(218, 218, 218, 0.679);
     --itemHeader_Background: rgb(179, 95, 218);
 
-    /*! textColor */
-    --defaultTextColor: rgb(255, 255, 255);
-    --defaultTextColorTwo: rgb(0, 0, 0);
-    --current_day: rgb(172, 136, 190);
-    --miniNavigateBar: rgb(0, 0, 0);
-
-    /*! inputStyle */
-    --inputBorder: rgba(128, 0, 128, 0.438);
 }
+
 
 
 div[data-theme="dark"] {
