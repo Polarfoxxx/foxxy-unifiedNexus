@@ -1,7 +1,7 @@
 import { Type_for_newMesssageFrom_DB } from "../../types";
 import React from "react";
 import { Type_for_ItemMessage, services_messageColorAlert } from "../";
-import { deleteMessage_API, updateData_API } from "../../../../../APIs/index.";
+import { deleteMessage_API, updateMessageData_API } from "../../../../../APIs/userDataCRUD_API";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { setAllMessages, Type_forSetAllMessage, Type_RootState } from "../../../../../../redux";
@@ -70,7 +70,7 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
         const { itemData } = props;
         const loginUserName = userName;
         try {
-            const update_Item = await updateData_API({ loginUserName, itemData });
+            const update_Item = await updateMessageData_API({ loginUserName, itemData });
             if (update_Item?.updateMessages) {
                 setColorUpdateAndDelete({
                     backgroundColor: "green"
@@ -79,7 +79,7 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
                     setAllMessages({
                         data: update_Item.updateMessages,
                         typeEvent: "setAll_message"
-                    }) //natavenie redux
+                    }) 
                     setColorUpdateAndDelete({
                         backgroundColor: "rgba(218, 218, 218, 0.679)"
                     })

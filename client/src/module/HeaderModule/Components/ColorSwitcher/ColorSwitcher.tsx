@@ -1,5 +1,5 @@
 import React from 'react';
-import { updateCookie } from '../../../APIs/cookie';
+import { updateUserDataAPI } from '../../../APIs/userDataCRUD_API';
 import { Type_RootState, setUserLogData } from '../../../../redux';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -8,9 +8,12 @@ function ColorSwitcher(): JSX.Element {
     const dispatch = useDispatch()
 
     const handleColorChange = async (selectTheme: string) => {
+        const updateUserData = selectTheme;
+        const userName = USER_DATA.userName;
+
         try {
-            const resp_updateCookie = await updateCookie(selectTheme);
-            if (resp_updateCookie === 200) {
+            const resp_updateUserData = await updateUserDataAPI({ userName, updateUserData });
+            if (resp_updateUserData?.status === 200) {
                 dispatch(setUserLogData({
                     ...USER_DATA,
                     appTheme: selectTheme

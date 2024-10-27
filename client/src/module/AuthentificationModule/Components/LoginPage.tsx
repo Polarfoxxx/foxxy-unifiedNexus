@@ -65,10 +65,12 @@ function LoginPage(): JSX.Element {
                         onSubmit={(e) => handleSubmit(e, submit)} >
                         <FormComponent.FormHeader />
                         <FormComponent.FormInputs
+                            id="username"
                             placeholder="username"
                             text_align_in_Input="center"
                             name="username" />
                         <FormComponent.FormInputs
+                            id="password"
                             placeholder="password"
                             text_align_in_Input="center"
                             type="password"

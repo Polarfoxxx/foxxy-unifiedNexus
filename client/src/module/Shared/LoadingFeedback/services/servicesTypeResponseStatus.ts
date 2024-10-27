@@ -4,7 +4,6 @@ function servicesTypeResponseStatus(
     props: Type_for_servicesTypeRespoStatus
 ): { typeResponseText: string, fontAwensome: JSX.Element | null } {
     const { respo_status } = props;
-    console.log(respo_status);
     
     const status = respo_status as keyof typeof HTTPResponseText;
 

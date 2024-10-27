@@ -6,6 +6,10 @@ export type Type_for_readData_API = {
     data: {
         events: Type_for_newEventFrom_DB[],
         messages: Type_for_newMesssageFrom_DB[],
-        theme: string
+        userData: {
+            userName: string,
+            status: boolean,
+            colorTheme: string
+        }
     }
 };

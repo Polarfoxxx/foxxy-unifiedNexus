@@ -12,8 +12,10 @@ mongoose
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
-    login: {
-        state: Boolean
+    userData: {
+        userName: String,
+        logStatus: Boolean,
+        colorTheme: String
     },
     data: {
         events: [

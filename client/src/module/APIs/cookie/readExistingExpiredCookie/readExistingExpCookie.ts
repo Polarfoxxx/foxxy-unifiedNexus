@@ -14,7 +14,6 @@ async function readExistingExpCookie(): Promise<Type_for_readExistingExpCookie_r
         const cookieData = {
             isValid: cookieExpired.data.cookieExp.valid,
             cookie_data: {
-                appTheme: cookieExpired.data.theme,
                 userName: cookieExpired.data.userName
             }
         };

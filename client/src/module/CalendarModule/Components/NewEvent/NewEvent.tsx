@@ -1,6 +1,7 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import React from "react";
+import { Portal } from "react-overlays";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownLong } from '@fortawesome/free-solid-svg-icons';
 import { useInputValue } from "foxxy_input_value";
@@ -25,7 +26,10 @@ function NewEvent(): JSX.Element {
     const dispatch = useDispatch();
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
 
-
+    const CalendarContainer = ({ children }: any) => {
+        const el = document.getElementById("calendar-portal");
+        return <Portal container={el}>{children}</Portal>;
+      };
     const submit = (v: TypeForInputsObject["v"]): void => {
         const NEW_REQ = new NewRequest({
             startDate_event: v[0].inputValues.toString(),
@@ -88,12 +92,12 @@ function NewEvent(): JSX.Element {
                                     autoComplete="false"
                                     showTimeSelect
                                     timeFormat="HH:mm"
+                                    popperPlacement="top-end" 
                                     timeIntervals={15}
                                     timeCaption="Čas"
                                     dateFormat="dd.MM.yyyy HH:mm"
                                     name="startDate"
-                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-white ml-3 pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent"
-                                    placeholderText="Start Date"
+                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-white ml-3 pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent"
                                     selected={newEvent.start}
                                     onChange={(start) => setNewEvent({ ...newEvent, start })} />
                             </div>
@@ -113,9 +117,9 @@ function NewEvent(): JSX.Element {
                                     timeIntervals={15}
                                     timeCaption="Čas"
                                     dateFormat="dd.MM.yyyy HH:mm"
+                                    popperContainer={CalendarContainer}
                                     name="endDate"
-                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-white ml-3 pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent"
-                                    placeholderText="End Date"
+                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-black ml-3 pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent"
                                     selected={newEvent.end}
                                     onChange={(end) => setNewEvent({ ...newEvent, end })} />
                             </div>

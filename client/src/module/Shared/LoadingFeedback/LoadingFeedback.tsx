@@ -3,7 +3,6 @@ import { servicesTypeResponseStatus, Type_for_LoadingFeedback } from "./";
 
 function LoadingFeedback(props: Type_for_LoadingFeedback): JSX.Element {
     const { respo_status, loadON } = props.loadstatus;
-    console.log(respo_status, loadON);
     
     const loadTimerRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
     const [respoStatus, setRespoStatus] = React.useState<{ fontAwesome: null | JSX.Element, statusRespo: string, load_ON: boolean }>({

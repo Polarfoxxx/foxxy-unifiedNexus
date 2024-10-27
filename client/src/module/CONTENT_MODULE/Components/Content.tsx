@@ -5,7 +5,7 @@ import { Calendar } from "../../CalendarModule";
 import { MessageList } from "../../MessageModule";
 import { ParentAllMiniContent } from "../../Shared";
 import { readData_API } from "../../APIs/index.";
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { readExistingExpCookie } from "../../APIs/index.";
 import { LittleCalendar, LittleMessage, LittleWeather } from "../../LittleAppComponents";
 import { openWeatherAPI, dayAndHoliday } from "../../APIs/index.";
@@ -26,24 +26,40 @@ function Content(): JSX.Element {
     const USER_DATA = useSelector((state: Type_RootState) => state.userLogData);
     const dispatch = useDispatch();
 
-    //! read cookie and set user data..........
+    //! control validate cookie and JWT token........
     React.useEffect(() => {
-        readCookie();
-        async function readCookie() {
-            const cookieIsValid = await readExistingExpCookie();   //volanie pre zistenie a nasledne odoslanie cookie
-            if (cookieIsValid) {
-                dispatch(setUserLogData({
-                    userName: cookieIsValid.cookie_data.userName,
-                    appTheme: cookieIsValid.cookie_data.appTheme
-                }));
-            } else {
-                navigate("/LoginPage")
+        controlValidateJWTandCokie();
+        async function controlValidateJWTandCokie() {
+            const responseControlCookie = await readExistingExpCookie();
+            if (responseControlCookie?.isValid !== true) {
+                navigate("/LoginPage");
             };
         };
+    }, [navigate])
+
+
+    //! read data and set user data..........
+    React.useEffect(() => {
+        readUserData();
+        async function readUserData() {
+            try {
+                const load_userData = await readData_API();
+                if (load_userData?.status === 200 ) {
+                    dispatch(setUserLogData({
+                        userName: load_userData.data.userData.userName,
+                        appTheme: load_userData.data.userData.colorTheme
+                    }));
+                } else {
+                    console.log("bad login and read userData", load_userData?.status);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }, []);
 
+    //! load message event data.............................
     React.useEffect(() => {
-        //! load message event data.............................
         loadDataAPI();
         async function loadDataAPI() {
             try {
@@ -94,9 +110,9 @@ function Content(): JSX.Element {
             className=" w-full h-auto min-h-screen overflow-scrool flex flex-col justify-center items-center bg-thems-background_content bg-fullApp">
             <div className=" w-full h-auto min-h-screen">
                 <header className=" w-full h-[70px] min-h-[70px] flex items-center justify-center p-2 ">
-                  <Header />
+                    <Header />
                 </header>
-                <nav className="w-full h-[auto] flex items-start justify-start p-3 ">
+                <nav className="w-full h-[auto] flex items-start justify-start p-3 ;">
                     <div className="w-full flex items-start justify-center flex-wrap gap-3">
                         {/* calendar----------------------------------------------------------------- */}
                         <div className="w-[500px] h-[300px] rounded-[15px] border border-thems-littleComponent_border relative overflow-hidden shadow-miniApp">

@@ -59,7 +59,7 @@ function CalendarMod(): JSX.Element {
 
 
   React.useEffect(() => {
-    if (allEvents.length > 0) {
+    if (allEvents) {
       const TRANSLATE_DATA: Type_for_newEventFrom_DB[] = allEvents.map(item => {
         const START_DATE = new Date(item.start);
         const END_DATE = new Date(item.end);

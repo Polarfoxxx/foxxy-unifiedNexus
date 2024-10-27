@@ -123,3 +123,6 @@
     background-color: var(--current_time_line);
     height: 2px;
 }
+.date-picker-reports{
+    z-index: 99999999999;
+}

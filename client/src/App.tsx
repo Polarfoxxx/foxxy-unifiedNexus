@@ -13,8 +13,8 @@ function App(): JSX.Element {
   React.useEffect(() => {
     existAndValidCookie();
     async function existAndValidCookie() {
-      const cookieIsValid = await readExistingExpCookie();   //! volanie pre zistenie a nasledne odoslanie cookie
-      if (cookieIsValid && cookieIsValid.isValid) {  //! respo is isValid = false or cookieIsValid = undefined
+      const cookieIsValid = await readExistingExpCookie();   
+      if (cookieIsValid && cookieIsValid.isValid) { 
         navigate("/Content");
       } else {
         navigate("/LoginPage");

@@ -6,15 +6,13 @@ router.post("/user", async (req, res) => {
     const { username } = req.body;
     
     try {
-        // Hľadanie používateľa 
+        //! find user.............
         const user = await User.findOne({ username });
 
-        // Kontrola existencie používateľa 
         if (user) {
-            user.login.state = false;
-            await user.save(); // Použij await, aby se počkalo na uložení uživatele
+            user.userData.logStatus = false;
+            await user.save(); 
 
-            // Vymazání souborů cookie (pokud používáš cookies pro autentizaci)
             res.clearCookie(username, { httpOnly: true, sameSite: 'None', secure: true });
             res.status(200).send('logout');
         } else {

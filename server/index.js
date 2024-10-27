@@ -1,11 +1,12 @@
-const post_LogIn = require('./CRUD/post_login');
-const post_LogOut = require('./CRUD/post_logout');
-const post_Register = require("./CRUD/post_register");
-const post_createData = require("./CRUD/post_createData");
-const get_readData = require("./CRUD/get_readData");
+const postLogIn = require('./CRUD/post_login');
+const postLogOut = require('./CRUD/post_logout');
+const postRegister = require("./CRUD/post_register");
+const postcreateData = require("./CRUD/post_createData");
+const getreadData = require("./CRUD/get_readData");
 const deleteMessage = require("./CRUD/delete_deleteMessage");
 const deleteEvent = require("./CRUD/delete_deleteEvent");
-const update_putData = require("./CRUD/put_updateData");
+const updateMessageData = require("./CRUD/put_updateMessageData");
+const updateUserData = require("./CRUD/put_updateUserData");
 const updateCookie = require("./cookie/updateCookie");
 const readExpExistingCookie = require("./cookie/readExpiredExisting_cookie");
 const deleteCookie = require("./cookie/deleteCookie");
@@ -34,14 +35,15 @@ app.use((req, res, next) => {
 });
 
 //! CRUD Endpoints
-app.use('/register', post_Register); //! register POST method
-app.use('/logIn', post_LogIn); //! Login POST method
-app.use('/logOut', post_LogOut); //! Login POST method
-app.use('/create', post_createData); //! save POST method
-app.use('/read', get_readData); //! readData GET method
+app.use('/register', postRegister); //! register POST method
+app.use('/logIn', postLogIn); //! Login POST method
+app.use('/logOut', postLogOut); //! Login POST method
+app.use('/create', postcreateData); //! save POST method
+app.use('/read', getreadData); //! readData GET method
 app.use('/deleteMessage', deleteMessage); //! delete message DELETE method
 app.use('/deleteEvent', deleteEvent); //! delete event DELETE method
-app.use('/update', update_putData); //! updateData PUT method
+app.use('/updateMessage', updateMessageData); //! updateMessage PUT method
+app.use('/updateUser', updateUserData); //! updateUserData PUT method
 //! cookies
 app.use('/cookies-exp', readExpExistingCookie); //! cookies read and control expiration
 app.use('/cookies-delete', deleteCookie); //! cookies delete after logout

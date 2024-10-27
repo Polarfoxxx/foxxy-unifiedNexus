@@ -4,7 +4,7 @@ const User = require("../mongooseDB/mongooseDB");
 
 
 router.put('/data', async (req, res) => {
-        const { userName, delete_Data } = req.body;
+        const { userName, update_Data } = req.body;
     try {
         //! hladanie uzivatela
         const user = await User.findOne({ username: userName });
@@ -14,8 +14,8 @@ router.put('/data', async (req, res) => {
             const { messages } = user.data;
             //! Nájdenie indexu objektu s daným officialName v poli data
             const indexToUpdate = messages.findIndex(obj =>
-                (obj.title_message === delete_Data.title_message) &&
-                (obj.content_message === delete_Data.content_message)
+                (obj.title_message === update_Data.title_message) &&
+                (obj.content_message === update_Data.content_message)
             );
             if (indexToUpdate === -1) {
                 return res.status(404).json({ message: 'Objekt s daným title_message a content_message nebyl nalezen v poli messages.' });

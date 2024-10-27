@@ -26,8 +26,8 @@ div[data-theme="light"] {
     /*! CalendarBackGround */
     --current_time_line: rgb(255, 0, 0);
     --eventBackground_selected: rgb(232, 6, 6);
-    --InvalidDay_Background: rgba(200, 38, 38, 0.668);
-    --currentDayBlock: rgb(116, 255, 111);
+    --InvalidDay_Background: rgba(56, 56, 56, 0.668);
+    --currentDayBlock: rgb(25, 97, 91);
     /*! littleComponents */
     --littleComponent_Background: rgb(246, 246, 246);
     --littleComponent_border: rgba(164, 164, 164, 0.839);

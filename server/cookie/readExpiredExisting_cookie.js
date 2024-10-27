@@ -14,7 +14,7 @@ router.get('/read_Exp_Existing_Cookie', (req, res) => {
     //?........................................
     //! existing token ?........................
     const parseValue = JSON.parse(myCookie[cookie_userName]);
-    const { token, colorTheme } = parseValue;
+    const { token } = parseValue;
     if (!token) {
       return res.status(400).json({ valid: false, error: "no token" });
     };
@@ -22,18 +22,10 @@ router.get('/read_Exp_Existing_Cookie', (req, res) => {
     //! validity token ?........................
     const cookieExp = verifyJWTToken(token);
     const responseData = {
-      cookieExp,      // true or false
-      theme: colorTheme,
+      cookieExp,      //! true or false
       userName: cookie_userName
     };
     //?........................................
-
-    // Set the cookie with SameSite and Secure attributes
-    /*  res.cookie(cookie_userName, JSON.stringify(parseValue), {
-       httpOnly: true,
-       secure: true,
-       sameSite: 'None',
-     }); */
 
     res.json(responseData);
   } catch (err) {
