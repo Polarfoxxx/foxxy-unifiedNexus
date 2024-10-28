@@ -4,15 +4,15 @@ const User = require("../mongooseDB/mongooseDB");
 
 
 router.put('/data', async (req, res) => {
-        const { userName, update_Data } = req.body;
+    const { userName, update_Data } = req.body;
     try {
-        //! hladanie uzivatela
+        //!find user............
         const user = await User.findOne({ username: userName });
         if (!user) {
             return res.status(404).json({ message: 'Používateľ s daným emailName nebol nájdený.' });
         } else {
             const { messages } = user.data;
-            //! Nájdenie indexu objektu s daným officialName v poli data
+            //! find message.................
             const indexToUpdate = messages.findIndex(obj =>
                 (obj.title_message === update_Data.title_message) &&
                 (obj.content_message === update_Data.content_message)
@@ -20,9 +20,9 @@ router.put('/data', async (req, res) => {
             if (indexToUpdate === -1) {
                 return res.status(404).json({ message: 'Objekt s daným title_message a content_message nebyl nalezen v poli messages.' });
             }
-            //! Změna hodnoty klíče
+            //! change message.......................
             messages[indexToUpdate].status = false;
-            //! Uložení změněných dat
+            //! save...................
             await user.save();
             res.status(201).json({
                 message: "Zpráva byla úspěšně upravena.",

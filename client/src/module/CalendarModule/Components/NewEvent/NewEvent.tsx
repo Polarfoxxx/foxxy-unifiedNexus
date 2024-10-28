@@ -1,7 +1,6 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import React from "react";
-import { Portal } from "react-overlays";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownLong } from '@fortawesome/free-solid-svg-icons';
 import { useInputValue } from "foxxy_input_value";
@@ -12,30 +11,26 @@ import { NewRequest } from "../../../utils";
 import { createData_API } from "../../../APIs/userDataCRUD_API";
 import { setAllEvent } from "../../../../redux";
 import { Type_for_newEventFrom_DB } from "./type";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
 import { useSelector, useDispatch } from 'react-redux';
 import { Type_RootState } from "../../../../redux";
 import { ButtonComponent } from 'foxxy-package';
 import "foxxy-package/dist/foxxy_package_dis.css"
+import { CalendarContainer } from "react-datepicker";
 
 
 function NewEvent(): JSX.Element {
     const [newEvent, setNewEvent] = React.useState<any>({ title: "", comment: "", start: "", end: "" });
     const { handleSubmit, reset } = useInputValue();
+    const now = new Date();
     const dispatch = useDispatch();
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
 
-    const CalendarContainer = ({ children }: any) => {
-        const el = document.getElementById("calendar-portal");
-        return <Portal container={el}>{children}</Portal>;
-      };
     const submit = (v: TypeForInputsObject["v"]): void => {
         const NEW_REQ = new NewRequest({
             startDate_event: v[0].inputValues.toString(),
             endDate_event: v[1].inputValues.toString(),
-            name_Event: v[2].inputValues.toString(),
-            comment_Event: v[3].inputValues.toString(),
+            name_Event: v[2].inputValues.toString().trim(),
+            comment_Event: v[3].inputValues.toString().trim() === "" ? "no comment" :  v[3].inputValues.toString().trim()
         });
 
         const create_data: Type_for_newMessageFor_API | Type_for_newEventFor_API | string = NEW_REQ.create();
@@ -69,6 +64,20 @@ function NewEvent(): JSX.Element {
         };
     };
 
+    const MyContainer = ({ className, children }: any) => {
+        return (
+          <div style={{position:"relative", padding: "1px", background: "black", color: "#fff" ,top:"-110px", zIndex:"9999999", right:"50px"}}>
+            <CalendarContainer className={className}>
+              <div style={{ background: "green" }}>
+              </div>
+              <div style={{ position: "relative", backgroundColor:"green"}}>
+                {children}
+              </div>
+            </CalendarContainer>
+          </div>
+        );
+      };
+
     return (
         <div className=" w-full h-full relative">
             <div className=" w-full h-full flex items-center justify-start flex-col">
@@ -91,13 +100,15 @@ function NewEvent(): JSX.Element {
                                 <DatePicker
                                     autoComplete="false"
                                     showTimeSelect
+                                    minDate={now}
+                                    calendarContainer={MyContainer}
                                     timeFormat="HH:mm"
-                                    popperPlacement="top-end" 
+                                    popperPlacement="top" 
                                     timeIntervals={15}
                                     timeCaption="Čas"
                                     dateFormat="dd.MM.yyyy HH:mm"
                                     name="startDate"
-                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-white ml-3 pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent"
+                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-white ml-3 pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500"
                                     selected={newEvent.start}
                                     onChange={(start) => setNewEvent({ ...newEvent, start })} />
                             </div>
@@ -113,13 +124,14 @@ function NewEvent(): JSX.Element {
                                 <DatePicker
                                     autoComplete="false"
                                     showTimeSelect
+                                    minDate={now}
+                                    calendarContainer={MyContainer}
                                     timeFormat="HH:mm"
                                     timeIntervals={15}
                                     timeCaption="Čas"
                                     dateFormat="dd.MM.yyyy HH:mm"
-                                    popperContainer={CalendarContainer}
                                     name="endDate"
-                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-black ml-3 pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent"
+                                    className=" w-[400px] h-[30px] text-[14px] bg-transparent placeholder:text-black ml-3 pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500"
                                     selected={newEvent.end}
                                     onChange={(end) => setNewEvent({ ...newEvent, end })} />
                             </div>
@@ -130,16 +142,15 @@ function NewEvent(): JSX.Element {
                         <div className="w-full h-full flex items-start justify-center flex-col gap-1">
                             <div className=" w-[60%] h-auto">
                                 <h4 className=" text-[14px] font-bold">
-                                    Set Name event for easy indetification.
+                                    Set Name event.
                                 </h4>
                             </div>
                             <div>
-
                                 <input
                                     name="name event"
                                     type="text"
-                                    placeholder="Add Title"
-                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-white bg-transparent pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent" />
+                                    placeholder="Add event"
+                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-white bg-transparent pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500" />
                             </div>
                         </div>
                         <div className="w-full  h-full flex items-start justify-center flex-col gap-1">
@@ -153,7 +164,7 @@ function NewEvent(): JSX.Element {
                                     name="name event"
                                     type="text"
                                     placeholder="Comment"
-                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-white bg-transparent pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-transparent" />
+                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-white bg-transparent pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500" />
                             </div>
                         </div>
                     </div>

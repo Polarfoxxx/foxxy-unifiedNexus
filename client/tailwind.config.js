@@ -55,6 +55,7 @@ module.exports = {
           current_time_line: "var(--current_time_line)",
           InvalidDay_Background: "var(--InvalidDay_Background)",
           currentDayBlock: "var(--currentDayBlock)",
+          allEventOpossiteBackground: "var(--allEventOpossiteBackground)",
           //! littleComponent...............
           littleComponent_Background: "var(--littleComponent_Background)",
           littleComponent_border: "var(--littleComponent_border)",

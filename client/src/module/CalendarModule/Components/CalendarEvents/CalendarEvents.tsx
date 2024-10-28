@@ -10,9 +10,9 @@ import { setAllEvent } from "../../../../redux";
 
 
 function CalendarEvents(props: Type_forCalendarEvents): JSX.Element {
-const user = useSelector((state:Type_RootState)=> state.userLogData.userName);
-const allEvents = useSelector((state:Type_RootState)=> state.allEvents);
-const dispatch = useDispatch()
+    const user = useSelector((state: Type_RootState) => state.userLogData.userName);
+    const allEvents = useSelector((state: Type_RootState) => state.allEvents);
+    const dispatch = useDispatch()
 
     const allEventsForDisplay: Type_for_CalEvents_for_display[] = React.useMemo(() => {
         return props.allEvents.map((item) => {
@@ -39,25 +39,25 @@ const dispatch = useDispatch()
     }, [props.allEvents]);
 
 
-    const handleDeleteEvent= (e: React.MouseEvent<HTMLButtonElement>, item: Type_for_CalEvents_for_display):void => {
-       const itemData = {
-        title:item.title,
-        comment:item.comment
-       };
+    const handleDeleteEvent = (e: React.MouseEvent<HTMLButtonElement>, item: Type_for_CalEvents_for_display): void => {
+        const itemData = {
+            title: item.title,
+            comment: item.comment
+        };
 
-       deleteEvent();
-       async function deleteEvent() {
-        try {
-            const response = await deleteEvent_API({user, itemData})
-            if(response?.status === 201) {
-                const updateEvent = response.updateEvent;
-                dispatch(setAllEvent(updateEvent))
+        deleteEvent();
+        async function deleteEvent() {
+            try {
+                const response = await deleteEvent_API({ user, itemData })
+                if (response?.status === 201) {
+                    const updateEvent = response.updateEvent;
+                    dispatch(setAllEvent(updateEvent))
+                }
+            } catch (error) {
+                console.log("error delete event", error);
+
             }
-        } catch (error) {
-            console.log("error delete event", error);
-            
         }
-       }
 
     };
 
@@ -66,18 +66,13 @@ const dispatch = useDispatch()
             <div className=" w-full h-full bg-transparent flex justify-start items-start flex-col  p-1">
                 <div className=" w-[auto] h-[40px] min-h-[40px] gap-0 flex flex-row border-b-2 border-b-slate-400 bg-transparent items-center justify-start pl-4">
                     <div className=" w-[110px] text-thems-defaultTextColor flex items-center justify-center bg-thems-appThemeColor rounded-[2px] font-oswald">
-                        <h6>
-                            All events:
-                        </h6>
+                        <h6>All events:</h6>
                     </div>
                     <div className=" w-[100px] p-1 flex items-center justify-center">
-                        <h1>
-
-                        </h1>
+                        <h1> </h1>
                     </div>
                     <div className=" w-[100px] p-1 flex items-center justify-center">
-                        <h1 className=" font-bold">
-                        </h1>
+                        <h1 className=" font-bold"> </h1>
                     </div>
                 </div>
                 <div className=" w-full h-auto flex items-start justify-start p-4 overflow-y-scroll no-scrollbar">
@@ -85,30 +80,30 @@ const dispatch = useDispatch()
                         {
                             allEventsForDisplay.map((item, key) =>
                                 <div key={key}
-                                    className=" w-[90%] h-[60px] min-h-[60px] bg-thems-appThemeColor text-thems-defaultTextColor rounded-[5px] flex items-start justify-around flex-row border overflow-hidden">
+                                    className=" w-[90%] h-[60px] min-h-[60px] bg-thems-appThemeColor text-thems-defaultTextColor rounded-[10px] flex items-start justify-around flex-row border overflow-hidden">
+                                    <div className=" w-[50%] h-full flex items-center justify-center flex-col bg-thems-allEventOpossiteBackground">
+                                        <div className=" w-full h-full flex justify-center items-center text-[12px]">
+                                            <h1 className="">Type</h1>
+                                        </div>
+                                        <div className=" w-full h-full flex justify-center items-center text-[12px]">
+                                            <h1 className=" text-[12px]">{item.comment}</h1>
+                                        </div>
+                                    </div>
                                     <div className=" w-[100%] h-full flex items-center justify-center flex-col">
-                                        <div className=" w-full h-full flex justify-center items-center">
-                                            <h1 className="">
-                                                Event title
-                                            </h1>
+                                        <div className=" w-full h-full flex justify-center items-center text-[12px]">
+                                            <h1 className="">Event</h1>
                                         </div>
                                         <div className=" w-full h-full flex justify-center items-center">
-                                            <h1 className=" text-[12px]">
-                                                {item.title}
-                                            </h1>
+                                            <h1 className=" text-[10px]">{item.title}</h1>
                                         </div>
                                     </div>
                                     <div className=" w-[50%] h-full flex items-center justify-center flex-col">
                                         <div className=" w-full h-full text-[10px] flex justify-center items-center">
-                                            <p>
-                                                Start start
-                                            </p>
+                                            <p>Start start</p>
                                         </div>
                                         <div className=" w-full h-full">
                                             <div className="text-[10px] flex justify-center items-center">
-                                                <p>
-                                                    {item.start.date}
-                                                </p>
+                                                <p>{item.start.date} </p>
                                             </div>
                                             <div className="text-[10px] flex justify-center items-center">
                                                 <p>{item.start.time}</p>
@@ -117,25 +112,21 @@ const dispatch = useDispatch()
                                     </div>
                                     <div className=" w-[50%] h-full flex items-center justify-center flex-col">
                                         <div className=" w-full h-full text-[10px] flex justify-center items-center">
-                                            <p>
-                                                Event end
-                                            </p>
+                                            <p> Event end</p>
                                         </div>
                                         <div className=" w-full h-full">
                                             <div className="text-[10px] flex justify-center items-center">
-                                                <p>
-                                                    {item.end.date}
-                                                </p>
+                                                <p>{item.end.date}</p>
                                             </div>
                                             <div className="text-[10px] flex justify-center items-center">
-                                                {item.end.time}
+                                                <p>{item.end.time}</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className=" w-[50%] h-full flex items-center justify-center">
                                         <ButtonComponent.ButtonBox>
                                             <ButtonComponent.Button
-                                            onClick={(e)=>{handleDeleteEvent(e,item)}}
+                                                onClick={(e) => { handleDeleteEvent(e, item) }}
                                                 button_text="Delete"
                                                 variant_btn="alertButton"
                                                 sm_button />

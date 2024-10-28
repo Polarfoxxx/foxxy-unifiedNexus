@@ -37,7 +37,7 @@
 }
 
 .rbc-date-cell.rbc-now.rbc-current>button {
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
 }
 
 .rbc-date-cell.rbc-now.rbc-current>button:hover {
