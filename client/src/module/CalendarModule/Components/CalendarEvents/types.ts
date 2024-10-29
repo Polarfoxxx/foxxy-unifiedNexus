@@ -7,7 +7,7 @@ export type Type_forCalendarEvents = {
 
 export type Type_for_CalEvents_for_display = {
     title: string,
-    comment: string,
+    typeEvent: string,
     start: {
         date: string,
         time: string

@@ -67,7 +67,7 @@ function CalendarMod(): JSX.Element {
           start: START_DATE,
           end: END_DATE,
           title: item.title,
-          comment: item.comment
+          typeEvent: item.typeEvent
         };
       });
       setLocalAllEvent(TRANSLATE_DATA)
@@ -93,7 +93,7 @@ function CalendarMod(): JSX.Element {
             START_EVENT.getDate() === CURRENT_TIME.getDate() &&
             START_EVENT.getHours() === CURRENT_TIME.getHours() &&
             START_EVENT.getMinutes() === CURRENT_TIME.getMinutes()) {
-            toast(`Event time ${item.title} comment ${item.comment} at ${item.start.getHours()}`);
+            toast(`Event time ${item.title} typeEvent ${item.typeEvent} at ${item.start.getHours()}`);
           };
         });
       }, 60000);

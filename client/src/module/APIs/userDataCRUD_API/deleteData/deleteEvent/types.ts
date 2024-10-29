@@ -4,7 +4,7 @@ export type Type_for_deleteEvent_forAPI = {
     user: string,
     itemData: {
         title: string,
-        comment: string
+        typeEvent: string
     }
 };
 

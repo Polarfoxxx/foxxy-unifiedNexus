@@ -6,7 +6,7 @@ type Type_for_Constructor = {
     startDate_event?: string;
     endDate_event?: string;
     name_Event?: string;
-    comment_Event?: string;
+    typeEvent?: string;
     startDate_message?: Date;
     title_message?: string;
     content_Message?: string;
@@ -17,7 +17,7 @@ class NewRequest {
     startDate_event?: string;
     endDate_event?: string;
     name_Event?: string;
-    comment_Event?: string;
+    typeEvent?: string;
     startDate_message?: Date;
     title_message?: string;
     content_Message?: string;
@@ -31,7 +31,7 @@ class NewRequest {
         if (type === "event") {
             const VALIDATE_DATE = services_changeStringToDateFormat(this.startDate_event!) < services_changeStringToDateFormat(this.endDate_event!);
             const VALIDATE_SET_EVENT = services_changeStringToDateFormat(this.startDate_event!) > new Date();
-            const VALIDATE_STRING = this.name_Event!.length > 3 && this.comment_Event!.length > 3;
+            const VALIDATE_STRING = this.name_Event!.length > 3 && this.typeEvent!.length > 3;
 
             if (VALIDATE_DATE && VALIDATE_STRING && VALIDATE_SET_EVENT) {
                 return true;
@@ -52,14 +52,14 @@ class NewRequest {
     }
 
     create(): Type_for_newEventFor_API | Type_for_newMessageFor_API | string {
-        if (this.startDate_event && this.endDate_event && this.name_Event && this.comment_Event) {
+        if (this.startDate_event && this.endDate_event && this.name_Event && this.typeEvent) {
             if (this.validate("event")) {
                 const RET_DATA: Type_for_newEventFor_API = {
                     event: {
                         start: services_changeStringToDateFormat(this.startDate_event),
                         end: services_changeStringToDateFormat(this.endDate_event),
                         title: this.name_Event,
-                        comment: this.comment_Event
+                        typeEvent: this.typeEvent
                     }
                 };
                 return RET_DATA;

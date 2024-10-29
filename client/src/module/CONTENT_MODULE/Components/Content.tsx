@@ -3,7 +3,7 @@ import "./style/content_style.css";
 import { Routes, useNavigate, NavLink, Route } from "react-router-dom";
 import { Calendar } from "../../CalendarModule";
 import { MessageList } from "../../MessageModule";
-import { ParentAllMiniContent } from "../../Shared";
+import { ParentForOpenApplication } from "../../Shared";
 import { readData_API } from "../../APIs/index.";
 import { useDispatch, useSelector } from 'react-redux';
 import { readExistingExpCookie } from "../../APIs/index.";
@@ -35,7 +35,7 @@ function Content(): JSX.Element {
                 navigate("/LoginPage");
             };
         };
-    }, [navigate])
+    }, [navigate]);
 
 
     //! read data and set user data..........
@@ -160,28 +160,28 @@ function Content(): JSX.Element {
                         </div>
                     </div>
                 </nav >
-                <main className=" w-auto h-auto bg-red-600">
+                <main className=" w-auto h-auto">
                     <Routes>
                         <Route
                             path="Calendar"
                             element={
-                                <ParentAllMiniContent>
+                                <ParentForOpenApplication>
                                     <Calendar />
-                                </ParentAllMiniContent>
+                                </ParentForOpenApplication>
                             } />
                         <Route
                             path="MessageList/*"
                             element={
-                                <ParentAllMiniContent>
+                                <ParentForOpenApplication>
                                     <MessageList />
-                                </ParentAllMiniContent>
+                                </ParentForOpenApplication>
                             } />
                         <Route
                             path="Weather"
                             element={
-                                <ParentAllMiniContent>
+                                <ParentForOpenApplication>
                                     <Weather />
-                                </ParentAllMiniContent>
+                                </ParentForOpenApplication>
                             } />
                     </Routes>
                 </main>

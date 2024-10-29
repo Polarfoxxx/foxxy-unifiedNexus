@@ -8,7 +8,7 @@ export type Type_for_ParentAllMiniContent = {
 };
 
 
-function ParentAllMiniContent(props: Type_for_ParentAllMiniContent): JSX.Element {
+function ParentForOpenApplication(props: Type_for_ParentAllMiniContent): JSX.Element {
     const NAVIGATE = useNavigate();
 
     const handleClickHomePage = (e: React.MouseEvent<HTMLElement>): void => {
@@ -22,7 +22,7 @@ function ParentAllMiniContent(props: Type_for_ParentAllMiniContent): JSX.Element
         <div
             onClick={handleClickHomePage}
             className=' fixed bg-thems-parentComponentBackg left-0 top-0 bottom-0 right-0 z-[998] flex items-center justify-center'>
-            <div className="xl:w-[80%] w-full h-full xl:h-[75%] overflow-y-scroll lg:overflow-hidden rounded-[20px] relative">
+            <div className="xl:w-[80%] w-full h-full xl:h-[75%] overflow-y-scroll lg:overflow-hidden rounded-none xl:rounded-[20px] relative">
                 <div className=" w-auto h-auto absolute right-[5px] top-[0px]">
                     <ButtonComponent.ButtonBox>
                         <ButtonComponent.Button
@@ -40,4 +40,4 @@ function ParentAllMiniContent(props: Type_for_ParentAllMiniContent): JSX.Element
     )
 };
 
-export default ParentAllMiniContent;
+export default ParentForOpenApplication;

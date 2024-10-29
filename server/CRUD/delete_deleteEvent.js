@@ -15,7 +15,7 @@ router.delete('/data', async (req, res) => {
             //! Nájdenie indexu objektu s daným officialName v poli data
             const indexToDelete = events.findIndex(obj =>
                 (obj.title === delete_Data.title) &&
-                (obj.comment === delete_Data.comment)
+                (obj.typeEvent === delete_Data.typeEvent)
             );
             if (indexToDelete === -1) {
                 return res.status(404).json({ message: 'Objekt s daným officialName nebol nájdený v poli data.' });

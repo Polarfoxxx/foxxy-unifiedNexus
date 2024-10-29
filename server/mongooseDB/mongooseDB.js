@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
                 start: Date,
                 end: Date,
                 title: String,
-                comment: String
+                typeEvent: String
             },
         ],
         messages: [

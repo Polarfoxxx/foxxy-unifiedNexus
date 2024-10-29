@@ -1,17 +1,14 @@
-import { connect } from "react-redux";
 import { Type_RootState } from "../../../../redux";
-import { Type_for_LittleMessage } from "./types";
+import { useSelector } from "react-redux";
 
+function LittleMessage(): JSX.Element {
+    const allMessages = useSelector((state: Type_RootState) => state.allMessages)
 
-function LittleMessage({ allMessages }: Type_for_LittleMessage): JSX.Element {
-
-
-    
     return (
         <div className=" w-[100%] h-[100%] flex items-center justify-center flex-row bg-thems-appThemeColor">
             <div className="w-[100%] h-[100%] flex items-center justify-center flex-col">
                 <div className=" w-full h-auto flex items-center justify-center">
-                    <h1 className=" text-[35px]  text-thems-defaultTextColor">
+                    <h1 className=" text-[50px]  text-thems-defaultTextColor font-oswald mb-[15px]">
                         YOU MESSAGE
                     </h1>
                 </div>
@@ -22,7 +19,7 @@ function LittleMessage({ allMessages }: Type_for_LittleMessage): JSX.Element {
                         </h3>
                     </div>
                     <div>
-                        <h1 className=" text-thems-defaultTextColor">
+                        <h1 className=" text-thems-defaultTextColor text-[22px] font-oswald">
                             {allMessages.filter(item => item.status === true).length}
                         </h1>
                     </div>
@@ -33,7 +30,7 @@ function LittleMessage({ allMessages }: Type_for_LittleMessage): JSX.Element {
                             Your invalid tasks:
                         </h3>
                     </div>
-                    <div className=" text-thems-defaultTextColor">
+                    <div className=" text-thems-defaultTextColor text-[22px] font-oswald">
                         {allMessages.filter(item => item.status === false).length}
                     </div>
                 </div>
@@ -42,10 +39,5 @@ function LittleMessage({ allMessages }: Type_for_LittleMessage): JSX.Element {
     );
 };
 
-const mapStateToProps = (state: Type_RootState) => ({
-    allMessages: state.allMessages,
-});
-
-export default connect(mapStateToProps)(LittleMessage);
-
+export default LittleMessage;
 

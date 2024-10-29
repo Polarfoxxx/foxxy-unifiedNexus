@@ -19,7 +19,7 @@ import { CalendarContainer } from "react-datepicker";
 
 
 function NewEvent(): JSX.Element {
-    const [newEvent, setNewEvent] = React.useState<any>({ title: "", comment: "", start: "", end: "" });
+    const [newEvent, setNewEvent] = React.useState<any>({ title: "", typeEvent: "", start: "", end: "" });
     const { handleSubmit, reset } = useInputValue();
     const now = new Date();
     const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function NewEvent(): JSX.Element {
             startDate_event: v[0].inputValues.toString(),
             endDate_event: v[1].inputValues.toString(),
             name_Event: v[2].inputValues.toString().trim(),
-            comment_Event: v[3].inputValues.toString().trim() === "" ? "no comment" :  v[3].inputValues.toString().trim()
+            typeEvent: v[3].inputValues.toString().trim() === "" ? "no typeEvent" : v[3].inputValues.toString().trim()
         });
 
         const create_data: Type_for_newMessageFor_API | Type_for_newEventFor_API | string = NEW_REQ.create();
@@ -39,7 +39,7 @@ function NewEvent(): JSX.Element {
             reset();
             setNewEvent({
                 title: "",
-                comment: "",
+                typeEvent: "",
                 start: "",
                 end: ""
             })
@@ -64,19 +64,19 @@ function NewEvent(): JSX.Element {
         };
     };
 
-    const MyContainer = ({ className, children }: any) => {
+    const MyDateContainer = ({ className, children }: any) => {
         return (
-          <div style={{position:"relative", padding: "1px", background: "black", color: "#fff" ,top:"-110px", zIndex:"9999999", right:"50px"}}>
-            <CalendarContainer className={className}>
-              <div style={{ background: "green" }}>
-              </div>
-              <div style={{ position: "relative", backgroundColor:"green"}}>
-                {children}
-              </div>
-            </CalendarContainer>
-          </div>
+            <div style={{ position: "relative", padding: "1px", background: "black", color: "#fff", top: "-110px", zIndex: "9999999", right: "50px" }}>
+                <CalendarContainer className={className}>
+                    <div style={{ background: "green" }}>
+                    </div>
+                    <div style={{ position: "relative", backgroundColor: "green" }}>
+                        {children}
+                    </div>
+                </CalendarContainer>
+            </div>
         );
-      };
+    };
 
     return (
         <div className=" w-full h-full relative">
@@ -92,7 +92,7 @@ function NewEvent(): JSX.Element {
                     <div className=" w-[90%] h-[100%]  flex justify-center items-start flex-col ">
                         <div className="w-full h-[100%] flex justify-center items-start flex-col gap-1">
                             <div className=" w-[60%] h-auto">
-                            <h4 className=" text-[14px] font-bold">
+                                <h4 className=" text-[14px] font-bold">
                                     Set start event:
                                 </h4>
                             </div>
@@ -101,9 +101,9 @@ function NewEvent(): JSX.Element {
                                     autoComplete="false"
                                     showTimeSelect
                                     minDate={now}
-                                    calendarContainer={MyContainer}
+                                    calendarContainer={MyDateContainer}
                                     timeFormat="HH:mm"
-                                    popperPlacement="top" 
+                                    popperPlacement="top"
                                     timeIntervals={15}
                                     timeCaption="Čas"
                                     dateFormat="dd.MM.yyyy HH:mm"
@@ -116,7 +116,7 @@ function NewEvent(): JSX.Element {
 
                         <div className="w-full h-[100%] flex justify-center items-start flex-col">
                             <div className=" w-[60%] h-auto">
-                            <h4 className=" text-[14px] font-bold">
+                                <h4 className=" text-[14px] font-bold">
                                     Set end event:
                                 </h4>
                             </div>
@@ -125,7 +125,7 @@ function NewEvent(): JSX.Element {
                                     autoComplete="false"
                                     showTimeSelect
                                     minDate={now}
-                                    calendarContainer={MyContainer}
+                                    calendarContainer={MyDateContainer}
                                     timeFormat="HH:mm"
                                     timeIntervals={15}
                                     timeCaption="Čas"
@@ -155,25 +155,39 @@ function NewEvent(): JSX.Element {
                         </div>
                         <div className="w-full  h-full flex items-start justify-center flex-col gap-1">
                             <div className=" w-[60%] h-auto">
-                            <h4 className=" text-[14px] font-bold">
-                                    Set comment for event.
+                                <h4 className=" text-[14px] font-bold">
+                                    Set typeEvent.
                                 </h4>
                             </div>
                             <div>
-                                <input
+                                <select
+                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-white bg-transparent pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500"
                                     name="name event"
-                                    type="text"
-                                    placeholder="Comment"
-                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-white bg-transparent pl-3 pr-3 text-start border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500" />
+                                    aria-label="Choose an option">
+                                    <option value="" disabled selected hidden>Select a category</option>
+                                    <option value="health">Health</option>
+                                    <option value="work">Work</option>
+                                    <option value="family">Family</option>
+                                    <option value="hobbies">Hobbies</option>
+                                    <option value="free_time">Free Time</option>
+                                    <option value="education">Education</option>
+                                    <option value="friends">Friends</option>
+                                    <option value="travel">Travel</option>
+                                    <option value="sports">Sports</option>
+                                    <option value="food">Food</option>
+                                    <option value="entertainment">Entertainment</option>
+                                    <option value="personal_growth">Personal Growth</option>
+                                    <option value="finance">Finance</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div className=" w-[90%] h-full flex justify-start items-center">
-                    <ButtonComponent.ButtonBox>
-                    <ButtonComponent.Button
-                        button_text='Save new event'
-                        variant_btn='primaryButton' />
-                </ButtonComponent.ButtonBox>
+                        <ButtonComponent.ButtonBox>
+                            <ButtonComponent.Button
+                                button_text='Save new event'
+                                variant_btn='primaryButton' />
+                        </ButtonComponent.ButtonBox>
                     </div>
                 </form>
             </div>

@@ -4,7 +4,7 @@ export type Type_for_newEventFor_API = {
         start: Date;
         end: Date;
         title: string;
-        comment: string;
+        typeEvent: string;
     }
 };
 
@@ -12,6 +12,6 @@ export type Type_for_newEventFrom_DB = {
     start: Date;
     end: Date;
     title: string;
-    comment: string;
+    typeEvent: string;
 };
 

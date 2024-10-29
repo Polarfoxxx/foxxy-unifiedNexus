@@ -44,7 +44,6 @@ function MessageList(): JSX.Element {
             catch (error) {
                 console.log(error);
             };
-            //! vymazanie form
             reset();
         } else {
             alert(create_data)
@@ -58,18 +57,18 @@ function MessageList(): JSX.Element {
             id="messageContent"
             className='w-full h-full flex items-center justify-center'>
             <div className="w-full h-full flex items-center justify-start flex-col bg-thems-messageContent_background">
-                <div className="  w-full h-[10%] min-h-[80px] flex items-center justify-between flex-row">
-                    <div className=" w-[100%] h-[100%] bg-thems-appThemeColor flex items-center justify-center  rounded-tl-[10px] rounded-tr-[10px]">
-                        <h2 className="text-[25px] text-thems-defaultTextColor">
+                <div className="  w-full h-[auto] min-h-[80px] flex items-center justify-between flex-row">
+                    <div className=" w-[100%] h-[100%] bg-thems-appThemeColor flex items-center justify-center ">
+                        <h2 className="text-[30px] text-thems-defaultTextColor font-oswald">
                             Message
                         </h2>
                     </div>
                 </div>
-                <div className=" w-full h-[18%] flex items-center justify-center">
+                <div className=" w-full h-[auto] flex items-center justify-center">
                     <form
                         className="w-full h-[100%] p-2 flex justify-center items-center flex-col gap-5 bg-thems-newMessageForm_Background"
                         onSubmit={(e) => handleSubmit(e, submit)}>
-                        <div className="w-full h-full flex justify-center items-center flex-row gap-2 ">
+                        <div className="w-full h-full flex justify-center items-center flex-col xl:flex-row gap-2 ">
                             <div className="w-[300px] h-[100%] flex justify-center items-center flex-col">
                                 <div className=" w-[100%] h-[20%] flex justify-center items-center">
                                     <h3 className=" text-thems-defaultTextColor">
@@ -78,13 +77,13 @@ function MessageList(): JSX.Element {
                                 </div>
                                 <div className=" w-[100%] h-[100%] flex justify-center items-center ">
                                     <input
-                                        className=" w-[300px] h-[25px] text-center pl-2 pr-2 rounded-lg text-[14px]"
+                                        className=" w-[100%] h-[25px] text-center pl-2 pr-2 rounded-[5px] text-[14px]"
                                         placeholder="Title message"
                                         name="message"
                                         type="text" />
                                 </div>
                             </div>
-                            <div className="w-[850px] h-[100%] flex justify-center items-center flex-col">
+                            <div className="w-[100%] h-[100%] flex justify-center items-center flex-col">
                                 <div className=" w-[100%] h-[20%] flex justify-center items-center">
                                     <h3 className=" text-thems-defaultTextColor">
                                         The content for new message
@@ -92,7 +91,7 @@ function MessageList(): JSX.Element {
                                 </div>
                                 <div className=" w-[100%] h-[100%] flex justify-center items-center">
                                     <input
-                                        className=" w-[100%] h-[25px] text-center pl-2 pr-2 rounded-lg text-[14px]"
+                                        className=" w-[100%] h-[25px] text-center pl-2 pr-2 rounded-[5px] text-[14px]"
                                         placeholder="Message"
                                         name="message"
                                         type="text" />
@@ -113,14 +112,14 @@ function MessageList(): JSX.Element {
                                         timeCaption="Čas"
                                         dateFormat="dd.MM.yyyy HH:mm"
                                         name="startDate"
-                                        className=" w-[300px] h-[25px] rounded-lg pl-2 pr-2 text-center border border-thems-inputBorder text-[14px]"
+                                        className=" w-[300px] h-[25px] rounded-[5px] pl-2 pr-2 text-center border border-thems-inputBorder text-[14px]"
                                         placeholderText="Due Date"
                                         selected={newMessage.start}
                                         onChange={(start) => setNewMessage({ ...newMessage, start })} />
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full h-[100%] flex justify-center items-center flex-row">
+                        <div className="w-full h-[100%] flex justify-center items-center xl:flex-row flex-col">
                             <div className="w-full h-full flex justify-center items-center">
                                 <button
                                     className=" w-[280px] h-[36px] border border-thems-appThemeColor rounded-xl bg-thems-background_button text-thems-defaultTextColorDark hover:bg-thems-background_button_hover"
@@ -149,7 +148,7 @@ function MessageList(): JSX.Element {
                                 </NavLink>
                             </div>
                             <div className="w-full h-full flex justify-center items-center ">
-                                <div className="w-[50%] h-[50%] flex justify-center items-center flex-row bg-thems-appThemeColor rounded-lg gap-6">
+                                <div className="w-[50%] h-[30px] flex justify-center items-center flex-row bg-thems-appThemeColor rounded-lg gap-6">
                                     <div className="w-[100%] h-[100%] flex justify-end items-center">
                                         <h2 className=" text-thems-defaultTextColor text-[14px]">
                                             All message count:
