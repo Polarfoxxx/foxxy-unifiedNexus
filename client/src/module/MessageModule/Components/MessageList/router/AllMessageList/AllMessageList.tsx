@@ -7,19 +7,16 @@ import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 
 
-function InvalidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Element {
+function AllMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Element {
     const [messageList, setMessageList] = React.useState<Type_for_newMesssageFrom_DB[]>([]);
     const [animationStyles, setAnimationStyles] = React.useState<React.CSSProperties[]>([]);
     const { handleSubmit, reset } = useInputValue();
 
     React.useEffect(() => {
         if (props.allMessages.length > 0) {
-            const INV_DATA = props.allMessages.filter((item) => {
-                return item.status !== true;
-            });
-            setMessageList(INV_DATA);
-            // Apply animation effect when the list updates
-            applyAnimationEffect(INV_DATA);
+            setMessageList(props.allMessages);
+            //! Apply animation effect when the list updates
+            applyAnimationEffect(props.allMessages);
         };
     }, [props.allMessages]);
 
@@ -27,16 +24,16 @@ function InvalidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.E
     const applyAnimationEffect = async (list: Type_for_newMesssageFrom_DB[]) => {
         const NEW_ANIMATION: React.CSSProperties[] = [];
         await Promise.all(list.map(async (_, index) => {
-            // Delay each animation based on index
+            //! Delay each animation based on index
             await new Promise(resolve => setTimeout(resolve, (index + 1) * 100));
             // Apply the animation styles
 
-            NEW_ANIMATION.push({  // Přidání nového objektu do pole NEW_ANIMATION
+            NEW_ANIMATION.push({
                 transition: "left 1s",
                 position: "relative",
                 left: "0px",
             });
-            setAnimationStyles([...NEW_ANIMATION]); // Update the animation styles
+            setAnimationStyles([...NEW_ANIMATION]); //! Update the animation styles
         }));
     };
 
@@ -47,8 +44,7 @@ function InvalidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.E
         setMessageList(
             services_filterMessage({ TYPE_FILTER, MESSAGE_DATA })
         )
-    }
-
+    };
 
     return (
         <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col">
@@ -58,8 +54,8 @@ function InvalidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.E
                         className="w-[100%] h-[100%]  flex justify-center items-center flex-row gap-5">
                         <div>
                             <input
-                            placeholder="fff"
-                            onChange={e => handleChangeFilter(e)}
+                                placeholder="find text"
+                                onChange={e => handleChangeFilter(e)}
                                 name="filter"
                                 className=""
                                 type="text" />
@@ -96,4 +92,4 @@ function InvalidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.E
     );
 }
 
-export default InvalidMessageList;
+export default AllMessageList;

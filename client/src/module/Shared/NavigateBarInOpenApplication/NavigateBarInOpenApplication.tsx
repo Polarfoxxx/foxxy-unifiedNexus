@@ -4,14 +4,14 @@ import { Type_for_ApplicationBar } from "./types";
 import deletePatchForNaviBar_services from "./services/deletePatchForNaviBar_services";
 
 
-function NavigateBar(): JSX.Element {
+function NavigateBarInOpenApplication(): JSX.Element {
     const [allApplicationFordisplay, setAllApplicationFordisplay] = React.useState<Type_for_ApplicationBar[]>([]);
     const navigate = useNavigate();
     const location = useLocation();
-    const patch = location.pathname
+    const path = location.pathname
 
     React.useEffect(() => {
-        const filterApp = deletePatchForNaviBar_services(patch);
+        const filterApp = deletePatchForNaviBar_services(path);
         setAllApplicationFordisplay(filterApp);
     }, [location]);
 
@@ -36,4 +36,4 @@ function NavigateBar(): JSX.Element {
     );
 };
 
-export default NavigateBar;
+export default NavigateBarInOpenApplication;

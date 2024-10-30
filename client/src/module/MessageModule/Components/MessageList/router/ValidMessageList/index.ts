@@ -1,5 +1,2 @@
-/* components */
-export {
-    default as ValidMessageList
-} from "./ValidMessageList";
+export { default as ValidMessageList } from "./ValidMessageList";
 

@@ -1,6 +1,6 @@
 export {
-    default as NavigateBar
-} from "./NavigateBar";
+    default as NavigateBarInOpenApplication
+} from "./NavigateBarInOpenApplication";
 
 
 export type {

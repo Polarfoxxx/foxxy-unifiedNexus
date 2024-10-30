@@ -1,4 +1,1 @@
-/* components */
-export {
-    default as InvalidMessageList
-} from "./InvalidMessageList";
+export { default as InvalidMessageList } from "./InvalidMessageList";

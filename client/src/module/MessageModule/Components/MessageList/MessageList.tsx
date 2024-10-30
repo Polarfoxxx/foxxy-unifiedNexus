@@ -7,15 +7,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Type_for_newEventFor_API } from "../../../CalendarModule";
 import { Type_for_newMessageFor_API, Type_for_newMesssageFrom_DB } from "./types";
-import { ValidMessageList, InvalidMessageList } from "./router";
+import { ValidMessageList, InvalidMessageList, AllMessageList } from "./router";
 import { Route, Routes, NavLink } from "react-router-dom";
 import { Type_RootState, setAllMessages } from "../../../../redux";
 import { useSelector, useDispatch } from 'react-redux';
+import { NavigateBarInOpenApplication } from "../../../Shared";
+import { ButtonComponent } from 'foxxy-package';
+import "foxxy-package/dist/foxxy_package_dis.css"
 
 function MessageList(): JSX.Element {
     const [newMessage, setNewMessage] = React.useState<any>({ start: "", end: "" });
     const { handleSubmit, reset } = useInputValue();
-    const divRef = React.useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
     const allMessages = useSelector((state: Type_RootState) => state.allMessages);
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
@@ -53,10 +55,9 @@ function MessageList(): JSX.Element {
 
     return (
         <div
-            ref={divRef}
             id="messageContent"
             className='w-full h-full flex items-center justify-center'>
-            <div className="w-full h-full flex items-center justify-start flex-col bg-thems-messageContent_background">
+            <div className="w-full h-full flex items-center justify-start flex-col  bg-thems-messageContent_background">
                 <div className="  w-full h-[auto] min-h-[80px] flex items-center justify-between flex-row">
                     <div className=" w-[100%] h-[100%] bg-thems-appThemeColor flex items-center justify-center ">
                         <h2 className="text-[30px] text-thems-defaultTextColor font-oswald">
@@ -64,126 +65,150 @@ function MessageList(): JSX.Element {
                         </h2>
                     </div>
                 </div>
-                <div className=" w-full h-[auto] flex items-center justify-center">
-                    <form
-                        className="w-full h-[100%] p-2 flex justify-center items-center flex-col gap-5 bg-thems-newMessageForm_Background"
-                        onSubmit={(e) => handleSubmit(e, submit)}>
-                        <div className="w-full h-full flex justify-center items-center flex-col xl:flex-row gap-2 ">
-                            <div className="w-[300px] h-[100%] flex justify-center items-center flex-col">
-                                <div className=" w-[100%] h-[20%] flex justify-center items-center">
-                                    <h3 className=" text-thems-defaultTextColor">
-                                        The title for new message
-                                    </h3>
-                                </div>
-                                <div className=" w-[100%] h-[100%] flex justify-center items-center ">
-                                    <input
-                                        className=" w-[100%] h-[25px] text-center pl-2 pr-2 rounded-[5px] text-[14px]"
-                                        placeholder="Title message"
-                                        name="message"
-                                        type="text" />
-                                </div>
-                            </div>
-                            <div className="w-[100%] h-[100%] flex justify-center items-center flex-col">
-                                <div className=" w-[100%] h-[20%] flex justify-center items-center">
-                                    <h3 className=" text-thems-defaultTextColor">
-                                        The content for new message
-                                    </h3>
-                                </div>
-                                <div className=" w-[100%] h-[100%] flex justify-center items-center">
-                                    <input
-                                        className=" w-[100%] h-[25px] text-center pl-2 pr-2 rounded-[5px] text-[14px]"
-                                        placeholder="Message"
-                                        name="message"
-                                        type="text" />
-                                </div>
-                            </div>
-                            <div className="w-[300px] h-[100%] flex justify-center items-center flex-col">
-                                <div className=" w-[100%] h-[20%] flex justify-center items-center">
-                                    <h3 className=" text-thems-defaultTextColor">
-                                        Last termin
-                                    </h3>
-                                </div>
-                                <div className=" w-[100%] h-[100%] flex justify-center items-center">
-                                    <DatePicker
-                                        autoComplete="false"
-                                        showTimeSelect
-                                        timeFormat="HH:mm"
-                                        timeIntervals={15}
-                                        timeCaption="Čas"
-                                        dateFormat="dd.MM.yyyy HH:mm"
-                                        name="startDate"
-                                        className=" w-[300px] h-[25px] rounded-[5px] pl-2 pr-2 text-center border border-thems-inputBorder text-[14px]"
-                                        placeholderText="Due Date"
-                                        selected={newMessage.start}
-                                        onChange={(start) => setNewMessage({ ...newMessage, start })} />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full h-[100%] flex justify-center items-center xl:flex-row flex-col">
-                            <div className="w-full h-full flex justify-center items-center">
-                                <button
-                                    className=" w-[280px] h-[36px] border border-thems-appThemeColor rounded-xl bg-thems-background_button text-thems-defaultTextColorDark hover:bg-thems-background_button_hover"
-                                    type="submit">
-                                    Create new message
-                                </button>
-                            </div>
-                            <div className=" w-full h-full flex items-center justify-around bg-thems-newMessageForm_Background">
-                                <NavLink
-                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-xl  hover:bg-thems-background_button_hover"
-                                    style={({ isActive }) => ({
-                                        backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--background_button)',
-                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                    })}
-                                    to="ValidMessageList">
-                                    Your note
-                                </NavLink>
-                                <NavLink
-                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-xl hover:bg-thems-background_button_hover"
-                                    style={({ isActive }) => ({
-                                        backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--background_button)',
-                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                    })}
-                                    to="InvalidMessageList"
-                                >Fulfilled note
-                                </NavLink>
-                            </div>
-                            <div className="w-full h-full flex justify-center items-center ">
-                                <div className="w-[50%] h-[30px] flex justify-center items-center flex-row bg-thems-appThemeColor rounded-lg gap-6">
-                                    <div className="w-[100%] h-[100%] flex justify-end items-center">
-                                        <h2 className=" text-thems-defaultTextColor text-[14px]">
-                                            All message count:
-                                        </h2>
+                <div className="w-full h-[auto] flex items-center justify-center flex-col xl:flex-row">
+                    <div className=" w-full xl:h-[100%] min-h-[350px] flex items-center justify-center">
+                        <form
+                            className="w-full h-[100%] p-2 flex justify-center items-center flex-col gap-5 bg-thems-newMessageForm_Background"
+                            onSubmit={(e) => handleSubmit(e, submit)}>
+                            <div className="w-full h-full flex justify-center items-center flex-col xl:flex-row gap-2 ">
+                                <div className="w-[350px] h-[100%] flex justify-center items-center flex-col">
+                                    <div className=" w-[100%] h-[20%] flex justify-start items-center">
+                                        <h3 className=" text-thems-defaultTextColorOpossite">
+                                            The title for new message
+                                        </h3>
                                     </div>
-                                    <div className="w-[30%] h-[25px] flex justify-start items-center">
-                                        <h1 className=" text-[17px] text-thems-defaultTextColor">
-                                            {allMessages.length}
-                                        </h1>
+                                    <div className=" w-[100%] h-[100%] flex justify-center items-center ">
+                                        <input
+                                            className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-slate-300 bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
+                                            placeholder="Title message"
+                                            name="message"
+                                            type="text" />
+                                    </div>
+                                </div>
+                                <div className="w-[350px] h-[100%] flex justify-center items-center flex-col">
+                                    <div className=" w-[100%] h-[20%] flex justify-start items-center">
+                                        <h3 className=" text-thems-defaultTextColorOpossite">
+                                            The content for new message
+                                        </h3>
+                                    </div>
+                                    <div className=" w-[100%] h-[100%] flex justify-center items-center">
+                                        <input
+                                            className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-slate-300 bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
+                                            placeholder="Message"
+                                            name="message"
+                                            type="text" />
+                                    </div>
+                                </div>
+                                <div className="w-[350px] h-[100%] flex justify-center items-center flex-col">
+                                    <div className=" w-[100%] h-[20%] flex justify-start items-center">
+                                        <h3 className=" text-thems-defaultTextColorOpossite">
+                                            Last termin
+                                        </h3>
+                                    </div>
+                                    <div className=" w-[100%] h-[100%] flex justify-center items-center">
+                                        <DatePicker
+                                            autoComplete="false"
+                                            showTimeSelect
+                                            timeFormat="HH:mm"
+                                            timeIntervals={15}
+                                            timeCaption="Čas"
+                                            dateFormat="dd.MM.yyyy HH:mm"
+                                            name="startDate"
+                                            className=" w-[350px] h-[30px] text-[14px] ml-3 placeholder:text-slate-300 bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
+                                            placeholderText="End date"
+                                            selected={newMessage.start}
+                                            onChange={(start) => setNewMessage({ ...newMessage, start })} />
                                     </div>
                                 </div>
                             </div>
+                            <div className="w-full h-[100%] flex justify-center items-center xl:flex-row flex-col">
+                                <div className="w-full h-full flex justify-center items-center">
+                                <ButtonComponent.ButtonBox>
+                            <ButtonComponent.Button
+                            
+                            type="submit"
+                                button_text='Save new message'
+                                variant_btn='primaryButton' />
+                        </ButtonComponent.ButtonBox>
+                                </div>
+                                <div className=" w-full h-full flex items-center justify-around bg-thems-newMessageForm_Background">
+                                    <NavLink
+                                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px]  hover:bg-thems-background_button_hover"
+                                        style={({ isActive }) => ({
+                                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                        })}
+                                        to="ValidMessageList">
+                                        Your note
+                                    </NavLink>
+                                    <NavLink
+                                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
+                                        style={({ isActive }) => ({
+                                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                        })}
+                                        to="InvalidMessageList"
+                                    >Fulfilled note
+                                    </NavLink>
+                                    <NavLink
+                                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
+                                        style={({ isActive }) => ({
+                                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                        })}
+                                        to="AllMessageList"
+                                    >All list
+                                    </NavLink>
+                                </div>
+                                <div className="w-full h-full flex justify-start items-center ">
+                                    <div className="w-[50%] h-[30px] flex justify-center items-center flex-row bg-thems-appThemeColorSecondary gap-6">
+                                        <div className="w-[100%] h-[100%] flex justify-end items-center">
+                                            <h2 className=" text-thems-defaultTextColorOpposite text-[14px]">
+                                                All message count:
+                                            </h2>
+                                        </div>
+                                        <div className="w-[30%] h-[25px] flex justify-center items-center">
+                                            <h1 className=" text-[17px] text-thems-defaultTextColorOpposite">
+                                                {allMessages.length}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div className=" w-full h-auto bg-thems-appThemeColor">
+                        <NavigateBarInOpenApplication />
+                    </div>
+                    <div className=" w-full h-[700px] h-max-[700px] overflow-x-auto min-h-[500px] flex items-start justify-center " >
+                        <div className=" w-[100%] h-[100%] flex justify-center items-center bg-slate-300 rounded-br-[10px] rounded-bl-[10px]">
+                            <Routes>
+                                <Route
+                                    path="ValidMessageList"
+                                    element={
+                                        <ValidMessageList
+                                            allMessages={allMessages} />
+                                    }
+                                />
+                                <Route
+                                    path="InvalidMessageList"
+                                    element={
+                                        <InvalidMessageList
+                                            allMessages={allMessages} />
+                                    }
+                                />
+                                <Route
+                                    path="AllMessageList"
+                                    element={
+                                        <AllMessageList
+                                            allMessages={allMessages} />
+                                    }
+                                />
+                            </Routes>
                         </div>
-                    </form>
-                </div>
-                <div className=" w-full h-[700px] h-max-[700px] overflow-x-auto min-h-[500px] flex items-start justify-center" >
-                    <div className=" w-[100%] h-[100%] flex justify-center items-center  bg-thems-appThemeColorTertiary rounded-br-[10px] rounded-bl-[10px]">
-                        <Routes>
-                            <Route
-                                path="ValidMessageList"
-                                element={
-                                    <ValidMessageList
-                                        allMessages={allMessages} />
-                                }
-                            />
-                            <Route
-                                path="InvalidMessageList"
-                                element={
-                                    <InvalidMessageList
-                                        allMessages={allMessages} />
-                                }
-                            />
-                        </Routes>
                     </div>
                 </div>
+
             </div>
         </div>
     );

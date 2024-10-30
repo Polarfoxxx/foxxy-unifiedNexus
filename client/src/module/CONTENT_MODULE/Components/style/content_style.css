@@ -35,7 +35,7 @@ div[data-theme="light"] {
     --littleComponent_oppositeColor: rgb(87, 87, 228);
     /*! MessageBackGround */
     --messageContent_background: white;
-    --newMessageForm_Background: rgb(143, 142, 142);
+    --newMessageForm_Background: rgb(255, 255, 255);
     --item_Background: rgba(218, 218, 218, 0.679);
     --itemHeader_Background: rgb(179, 95, 218);
 

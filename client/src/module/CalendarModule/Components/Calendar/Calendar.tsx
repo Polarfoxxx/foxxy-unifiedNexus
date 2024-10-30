@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Holiday } from '../Holiday';
 import { CalendarEvents } from '../CalendarEvents';
 import { Type_RootState } from '../../../../redux';
-import { NavigateBar } from '../NavigateBar';
+import { NavigateBarInOpenApplication } from '../../../Shared';
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -105,15 +105,9 @@ function CalendarMod(): JSX.Element {
 
 
   return (
-    <div className=' w-full h-auto xl:h-full flex flex-col xl:flex-row  items-center justify-center  bg-thems-appThemeColorTertiary'>
-      {/* event----------------------------------------------------------------------- */}
-      <div className=' w-[100%] xl:order-1 order-2 xl:w-[60%] xl:h-full bg-thems-appThemeColorSecondary flex justify-center items-center flex-col xl:flex-row'>
-        <div className=' w-[100%] xl:w-[15%] h-full  bg-thems-appThemeColor items-center justify-center'>
-          <NavigateBar />
-        </div>
-        <div className='w-full h-full bg-transparent flex justify-center items-center flex-col gap-1'>
-          <div className=' w-full h-[15%] flex items-center justify-center pl-[100px]'>
-            <div className=' w-full h-full flex gap-1 justify-start items-center'>
+    <div className=' w-full h-auto  xl:h-full flex flex-col xl:flex-row  items-center justify-center  bg-thems-appThemeColorTertiary'>
+     <div className='xl:w-[75px] w-full h-[100px] xl:relative flex items-center justify-center xl:transform xl:rotate-[-90deg]'>
+            <div className=' w-full h-full flex gap-1 justify-center items-center'>
               <span className=' w-auto h-[55px] bg-thems-appThemeColor rounded-[10px] text-thems-defaultTextColor font-oswald text-[45px] p-4 leading-[55px] flex items-center justify-center'>
                 YOU
               </span>
@@ -122,6 +116,12 @@ function CalendarMod(): JSX.Element {
               </h1>
             </div>
           </div>
+      {/* event----------------------------------------------------------------------- */}
+      <div className=' w-[100%] xl:order-1 order-2 xl:w-[60%] xl:h-full bg-thems-appThemeColorSecondary flex justify-center items-center flex-col xl:flex-row'>
+        <div className=' w-[100%] xl:w-[15%] h-full  bg-thems-appThemeColor items-center justify-center'>
+          <NavigateBarInOpenApplication />
+        </div>
+        <div className='w-full h-full bg-transparent flex justify-center items-center flex-col gap-1'>
           <div className=' w-full h-[70%]  overflow-hidden'>
             <NewEvent />
           </div>
