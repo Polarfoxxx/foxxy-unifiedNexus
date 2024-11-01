@@ -2,15 +2,11 @@ import React from "react";
 import { Type_for_valid_and_invalidMessageList } from "../types";
 import { ItemMessage } from "../ItemsMessage";
 import { Type_for_newMesssageFrom_DB } from "../../types";
-import { services_filterMessage } from "../services";
-import { useInputValue } from "foxxy_input_value";
-import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 
 
 function AllMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Element {
     const [messageList, setMessageList] = React.useState<Type_for_newMesssageFrom_DB[]>([]);
     const [animationStyles, setAnimationStyles] = React.useState<React.CSSProperties[]>([]);
-    const { handleSubmit, reset } = useInputValue();
 
     React.useEffect(() => {
         if (props.allMessages.length > 0) {
@@ -26,8 +22,7 @@ function AllMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Eleme
         await Promise.all(list.map(async (_, index) => {
             //! Delay each animation based on index
             await new Promise(resolve => setTimeout(resolve, (index + 1) * 100));
-            // Apply the animation styles
-
+            //! Apply the animation styles
             NEW_ANIMATION.push({
                 transition: "left 1s",
                 position: "relative",
@@ -37,31 +32,9 @@ function AllMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Eleme
         }));
     };
 
-
-    const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        const TYPE_FILTER = e.currentTarget.value as string;
-        const MESSAGE_DATA = messageList;
-        setMessageList(
-            services_filterMessage({ TYPE_FILTER, MESSAGE_DATA })
-        )
-    };
-
     return (
         <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col">
             <div className="w-[100%] h-[7%] flex justify-between items-center pl-5 pr-5">
-                <div className="w-[600px] h-[100%]  flex justify-center items-center ">
-                    <form
-                        className="w-[100%] h-[100%]  flex justify-center items-center flex-row gap-5">
-                        <div>
-                            <input
-                                placeholder="find text"
-                                onChange={e => handleChangeFilter(e)}
-                                name="filter"
-                                className=""
-                                type="text" />
-                        </div>
-                    </form>
-                </div>
                 <div className="w-[600px] h-[100%] flex justify-center items-center  gap-4">
                     <h2 className=" text-thems-defaultTextColor">
                         Current message in linst:

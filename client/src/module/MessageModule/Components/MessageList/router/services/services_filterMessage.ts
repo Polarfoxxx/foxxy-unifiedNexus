@@ -1,19 +1,25 @@
-import { Type_for_newMesssageFrom_DB } from "../../types";
+import { Type_for_newMesssageFrom_DB } from "../..";
 
-export type Type_for_servicesFilterMessage<T> = {
-    TYPE_FILTER: string,
-    MESSAGE_DATA: T[]
+export type TypeForServicesFilterMessage = {
+    findText: string;
+    allMessages: Type_for_newMesssageFrom_DB[];
+};
+
+function servicesFilterMessage(props: TypeForServicesFilterMessage): Type_for_newMesssageFrom_DB[] {
+    const { findText, allMessages } = props;
+    if (findText) {
+        const filteredMessages = allMessages.filter(item => {
+            const jsonString = JSON.stringify(item);
+            return jsonString.includes(findText);
+        });
+        console.log(filteredMessages);
+        
+        return filteredMessages;
+    } else {
+        return allMessages
+    }
+
+
 }
 
-function services_filterMessage<T extends Type_for_newMesssageFrom_DB>(props: Type_for_servicesFilterMessage<T>): T[] {
-    const { TYPE_FILTER, MESSAGE_DATA } = props;
-
-    const filteredMessages = MESSAGE_DATA.filter(item => {
-        const jsonString = JSON.stringify(item);
-        return jsonString.includes(TYPE_FILTER);
-    });
-
-    return filteredMessages;
-}
-
-export default services_filterMessage;
+export default servicesFilterMessage;

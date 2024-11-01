@@ -13,7 +13,8 @@ import { Type_RootState, setAllMessages } from "../../../../redux";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavigateBarInOpenApplication } from "../../../Shared";
 import { ButtonComponent } from 'foxxy-package';
-import "foxxy-package/dist/foxxy_package_dis.css"
+import "foxxy-package/dist/foxxy_package_dis.css";
+import { services_filterMessage } from "./router";
 
 function MessageList(): JSX.Element {
     const [newMessage, setNewMessage] = React.useState<any>({ start: "", end: "" });
@@ -21,6 +22,7 @@ function MessageList(): JSX.Element {
     const dispatch = useDispatch();
     const allMessages = useSelector((state: Type_RootState) => state.allMessages);
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
+    const [allMessageForList, setAllmessageForList] = React.useState<Type_for_newMesssageFrom_DB[]>(allMessages);
 
     //! function add a new messasge............................
     const submit = async (v: TypeForInputsObject["v"]): Promise<void> => {
@@ -52,6 +54,14 @@ function MessageList(): JSX.Element {
         };
     };
 
+    //! filter message...................
+    const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        const findText = e.currentTarget.value as string;
+        setAllmessageForList(
+            services_filterMessage({ findText, allMessages })
+        )
+    };
+
 
     return (
         <div
@@ -65,12 +75,12 @@ function MessageList(): JSX.Element {
                         </h2>
                     </div>
                 </div>
-                <div className="w-full h-[auto] flex items-center justify-center flex-col xl:flex-row">
-                    <div className=" w-full xl:h-[100%] min-h-[350px] flex items-center justify-center">
+                <div className="w-full h-[auto] flex items-center justify-center flex-col xl:flex-row ">
+                    <div className=" w-full xl:h-[100%] min-h-[200px] flex items-center justify-center">
                         <form
-                            className="w-full h-[100%] p-2 flex justify-center items-center flex-col gap-5 bg-thems-newMessageForm_Background"
+                            className="w-full h-[100%] p-4 flex justify-center items-center flex-col gap-[5px]"
                             onSubmit={(e) => handleSubmit(e, submit)}>
-                            <div className="w-full h-full flex justify-center items-center flex-col xl:flex-row gap-2 ">
+                            <div className="w-full h-full flex justify-center items-center flex-col xl:flex-row">
                                 <div className="w-[350px] h-[100%] flex justify-center items-center flex-col">
                                     <div className=" w-[100%] h-[20%] flex justify-start items-center">
                                         <h3 className=" text-thems-defaultTextColorOpossite">
@@ -121,94 +131,104 @@ function MessageList(): JSX.Element {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full h-[100%] flex justify-center items-center xl:flex-row flex-col">
+                            <div className="w-full h-[auto] flex justify-center items-center">
                                 <div className="w-full h-full flex justify-center items-center">
-                                <ButtonComponent.ButtonBox>
-                            <ButtonComponent.Button
-                            
-                            type="submit"
-                                button_text='Save new message'
-                                variant_btn='primaryButton' />
-                        </ButtonComponent.ButtonBox>
-                                </div>
-                                <div className=" w-full h-full flex items-center justify-around bg-thems-newMessageForm_Background">
-                                    <NavLink
-                                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px]  hover:bg-thems-background_button_hover"
-                                        style={({ isActive }) => ({
-                                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                        })}
-                                        to="ValidMessageList">
-                                        Your note
-                                    </NavLink>
-                                    <NavLink
-                                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
-                                        style={({ isActive }) => ({
-                                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                        })}
-                                        to="InvalidMessageList"
-                                    >Fulfilled note
-                                    </NavLink>
-                                    <NavLink
-                                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
-                                        style={({ isActive }) => ({
-                                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                        })}
-                                        to="AllMessageList"
-                                    >All list
-                                    </NavLink>
-                                </div>
-                                <div className="w-full h-full flex justify-start items-center ">
-                                    <div className="w-[50%] h-[30px] flex justify-center items-center flex-row bg-thems-appThemeColorSecondary gap-6">
-                                        <div className="w-[100%] h-[100%] flex justify-end items-center">
-                                            <h2 className=" text-thems-defaultTextColorOpposite text-[14px]">
-                                                All message count:
-                                            </h2>
-                                        </div>
-                                        <div className="w-[30%] h-[25px] flex justify-center items-center">
-                                            <h1 className=" text-[17px] text-thems-defaultTextColorOpposite">
-                                                {allMessages.length}
-                                            </h1>
-                                        </div>
-                                    </div>
+                                    <ButtonComponent.ButtonBox>
+                                        <ButtonComponent.Button
+                                            type="submit"
+                                            button_text='Save new message'
+                                            variant_btn='primaryButton' />
+                                    </ButtonComponent.ButtonBox>
                                 </div>
                             </div>
                         </form>
                     </div>
+                </div>
+                <div className=" w-full h-full flex items-center justify-around bg-thems-newMessageForm_Background">
+                    <NavLink
+                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px]  hover:bg-thems-background_button_hover"
+                        style={({ isActive }) => ({
+                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                        })}
+                        to="ValidMessageList">
+                        Your note
+                    </NavLink>
+                    <NavLink
+                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
+                        style={({ isActive }) => ({
+                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                        })}
+                        to="InvalidMessageList"
+                    >Fulfilled note
+                    </NavLink>
+                    <NavLink
+                        className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
+                        style={({ isActive }) => ({
+                            backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                            color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                        })}
+                        to="AllMessageList"
+                    >All list
+                    </NavLink>
+                </div>
+                <div className="w-[100%] h-[200px]  flex justify-center items-center bg-slate-800">
+                    <form className="w-[100%] h-[100%]  flex justify-center items-center flex-row gap-5">
+                        <div>
+                            <input
+                                placeholder="Find message"
+                                onChange={e => handleChangeFilter(e)}
+                                name="filter"
+                                className=""
+                                type="text" />
+                        </div>
+                    </form>
+                </div>
+                <div className="w-full h-full flex justify-start items-center flex-col ">
+                    <div className="w-[50%] h-[30px] flex justify-center items-center flex-row bg-thems-appThemeColorSecondary gap-6">
+                        <div className="w-[100%] h-[100%] flex justify-end items-center">
+                            <h2 className=" text-thems-defaultTextColorOpposite text-[14px]">
+                                All message count:
+                            </h2>
+                        </div>
+                        <div className="w-[30%] h-[25px] flex justify-center items-center">
+                            <h1 className=" text-[17px] text-thems-defaultTextColorOpposite">
+                                {allMessages.length}
+                            </h1>
+                        </div>
+                    </div>
                     <div className=" w-full h-auto bg-thems-appThemeColor">
                         <NavigateBarInOpenApplication />
                     </div>
-                    <div className=" w-full h-[700px] h-max-[700px] overflow-x-auto min-h-[500px] flex items-start justify-center " >
+                    <div className=" w-full h-[700px] h-max-[700px] overflow-x-auto min-h-[500px]  flex items-start justify-center flex-col " >
                         <div className=" w-[100%] h-[100%] flex justify-center items-center bg-slate-300 rounded-br-[10px] rounded-bl-[10px]">
                             <Routes>
                                 <Route
                                     path="ValidMessageList"
                                     element={
                                         <ValidMessageList
-                                            allMessages={allMessages} />
+                                            allMessages={allMessageForList} />
                                     }
                                 />
                                 <Route
                                     path="InvalidMessageList"
                                     element={
                                         <InvalidMessageList
-                                            allMessages={allMessages} />
+                                            allMessages={allMessageForList} />
                                     }
                                 />
                                 <Route
                                     path="AllMessageList"
                                     element={
                                         <AllMessageList
-                                            allMessages={allMessages} />
+                                            allMessages={allMessageForList} />
                                     }
                                 />
                             </Routes>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

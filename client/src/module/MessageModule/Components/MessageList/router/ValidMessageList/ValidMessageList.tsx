@@ -2,7 +2,6 @@ import React from "react";
 import { Type_for_valid_and_invalidMessageList } from "../types";
 import { ItemMessage } from "../ItemsMessage";
 import { Type_for_newMesssageFrom_DB } from "../../types";
-import { services_filterMessage } from "../services";
 
 
 function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Element {
@@ -15,7 +14,6 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
                 return item.status === true;
             });
             setMessageList(INV_DATA);
-            // Apply animation effect when the list updates
             applyAnimationEffect(INV_DATA);
         };
     }, [props.allMessages]);
@@ -27,7 +25,7 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
             //! Delay each animation based on index
             await new Promise(resolve => setTimeout(resolve, (index + 1) * 100));
             //! Apply the animation styles
-            NEW_ANIMATION.push({  // Přidání nového objektu do pole NEW_ANIMATION
+            NEW_ANIMATION.push({  
                 transition: "left 1s",
                 position: "relative",
                 left: "0px",
@@ -37,32 +35,9 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
     };
 
 
-    const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        const TYPE_FILTER = e.currentTarget.value as string;
-        const MESSAGE_DATA = messageList;
-        setMessageList(
-            services_filterMessage({ TYPE_FILTER, MESSAGE_DATA })
-        )
-    }
-
-
-
     return (
         <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col">
             <div className="w-[100%] h-[7%] flex justify-end items-center pl-5 pr-5 gap-4">
-                <div className="w-[600px] h-[100%]  flex justify-center items-center ">
-                    <form
-                        className="w-[100%] h-[100%]  flex justify-center items-center flex-row gap-5">
-                        <div>
-                            <input
-                                placeholder="fff"
-                                onChange={e => handleChangeFilter(e)}
-                                name="filter"
-                                className=""
-                                type="text" />
-                        </div>
-                    </form>
-                </div>
                 <h2 className=" text-thems-defaultTextColor">
                     Current message in linst:
                 </h2>
