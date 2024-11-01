@@ -24,7 +24,7 @@ function App(): JSX.Element {
 
 
   return (
-    <div className="w-full flex items-center justify-center h-auto">
+    <div className="w-full flex items-center justify-center h-screen max-h-screen">
       <Container>
         <Routes>
           <Route path="LoginPage" element={<LoginPage />} />

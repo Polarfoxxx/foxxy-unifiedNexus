@@ -163,10 +163,11 @@ function NewEvent(): JSX.Element {
                             </div>
                             <div>
                                 <select
-                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-slate-300 bg-transparent pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500"
+                                    defaultValue=""
+                                    className="w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-slate-300 bg-transparent pl-3 pr-3 text-center border-b-2 border-thems-inputBorder focus:outline-none focus:border-red-500"
                                     name="name event"
                                     aria-label="Choose an option">
-                                    <option value="" disabled selected hidden>Select a category</option>
+                                    <option value="" disabled hidden>Select a category</option>
                                     <option value="health">Health</option>
                                     <option value="work">Work</option>
                                     <option value="family">Family</option>
@@ -180,7 +181,9 @@ function NewEvent(): JSX.Element {
                                     <option value="entertainment">Entertainment</option>
                                     <option value="personal_growth">Personal Growth</option>
                                     <option value="finance">Finance</option>
+                                    <option value="other">Other</option>
                                 </select>
+
                             </div>
                         </div>
                     </div>

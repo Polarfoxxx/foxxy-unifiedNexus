@@ -59,9 +59,9 @@ function LoginPage(): JSX.Element {
             <div className="w-full h-full flex justify-center items-center">
                 <div className="min-w-80 w-2/6 h-72 p-2 flex justify-center items-center">
                     <FormComponent.Form
-                        custom_padding_form={30}
+                        custom_padding_form={40}
                         form_name="Sign in"
-                        custom_background_form="rgba(220, 220, 220, 0.512)"
+                        custom_background_form="rgba(200, 200, 200, 0.512)"
                         custom_width_form="100%"
                         onSubmit={(e) => handleSubmit(e, submit)} >
                         <FormComponent.FormHeader />
