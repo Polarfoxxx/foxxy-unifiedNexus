@@ -109,7 +109,7 @@ function CalendarMod(): JSX.Element {
       <div className='xl:w-[75px] w-full h-[100px] xl:relative flex items-center justify-center xl:transform xl:rotate-[-90deg]'>
         <div className=' w-full h-full flex gap-1 justify-center items-center'>
           <span className=' w-auto h-[55px] bg-thems-appThemeColor rounded-[10px] text-thems-defaultTextColor font-oswald text-[45px] p-4 leading-[55px] flex items-center justify-center'>
-            YOU
+            YOUR
           </span>
           <h1 className=' text-[40px]'>
             calendar

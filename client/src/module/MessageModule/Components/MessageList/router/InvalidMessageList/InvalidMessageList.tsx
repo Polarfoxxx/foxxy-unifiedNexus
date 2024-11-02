@@ -48,7 +48,7 @@ function InvalidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.E
                     </span>
                 </div>
             </div>
-            <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col p-6 relative overflow-x-hidden overflow-y-scroll">
+            <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col p-6 relative overflow-y-scroll no-scrollbar">
                 {
                     messageList.map((item, key) => (
                         <div

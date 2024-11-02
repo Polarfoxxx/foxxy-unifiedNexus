@@ -66,11 +66,11 @@ function MessageList(): JSX.Element {
     return (
         <div
             id="messageContent"
-            className='w-full h-full flex items-center justify-center flex-col'>
+            className='w-full h-auto xl:h-full flex items-center justify-center flex-col'>
             <div className="w-full h-[10%] flex items-center justify-center bg-thems-appThemeColor">
                 <div className=" w-full h-full text-center flex justify-center items-center">
-                    <h2 className="text-[30px] text-thems-defaultTextColor font-oswald">
-                        Message
+                    <h2 className="text-[37px] text-thems-defaultTextColor font-oswald">
+                       Your messages
                     </h2>
                 </div>
             </div>
@@ -78,9 +78,13 @@ function MessageList(): JSX.Element {
                 <div className=' w-[100%] xl:w-[75px] h-full  bg-thems-appThemeColor items-center justify-center '>
                     <NavigateBarInOpenApplication />
                 </div>
-                <div className=" w-full h-auto flex justify-center items-center flex-col xl:flex-row">
-                    <div className=" xl:w-[500px] w-full h-auto flex justify-center items-center flex-col">
-                        <div className="w-full h-[auto] flex items-center justify-center flex-col xl:flex-row ">
+                <div className=" w-full h-full flex justify-center items-center flex-col xl:flex-row">
+                    {/* -----constrol message side--------- */}
+                    <div className=" xl:w-[500px] w-full h-full flex justify-start items-center flex-col">
+                        <div className=" w-full h-[40px] flex justify-center items-center font-oswald text-[20px] bg-orange-500">
+                            <h3>Create a new message</h3>
+                        </div>
+                        <div className="w-full h-[300px] bg-red-500 flex items-center justify-center flex-col xl:flex-row ">
                             <div className=" w-full xl:h-[100%] min-h-[200px] flex items-center justify-center">
                                 <form
                                     className="w-full h-[100%] p-4 flex justify-center items-center flex-col gap-[5px]"
@@ -129,7 +133,7 @@ function MessageList(): JSX.Element {
                                                     timeCaption="Čas"
                                                     dateFormat="dd.MM.yyyy HH:mm"
                                                     name="startDate"
-                                                    className=" w-[350px] h-[30px] text-[14px] ml-3 placeholder:text-slate-300 bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
+                                                    className=" w-[300px] h-[30px] text-[14px] ml-3 placeholder:text-slate-300 bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
                                                     placeholderText="End date"
                                                     selected={newMessage.start}
                                                     onChange={(start) => setNewMessage({ ...newMessage, start })} />
@@ -149,52 +153,62 @@ function MessageList(): JSX.Element {
                                 </form>
                             </div>
                         </div>
-                        <div className=" w-full h-full flex items-center justify-around bg-thems-newMessageForm_Background flex-col">
-                            <NavLink
-                                className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px]  hover:bg-thems-background_button_hover"
-                                style={({ isActive }) => ({
-                                    backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                    color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                })}
-                                to="ValidMessageList">
-                                Your note
-                            </NavLink>
-                            <NavLink
-                                className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
-                                style={({ isActive }) => ({
-                                    backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                    color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                })}
-                                to="InvalidMessageList"
-                            >Fulfilled note
-                            </NavLink>
-                            <NavLink
-                                className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
-                                style={({ isActive }) => ({
-                                    backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                    color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
-                                })}
-                                to="AllMessageList"
-                            >All list
-                            </NavLink>
+                        <div className=" w-full h-[150px] flex items-center justify-around bg-blue-500 flex-col">
+                            <div className=" w-full h-[50px] flex items-center justify-center font-oswald">
+                                <h3>Show list by type</h3>
+                            </div>
+                            <div className=" w-full h-full flex justify-center items-center flex-col">
+                                <NavLink
+                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px]  hover:bg-thems-background_button_hover"
+                                    style={({ isActive }) => ({
+                                        backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                    })}
+                                    to="ValidMessageList">
+                                    Your note
+                                </NavLink>
+                                <NavLink
+                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
+                                    style={({ isActive }) => ({
+                                        backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                    })}
+                                    to="InvalidMessageList"
+                                >Fulfilled note
+                                </NavLink>
+                                <NavLink
+                                    className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border border-thems-appThemeColor rounded-[5px] hover:bg-thems-background_button_hover"
+                                    style={({ isActive }) => ({
+                                        backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
+                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                    })}
+                                    to="AllMessageList"
+                                >All list
+                                </NavLink>
+                            </div>
                         </div>
-                        <div className="w-[100%] h-[200px]  flex justify-center items-center bg-slate-800">
-                            <form className="w-[100%] h-[100%]  flex justify-center items-center flex-row gap-5">
-                                <div>
-                                    <input
-                                        placeholder="Find message"
-                                        onChange={e => handleChangeFilter(e)}
-                                        name="filter"
-                                        className=""
-                                        type="text" />
-                                </div>
-                            </form>
+                        <div className="w-[100%] h-[70px]  flex justify-center items-center bg-slate-800">
+                            <div className=" w-[140px] h-[50px] flex items-center justify-center font-oswald bg-slate-200">
+                                <h3>Find message</h3>
+                            </div>
+                            <div className=" w-full h-[50px] flex items-center justify-start">
+                                <form className="w-[100%] h-[100%]  flex justify-start items-center">
+                                    <div>
+                                        <input
+                                            placeholder="Find message"
+                                            onChange={e => handleChangeFilter(e)}
+                                            name="filter"
+                                            className=""
+                                            type="text" />
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    {/* -------------- */}
-                    <div className=" w-full h-auto flex justify-center items-center">
+                    {/* ------list message side-------- */}
+                    <div className=" w-full h-full min-h-[100%] flex justify-center items-center bg-amber-300">
                         <div className="w-full h-full flex justify-start items-center flex-col ">
-                            <div className="w-[50%] h-[30px] flex justify-center items-center flex-row bg-thems-appThemeColorSecondary gap-6">
+                            <div className="w-[100%] h-[30px] flex justify-center items-center flex-row bg-red-400 gap-6">
                                 <div className="w-[100%] h-[100%] flex justify-end items-center">
                                     <h2 className=" text-thems-defaultTextColorOpposite text-[14px]">
                                         All message count:
@@ -206,8 +220,8 @@ function MessageList(): JSX.Element {
                                     </h1>
                                 </div>
                             </div>
-                            <div className=" w-full h-[100px] h-max-[700px] overflow-x-auto min-h-[300px]  flex items-start justify-center flex-col " >
-                                <div className=" w-[100%] h-[100%] flex justify-center items-center bg-slate-300 rounded-br-[10px] rounded-bl-[10px]">
+                            <div className=" w-full h-[90%] min-h-[90%] flex items-start justify-center flex-col  bg-slate-800  " >
+                                <div className=" w-[100%] h-[100%] flex justify-center items-center overflow-hidden no-scrollbar">
                                     <Routes>
                                         <Route
                                             path="ValidMessageList"
@@ -235,9 +249,7 @@ function MessageList(): JSX.Element {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     );
