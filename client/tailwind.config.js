@@ -42,6 +42,7 @@ module.exports = {
           current_day: "var(--current_day)",
           //! inputStyle........................
           inputBorder: "var(--inputBorder)",
+          placeholderColor: "var(--placeholderColor)",
           //! buttonStyle.......................
           background_button: 'var(--background_button)',
           color_button: 'var(--color_button)',

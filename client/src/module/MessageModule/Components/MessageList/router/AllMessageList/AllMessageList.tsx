@@ -35,11 +35,11 @@ function AllMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Eleme
     return (
         <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col">
             <div className="w-[100%] h-[7%] flex justify-between items-center pl-5 pr-5">
-                <div className="w-[600px] h-[100%] flex justify-center items-center  gap-4">
-                    <h2 className=" text-thems-defaultTextColor">
-                        Current message in linst:
+                <div className="w-[100%] h-[100%] flex justify-center items-center gap-4">
+                    <h2 className=" font-bold">
+                        Current message in the list:
                     </h2>
-                    <span className=" text-thems-defaultTextColor text-[25px]">
+                    <span className="text-[25px] font-bold">
                         {messageList.length}
                     </span>
                 </div>

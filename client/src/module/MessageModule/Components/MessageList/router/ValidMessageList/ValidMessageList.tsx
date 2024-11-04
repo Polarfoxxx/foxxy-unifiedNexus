@@ -25,7 +25,7 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
             //! Delay each animation based on index
             await new Promise(resolve => setTimeout(resolve, (index + 1) * 100));
             //! Apply the animation styles
-            NEW_ANIMATION.push({  
+            NEW_ANIMATION.push({
                 transition: "left 1s",
                 position: "relative",
                 left: "0px",
@@ -37,13 +37,15 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
 
     return (
         <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col">
-            <div className="w-[100%] h-[7%] flex justify-end items-center pl-5 pr-5 gap-4">
-                <h2 className=" text-thems-defaultTextColor">
-                    Current message in linst:
-                </h2>
-                <span className=" text-thems-defaultTextColor text-[25px]">
-                    {messageList.length}
-                </span>
+            <div className="w-[100%] h-[7%] flex justify-between items-center pl-5 pr-5">
+                <div className="w-[100%] h-[100%] flex justify-center items-center gap-4">
+                    <h2 className=" font-bold">
+                        Current message in the list:
+                    </h2>
+                    <span className="text-[25px] font-bold">
+                        {messageList.length}
+                    </span>
+                </div>
             </div>
             <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col p-6 relative overflow-y-scroll no-scrollbar">
                 {

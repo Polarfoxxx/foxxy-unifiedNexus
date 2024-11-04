@@ -1,0 +1,4 @@
+.select-placeholder {
+    color: var(--defaultTextColor);
+    background-color: var(--appThemeColor);
+}

@@ -2,18 +2,17 @@ import { Type_for_newMesssageFrom_DB } from "../../types";
 import React from "react";
 import { Type_for_ItemMessage, services_messageColorAlert } from "../";
 import { deleteMessage_API, updateMessageData_API } from "../../../../../APIs/userDataCRUD_API";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
-import { setAllMessages, Type_forSetAllMessage, Type_RootState } from "../../../../../../redux";
+import { setAllMessages, Type_RootState } from "../../../../../../redux";
+import { useSelector } from "react-redux";
 
 
-function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
+function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
     const [itemMessageData, setItemMessageData] = React.useState<Type_for_newMesssageFrom_DB>();
     const [colorAlert, setColorAlert] = React.useState<React.CSSProperties>();
     const [colorUpdateAndDelete, setColorUpdateAndDelete] = React.useState<React.CSSProperties>();
-    const { userName, setAllMessages } = props;
+    const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
 
-    //set item data
+    //!set item data...................
     React.useEffect(() => {
         if (props.itemData.content_message) {
             setItemMessageData({
@@ -26,7 +25,7 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
         };
     }, [JSON.stringify(props.itemData)]);
 
-    //color alert in message item
+    //!color alert in message item....................
     React.useEffect(() => {
         const updateColorAlert = (): void => {
             if (itemMessageData) {
@@ -34,11 +33,11 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
             };
         };
         updateColorAlert();
-        const intervalId = setInterval(updateColorAlert, 60000); /* polhodina */
+        const intervalId = setInterval(updateColorAlert, 60000); //! polhodina 
         return () => clearInterval(intervalId);
     }, [itemMessageData?.end_message]);
 
-    //delete message item
+    //!delete message item...........................
     const handleClickDeleteItem = async (e: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
         const { itemData } = props;
         const loginUserName = userName;
@@ -65,7 +64,7 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
         };
     };
 
-    //update, change to invalid
+    //!update, change to invalid.......................
     const handleClickCompleteMessage = async () => {
         const { itemData } = props;
         const loginUserName = userName;
@@ -79,12 +78,11 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
                     setAllMessages({
                         data: update_Item.updateMessages,
                         typeEvent: "setAll_message"
-                    }) 
+                    })
                     setColorUpdateAndDelete({
                         backgroundColor: "rgba(218, 218, 218, 0.679)"
                     })
                 }, 2000);
-
             };
         }
         catch (error) {
@@ -96,7 +94,7 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
         <div
             style={colorUpdateAndDelete}
             key={props.keyType}
-            className=" w-[100%] h-[100px] max-h-[70px] flex justify-center items-center flex-row  bg-thems-item_Background  ">
+            className=" w-[100%] h-[100px] max-h-[70px] flex justify-center items-center flex-row  bg-thems-item_Background p-2">
             <div className=" w-[100%] h-[100%] flex items-center justify-center flex-col">
                 {/* tittle */}
                 <div className=" w-[100%] h-[30%] flex flex-row justify-start items-center">
@@ -162,17 +160,4 @@ function ItemMessage(props: any & Type_for_ItemMessage): JSX.Element {
     );
 };
 
-const mapStateToProps = (state: Type_RootState) => ({
-    allMessages: state.allMessages,
-    userName: state.userLogData.userName,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    setAllMessages: (props: Type_forSetAllMessage) => dispatch(
-        setAllMessages({
-            data: props.data,
-            typeEvent: props.typeEvent
-        })),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemMessage);
+export default ItemMessage;
