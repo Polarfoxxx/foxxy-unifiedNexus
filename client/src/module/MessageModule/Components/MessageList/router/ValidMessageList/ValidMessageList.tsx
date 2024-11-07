@@ -47,14 +47,14 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
                     </span>
                 </div>
             </div>
-            <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col p-6 relative overflow-y-scroll no-scrollbar">
+            <div className=" w-[100%] h-[100%] flex justify-start items-center gap-1 flex-col xl:p-6 pt-6 pb-6 pl-1 pr-1 relative overflow-y-scroll no-scrollbar">
                 {
                     messageList.map((item, key) =>
                         <div
                             style={{
-                                borderRadius: key === 0 ? "10px 10px 0 0" : key === messageList.length - 1 ? "0 0 10px 10px" : "0px",
+                               /*  borderRadius: key === 0 ? "10px 10px 0 0" : key === messageList.length - 1 ? "0 0 10px 10px" : "0px", */
                                 ...animationStyles[key]
-                            }}
+                            }} 
                             className="relative left-[100%] w-[90%] min-h-[70px] cursor-pointer overflow-hidden "
                             key={key}>
                             <ItemMessage

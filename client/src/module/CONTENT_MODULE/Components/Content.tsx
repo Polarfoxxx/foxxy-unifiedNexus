@@ -125,7 +125,7 @@ function Content(): JSX.Element {
                         {/* messageList------------------------------------------------------------------ */}
                         <div className="w-[500px] h-[300px] rounded-[15px] border border-thems-littleComponent_border relative  overflow-hidden">
                             <NavLink
-                                className=" absolute w-full h-full bg-transparent cursor-pointer z-[60]"
+                                className=" absolute w-full h-full bg-transparent cursor-pointer z-[60] hover:shadow-miniApp"
                                 to="MessageList">
                             </NavLink>
                             <LittleMessage />

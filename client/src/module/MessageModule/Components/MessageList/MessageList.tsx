@@ -75,7 +75,7 @@ function MessageList(): JSX.Element {
                     </h2>
                 </div>
             </div>
-            <div className="w-full h-full flex items-center justify-center xl:flex-row flex-col  bg-thems-messageContent_background">
+            <div className="w-full h-full flex items-center justify-center xl:flex-row flex-col">
                 <div className=' w-[100%] xl:w-[75px] h-full  bg-thems-appThemeColor items-center justify-center '>
                     <NavigateBarInOpenApplication />
                 </div>
@@ -224,8 +224,8 @@ function MessageList(): JSX.Element {
                         </div>
                     </div>
                     {/* ------list message side-------- */}
-                    <div className=" w-full h-full min-h-[100%] flex justify-center items-center">
-                        <div className="w-full h-full flex justify-start items-center flex-col ">
+                    <div className=" w-full h-full min-h-[100%] flex justify-center items-center bg-thems-messageContent_background">
+                        <div className="w-full h-full flex justify-start items-center flex-col">
                             <div className="w-[100%] h-[50px] flex justify-center items-center flex-row gap-3 bg-thems-newMessageForm_Background">
                                 <div className="w-[100%] h-[100%] flex justify-end items-center">
                                     <h2 className=" text-[16px] font-oswald">

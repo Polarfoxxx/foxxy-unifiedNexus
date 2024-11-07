@@ -94,46 +94,62 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
         <div
             style={colorUpdateAndDelete}
             key={props.keyType}
-            className=" w-[100%] h-[100px] max-h-[70px] flex justify-center items-center flex-row  bg-thems-item_Background p-2">
+            className=" w-[100%] h-[80px] min-h-[80px] flex justify-center items-center rounded-[5px] flex-row shadow-itemShadow
+             bg-thems-item_Background border border-thems-appThemeColorFourth overflow-hidden">
+            <div className=" w-[10%] min-w-[60px] min-h-[100%] flex justify-center items-center bg-thems-appThemeColor
+                     text-thems-defaultTextColor font-bold text-[25px] font-oswald">
+                <h2>
+                    {props.keyType + 1}.
+                </h2>
+            </div>
             <div className=" w-[100%] h-[100%] flex items-center justify-center flex-col">
                 {/* tittle */}
-                <div className=" w-[100%] h-[30%] flex flex-row justify-start items-center">
-                    <div className="w-[10%] h-[100%] flex flex-row justify-center items-center text-[16px]">
-                        <h2>
-                            {props.keyType + 1}
-                        </h2>
+                <div className=" w-[100%] h-[30px] flex flex-row justify-start items-center font-oswald">
+                    <div className="w-[100%] h-[100%] flex flex-row justify-center items-center text-[13px] gap-1">
+                        <div>
+                            <h4>Created by</h4>
+                        </div>
+                        <div>
+                            <h2>
+                                {itemMessageData?.start_message.toLocaleDateString()}
+                            </h2>
+                        </div>
+                        <div>
+                            <h2>
+                                {itemMessageData?.start_message.toLocaleTimeString()}
+                            </h2>
+                        </div>
                     </div>
-                    <div className="w-[30%] h-[100%] flex flex-row justify-center items-center text-[14px]">
-                        <h2>
-                            {itemMessageData?.start_message.toLocaleString()}
-                        </h2>
-                    </div>
-                    <div className="w-[100%] h-[100%] flex flex-row justify-center items-center text-[14px]">
-                        <h2>
-                            {itemMessageData?.title_message}
-                        </h2>
+                    <div className="w-[60%] h-[100%] flex flex-row justify-center items-center text-[13px] gap-1">
+                        <div>
+                            <h4>Type</h4>
+                        </div>
+                        <div>
+                            <h2>
+                                {itemMessageData?.title_message}
+                            </h2>
+                        </div>
                     </div>
                 </div>
                 {/* content */}
-                <div className=" w-[100%] h-[100%] text-[14px] p-3">
+                <div className=" w-[100%] h-[100%] flex items-center justify-center text-[15px] p-3">
                     <p>
                         {itemMessageData?.content_message}
                     </p>
                 </div>
             </div>
-            <div className=" w-[20%] h-[100%] flex items-center justify-center flex-col">
-
+            <div className=" w-[30%] h-[100%] flex items-center justify-center flex-col">
                 <div className=" w-[100%] h-[80%] flex items-center justify-center flex-row ">
                     <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
                         <button
-                            className=" w-[80%] h-[80%] bg-slate-100 rounded-lg hover:bg-red-500"
+                            className=" w-[80%] h-[80%] bg-slate-100 hover:bg-red-500 text-[12px]"
                             onClick={handleClickDeleteItem}>
                             delete
                         </button>
                     </div>
                     <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
                         <button
-                            className=" w-[80%] h-[80%] bg-slate-100 rounded-lg hover:bg-green-500"
+                            className=" w-[80%] h-[80%] bg-slate-100 hover:bg-green-500 text-[12px]"
                             onClick={handleClickCompleteMessage}>
                             complete
                         </button>
@@ -145,11 +161,15 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
                     {/* element color alert */}
                 </div>
                 <div className=" w-[100%] h-[100%] flex items-center justify-center ">
-                    <div className=" w-[100%] h-[100%] flex items-center justify-center ">
-                        <div
-                            className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
+                    <div className=" w-[100%] h-[100%] flex-col flex items-center justify-center bg-orange-300">
+                        <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
                             <h1 className="text-[14px]">
                                 {itemMessageData?.end_message.toLocaleDateString()}
+                            </h1>
+                        </div>
+                        <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
+                            <h1 className="text-[14px]">
+                                {itemMessageData?.end_message.toLocaleTimeString()}
                             </h1>
                         </div>
                     </div>
