@@ -5,6 +5,8 @@ const User = require("../mongooseDB/mongooseDB");
 
 router.put('/data', async (req, res) => {
     const { userName, update_Data } = req.body;
+console.log(userName,update_Data);
+     
     try {
         //!find user............
         const user = await User.findOne({ username: userName });
@@ -24,7 +26,7 @@ router.put('/data', async (req, res) => {
             messages[indexToUpdate].status = false;
             //! save...................
             await user.save();
-            res.status(201).json({
+            res.status(200).json({
                 message: "Zpráva byla úspěšně upravena.",
                 updateMessages: messages
             });

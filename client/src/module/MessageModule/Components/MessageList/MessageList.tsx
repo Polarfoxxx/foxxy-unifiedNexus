@@ -15,15 +15,29 @@ import { NavigateBarInOpenApplication } from "../../../Shared";
 import { ButtonComponent } from 'foxxy-package';
 import "foxxy-package/dist/foxxy_package_dis.css";
 import { services_filterMessage } from "./router";
-import "./style_messageList.css"
+import "./style_messageList.css";
+ import { useNavigate } from "react-router-dom";
 
 function MessageList(): JSX.Element {
     const [newMessage, setNewMessage] = React.useState<any>({ start: "", end: "" });
     const { handleSubmit, reset } = useInputValue();
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const allMessages = useSelector((state: Type_RootState) => state.allMessages);
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
-    const [allMessageForList, setAllmessageForList] = React.useState<Type_for_newMesssageFrom_DB[]>(allMessages);
+    const [allMessageForList, setAllmessageForList] = React.useState<Type_for_newMesssageFrom_DB[]>([]);
+
+
+//! default load patch..............................
+React.useEffect(()=> {
+    navigate("ValidMessageList")
+},[]);
+
+//! setting for all message..............................
+React.useEffect(()=> {
+        setAllmessageForList(allMessages);
+    },[JSON.stringify(allMessages), allMessages.length ]);
+
 
     //! function add a new messasge............................
     const submit = async (v: TypeForInputsObject["v"]): Promise<void> => {
@@ -37,13 +51,14 @@ function MessageList(): JSX.Element {
         if (typeof create_data !== "string" && "message" in create_data) {
             const loginUserName = userName;
             try {
-                const createMessage = await createData_API({ loginUserName, create_data });
-                if (createMessage) {
-                    const upd_data = createMessage.updateMessage as Type_for_newMesssageFrom_DB[]
+                const respoDataAfterCreateMessage = await createData_API({ loginUserName, create_data });
+                if (respoDataAfterCreateMessage) {
+                    const upd_data = respoDataAfterCreateMessage.updateMessage as Type_for_newMesssageFrom_DB[]
                     dispatch(setAllMessages({
                         data: upd_data,
                         typeEvent: "setAll_message"
-                    }))
+                    }));
+           /*  reset(); */
                 };
             }
             catch (error) {
@@ -130,7 +145,7 @@ function MessageList(): JSX.Element {
                                             </div>
                                             <div className=" w-[100%] h-[100%] flex justify-center items-center">
                                                 <input
-                                                    className=" w-[400px] h-[30px] text-[14px] ml-3 placeholder:text-thems-placeholderColor bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
+                                                    className=" w-[400px] h-[30px] text-thems-defaultTextColor text-[14px] ml-3 placeholder:text-thems-placeholderColor bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
                                                     placeholder="Message"
                                                     name="message"
                                                     type="text" />
@@ -151,7 +166,7 @@ function MessageList(): JSX.Element {
                                                     timeCaption="Čas"
                                                     dateFormat="dd.MM.yyyy HH:mm"
                                                     name="startDate"
-                                                    className=" w-[300px] h-[30px] text-[14px] ml-3 placeholder:text-thems-placeholderColor bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
+                                                    className=" w-[300px] h-[30px] text-thems-defaultTextColor text-[14px] ml-3 placeholder:text-thems-placeholderColor bg-transparent pl-3 pr-3 text-center border-b border-thems-inputBorder focus:outline-none focus:border-red-500"
                                                     placeholderText="End date"
                                                     selected={newMessage.start}
                                                     onChange={(start) => setNewMessage({ ...newMessage, start })} />

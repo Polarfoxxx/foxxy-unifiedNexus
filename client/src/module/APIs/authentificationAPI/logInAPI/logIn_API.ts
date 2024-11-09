@@ -3,13 +3,13 @@ import { BASE_URL } from "../../BASE_URL";
 import { type_for_loginUser_API, type_from_loginUser_API_returned } from "./types";
 
 async function logInUser_API(loginData: type_for_loginUser_API): Promise<type_from_loginUser_API_returned | undefined> {
-  const LOGIN_DATA = {
+  const login_Data = {
     username: loginData.userNames,
     password: loginData.password
   };
 
   try {
-    const response = await axios.post(`${BASE_URL}logIn/user`, LOGIN_DATA, {
+    const response = await axios.post(`${BASE_URL}logIn/user`, login_Data, {
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",

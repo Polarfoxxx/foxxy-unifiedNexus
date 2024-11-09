@@ -9,11 +9,9 @@ function AllMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Eleme
     const [animationStyles, setAnimationStyles] = React.useState<React.CSSProperties[]>([]);
 
     React.useEffect(() => {
-        if (props.allMessages.length > 0) {
             setMessageList(props.allMessages);
             //! Apply animation effect when the list updates
             applyAnimationEffect(props.allMessages);
-        };
     }, [props.allMessages]);
 
 
@@ -48,10 +46,7 @@ function AllMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Eleme
                 {
                     messageList.map((item, key) => (
                         <div
-                             style={{
-                              /*  borderRadius: key === 0 ? "10px 10px 0 0" : key === messageList.length - 1 ? "0 0 10px 10px" : "0px",*/
-                                ...animationStyles[key] // Apply animation styles
-                            }} 
+                             style={{...animationStyles[key]}} 
                             className="relative left-[110%] w-[100%] cursor-pointer overflow-hidden "
                             key={key}>
                             <ItemMessage

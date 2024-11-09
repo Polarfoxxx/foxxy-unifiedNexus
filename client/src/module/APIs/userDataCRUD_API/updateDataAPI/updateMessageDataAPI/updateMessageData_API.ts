@@ -10,10 +10,16 @@ async function updateMessageData_API(props: Type_for_updateMessageData_forAPI): 
     if (props.itemData) {
         const data_forApi = {
             userName: props.loginUserName,
-            update_data: props.itemData,
+            update_Data: props.itemData,
         };
         try {
-            const respo_data = await axios.put(`${BASE_URL}update/data`, data_forApi);
+            const respo_data = await axios.put(`${BASE_URL}updateMessage/data`, data_forApi, {
+                withCredentials: true,
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            console.log(respo_data);
 
             return {
                 status: respo_data.status,

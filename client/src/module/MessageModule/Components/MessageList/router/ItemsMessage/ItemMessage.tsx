@@ -3,7 +3,9 @@ import React from "react";
 import { Type_for_ItemMessage, services_messageColorAlert } from "../";
 import { deleteMessage_API, updateMessageData_API } from "../../../../../APIs/userDataCRUD_API";
 import { setAllMessages, Type_RootState } from "../../../../../../redux";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { LoadingFeedback } from "../../../../../Shared";
+
 
 
 function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
@@ -11,6 +13,11 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
     const [colorAlert, setColorAlert] = React.useState<React.CSSProperties>();
     const [colorUpdateAndDelete, setColorUpdateAndDelete] = React.useState<React.CSSProperties>();
     const userName = useSelector((state: Type_RootState) => state.userLogData.userName);
+    const dispatch = useDispatch();
+    const [loadingFeedbackStats, setLoadingFeedbackStats] = React.useState<{ respo_status: number, loadON: boolean }>({
+        respo_status: 0,
+        loadON: false
+    });
 
     //!set item data...................
     React.useEffect(() => {
@@ -38,24 +45,24 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
     }, [itemMessageData?.end_message]);
 
     //!delete message item...........................
-    const handleClickDeleteItem = async (e: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
+    async function handleClickDeleteItem(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
         const { itemData } = props;
         const loginUserName = userName;
 
         try {
             const deleteItem = await deleteMessage_API({ loginUserName, itemData });
-            if (deleteItem?.updateMessages) {
+            if (deleteItem?.status === 200) {
                 setColorUpdateAndDelete({
                     backgroundColor: "red"
-                })
+                });
                 setTimeout(() => {
-                    setAllMessages({
+                    dispatch(setAllMessages({
                         data: deleteItem.updateMessages,
                         typeEvent: "setAll_message"
-                    })
+                    }))
                     setColorUpdateAndDelete({
-                        backgroundColor: "rgba(218, 218, 218, 0.679)"
-                    })
+                        backgroundColor: "var(--item_Background)"
+                    });
                 }, 2000);
             };
         }
@@ -65,23 +72,20 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
     };
 
     //!update, change to invalid.......................
-    const handleClickCompleteMessage = async () => {
+    async function handleClickCompleteMessage() {
         const { itemData } = props;
         const loginUserName = userName;
         try {
             const update_Item = await updateMessageData_API({ loginUserName, itemData });
-            if (update_Item?.updateMessages) {
+            if (update_Item?.status === 200) {
                 setColorUpdateAndDelete({
                     backgroundColor: "green"
                 })
                 setTimeout(() => {
-                    setAllMessages({
+                    dispatch(setAllMessages({
                         data: update_Item.updateMessages,
                         typeEvent: "setAll_message"
-                    })
-                    setColorUpdateAndDelete({
-                        backgroundColor: "rgba(218, 218, 218, 0.679)"
-                    })
+                    }))
                 }, 2000);
             };
         }
@@ -105,9 +109,9 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
             <div className=" w-[100%] h-[100%] flex items-center justify-center flex-col">
                 {/* tittle */}
                 <div className=" w-[100%] h-[30px] flex flex-row justify-start items-center font-oswald">
-                    <div className="w-[100%] h-[100%] flex flex-row justify-center items-center text-[13px] gap-1">
-                        <div>
-                            <h4>Created by</h4>
+                    <div className="w-[100%] h-[100%] flex flex-row justify-center items-center text-[12px] gap-1">
+                        <div className=" font-bold">
+                            <h4>Created</h4>
                         </div>
                         <div>
                             <h2>
@@ -121,7 +125,7 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
                         </div>
                     </div>
                     <div className="w-[60%] h-[100%] flex flex-row justify-center items-center text-[13px] gap-1">
-                        <div>
+                        <div className=" font-bold">
                             <h4>Type</h4>
                         </div>
                         <div>
@@ -132,24 +136,26 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
                     </div>
                 </div>
                 {/* content */}
-                <div className=" w-[100%] h-[100%] flex items-center justify-center text-[15px] p-3">
-                    <p>
-                        {itemMessageData?.content_message}
-                    </p>
+                <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px] p-2">
+                    <div className=" w-full h-full flex justify-center items-center border rounded-[5px] bg-slate-100 font-libre text-red-500">
+                        <p>
+                            {itemMessageData?.content_message}
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className=" w-[30%] h-[100%] flex items-center justify-center flex-col">
                 <div className=" w-[100%] h-[80%] flex items-center justify-center flex-row ">
                     <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
                         <button
-                            className=" w-[80%] h-[80%] bg-slate-100 hover:bg-red-500 text-[12px]"
+                            className=" w-[60px] h-[80%] bg-thems-appThemeColor text-thems-defaultTextColor hover:bg-red-500 text-[11px] flex justify-center items-center rounded-[5px]"
                             onClick={handleClickDeleteItem}>
                             delete
                         </button>
                     </div>
                     <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
                         <button
-                            className=" w-[80%] h-[80%] bg-slate-100 hover:bg-green-500 text-[12px]"
+                            className=" w-[60px] h-[80%] bg-thems-appThemeColor text-thems-defaultTextColor hover:bg-green-500 text-[11px] flex justify-center items-center rounded-[5px]"
                             onClick={handleClickCompleteMessage}>
                             complete
                         </button>
@@ -160,8 +166,8 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
                     className=" w-[100%] h-[10px]">
                     {/* element color alert */}
                 </div>
-                <div className=" w-[100%] h-[100%] flex items-center justify-center ">
-                    <div className=" w-[100%] h-[100%] flex-col flex items-center justify-center bg-orange-300">
+                <div className=" w-[100%] h-[100%] flex items-center justify-center font-oswald">
+                    <div className=" w-[100%] h-[100%] flex-col flex items-center justify-center">
                         <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
                             <h1 className="text-[14px]">
                                 {itemMessageData?.end_message.toLocaleDateString()}
@@ -174,7 +180,6 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

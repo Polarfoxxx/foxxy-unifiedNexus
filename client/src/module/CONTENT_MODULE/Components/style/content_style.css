@@ -1,7 +1,6 @@
 div[data-theme="light"] {
     /*! appBackGround */
     --background_content: rgb(196, 196, 196);
-    --background_App: url('/public/image/lightAppBacgr.jpg');
     --parentComponentBackg: rgba(139, 139, 139, 0.778);
     --parentComponentBorder: rgb(238, 238, 238);
     --appThemeColor: rgb(25, 97, 91);

@@ -24,7 +24,7 @@ router.delete('/data', async (req, res) => {
             messages.splice(indexToDelete, 1);
             //! Uloženie zmeneného používateľa
             await user.save();
-            res.status(201).json({
+            res.status(200).json({
                 message: "Zpráva byla úspěšně odstraněna.",
                 updateMessages: messages
             });

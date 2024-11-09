@@ -9,13 +9,11 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
     const [animationStyles, setAnimationStyles] = React.useState<React.CSSProperties[]>([]);
 
     React.useEffect(() => {
-        if (props.allMessages.length > 0) {
             const INV_DATA = props.allMessages.filter((item) => {
                 return item.status === true;
             });
             setMessageList(INV_DATA);
             applyAnimationEffect(INV_DATA);
-        };
     }, [props.allMessages]);
 
 
@@ -51,10 +49,7 @@ function ValidMessageList(props: Type_for_valid_and_invalidMessageList): JSX.Ele
                 {
                     messageList.map((item, key) =>
                         <div
-                            style={{
-                               /*  borderRadius: key === 0 ? "10px 10px 0 0" : key === messageList.length - 1 ? "0 0 10px 10px" : "0px", */
-                                ...animationStyles[key]
-                            }} 
+                            style={{...animationStyles[key]}} 
                             className="relative left-[100%] w-[90%] min-h-[70px] cursor-pointer overflow-hidden "
                             key={key}>
                             <ItemMessage

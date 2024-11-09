@@ -11,10 +11,6 @@ function LittleWeather(): JSX.Element {
                 </h1>
             </div>
             <div className=" w-full h-auto">
-                <img
-                    className=" w-[100%]"
-                    src="image/weather.png"
-                    alt="weather" />
             </div>
         </div>
     );
