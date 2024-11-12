@@ -105,7 +105,7 @@ function CalendarMod(): JSX.Element {
 
 
   return (
-    <div className=' w-full h-auto  xl:h-full flex flex-col xl:flex-row  items-center justify-center  bg-thems-appThemeColorTertiary'>
+    <div className=' w-full h-auto  xl:h-full flex flex-col xl:flex-row  items-center justify-center  bg-thems-appThemeColorSecondary'>
       <div className='xl:w-[75px] w-full h-[100px] xl:relative flex items-center justify-center xl:transform xl:rotate-[-90deg]'>
         <div className=' w-full h-full flex gap-1 justify-center items-center'>
           <span className=' w-auto h-[55px] bg-thems-appThemeColor rounded-[10px] text-thems-defaultTextColor font-oswald text-[45px] p-4 leading-[55px] flex items-center justify-center'>

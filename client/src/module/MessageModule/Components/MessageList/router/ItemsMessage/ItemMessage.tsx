@@ -137,7 +137,7 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
                 </div>
                 {/* content */}
                 <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px] p-2">
-                    <div className=" w-full h-full flex justify-center items-center border rounded-[5px] bg-slate-100 font-libre text-red-500">
+                    <div className=" w-full h-full flex justify-center items-center border rounded-[5px] bg-slate-100 font-libre text-red-500 font-bold">
                         <p>
                             {itemMessageData?.content_message}
                         </p>
@@ -150,16 +150,19 @@ function ItemMessage(props: Type_for_ItemMessage): JSX.Element {
                         <button
                             className=" w-[60px] h-[80%] bg-thems-appThemeColor text-thems-defaultTextColor hover:bg-red-500 text-[11px] flex justify-center items-center rounded-[5px]"
                             onClick={handleClickDeleteItem}>
-                            delete
+                            Delete
                         </button>
                     </div>
-                    <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
-                        <button
+                    {
+                            itemMessageData?.status && 
+                            <div className=" w-[100%] h-[100%] flex items-center justify-center text-[14px]">
+                            <button
                             className=" w-[60px] h-[80%] bg-thems-appThemeColor text-thems-defaultTextColor hover:bg-green-500 text-[11px] flex justify-center items-center rounded-[5px]"
                             onClick={handleClickCompleteMessage}>
-                            complete
+                            Complete
                         </button>
                     </div>
+                        }
                 </div>
                 <div
                     style={colorAlert}

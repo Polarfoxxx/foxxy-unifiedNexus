@@ -16,7 +16,7 @@ import { ButtonComponent } from 'foxxy-package';
 import "foxxy-package/dist/foxxy_package_dis.css";
 import { services_filterMessage } from "./router";
 import "./style_messageList.css";
- import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function MessageList(): JSX.Element {
     const [newMessage, setNewMessage] = React.useState<any>({ start: "", end: "" });
@@ -28,15 +28,15 @@ function MessageList(): JSX.Element {
     const [allMessageForList, setAllmessageForList] = React.useState<Type_for_newMesssageFrom_DB[]>([]);
 
 
-//! default load patch..............................
-React.useEffect(()=> {
-    navigate("ValidMessageList")
-},[]);
+    //! default load patch..............................
+    React.useEffect(() => {
+        navigate("ValidMessageList")
+    }, []);
 
-//! setting for all message..............................
-React.useEffect(()=> {
+    //! setting for all message..............................
+    React.useEffect(() => {
         setAllmessageForList(allMessages);
-    },[JSON.stringify(allMessages), allMessages.length ]);
+    }, [JSON.stringify(allMessages), allMessages.length]);
 
 
     //! function add a new messasge............................
@@ -58,7 +58,7 @@ React.useEffect(()=> {
                         data: upd_data,
                         typeEvent: "setAll_message"
                     }));
-           /*  reset(); */
+                    /*  reset(); */
                 };
             }
             catch (error) {
@@ -83,21 +83,21 @@ React.useEffect(()=> {
         <div
             id="messageContent"
             className='w-full h-auto xl:h-full flex items-center justify-center flex-col'>
-            <div className="w-full h-[10%] flex items-center justify-center bg-thems-appThemeColor">
-                <div className=" w-full h-full text-center flex justify-center items-center">
-                    <h2 className="text-[37px] text-thems-defaultTextColor font-oswald">
+            <div className="w-full h-[7%] flex items-start justify-start bg-thems-appThemeColor">
+                <div className=" w-[250px] h-[100%] text-center flex justify-center items-center bg-thems-appThemeColorSecondary">
+                    <h2 className="text-[33px] text-thems-defaultTextColorDark font-oswald ">
                         Your messages
                     </h2>
                 </div>
             </div>
             <div className="w-full h-full flex items-center justify-center xl:flex-row flex-col">
-                <div className=' w-[100%] xl:w-[75px] h-full  bg-thems-appThemeColor items-center justify-center '>
+                <div className=' w-[100%] xl:w-[75px] h-full  bg-thems-appThemeColorSecondary items-center justify-center '>
                     <NavigateBarInOpenApplication />
                 </div>
                 <div className=" w-full h-full flex justify-center items-center flex-col xl:flex-row">
                     {/* -----constrol message side--------- */}
                     <div className=" xl:w-[500px] w-full h-full flex justify-start items-center flex-col bg-thems-appThemeColor">
-                        <div className=" w-full h-[40px] flex justify-center items-center font-oswald text-[25px] text-thems-defaultTextColor">
+                        <div className=" w-full h-[50px] flex justify-center items-center font-oswald text-[25px] text-thems-defaultTextColorDark bg-thems-appThemeColorSecondary">
                             <h3>Create a new message</h3>
                         </div>
                         <div className="w-full h-[300px] flex items-center justify-center flex-col xl:flex-row ">
@@ -241,7 +241,7 @@ React.useEffect(()=> {
                     {/* ------list message side-------- */}
                     <div className=" w-full h-full min-h-[100%] flex justify-center items-center bg-thems-messageContent_background">
                         <div className="w-full h-full flex justify-start items-center flex-col">
-                            <div className="w-[100%] h-[50px] flex justify-center items-center flex-row gap-3 bg-thems-newMessageForm_Background">
+                            <div className="w-[100%] h-[50px] flex justify-center items-center flex-row gap-3 bg-thems-appThemeColorSecondary">
                                 <div className="w-[100%] h-[100%] flex justify-end items-center">
                                     <h2 className=" text-[16px] font-oswald">
                                         All message count:

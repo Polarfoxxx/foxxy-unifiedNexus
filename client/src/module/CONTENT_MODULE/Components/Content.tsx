@@ -75,35 +75,39 @@ function Content(): JSX.Element {
                 console.log("Chyba pri načítavaní udalostí:", error);
             };
         };
-
-        //! weather data..........................................
-        loadWeathetAPI();
-        async function loadWeathetAPI() {
-            try {
-                const load_data = await openWeatherAPI();
-                if (load_data) {
-                    dispatch(setWeatherData(load_data));
-                };
-            } catch (error) {
-                console.log("Chyba pri načítavaní udalostí:", error);
-            };
-        };
-
-        //! dayHoliday...........................................
-        loadDayHoliday();
-        async function loadDayHoliday() {
-            try {
-                const data = await dayAndHoliday();
-                if (data) {
-                    dispatch(setAllHoliday(data));
-                };
-            } catch (error) {
-                console.log("Chyba pri načítavaní holiday:", error);
-            }
-        };
     }, []);
 
+        //! weather data..........................................
+        React.useEffect(()=> {
+            loadWeathetAPI();
+            async function loadWeathetAPI() {
+                try {
+                    const load_data = await openWeatherAPI();
+                    if (load_data) {
+                        dispatch(setWeatherData(load_data));
+                    };
+                } catch (error) {
+                    console.log("Chyba pri načítavaní udalostí:", error);
+                };
+            };
+        },[])
+       
 
+        //! dayHoliday...........................................
+        React.useEffect(()=> {
+            loadDayHoliday();
+            async function loadDayHoliday() {
+                try {
+                    const data = await dayAndHoliday();
+                    if (data) {
+                        dispatch(setAllHoliday(data));
+                    };
+                } catch (error) {
+                    console.log("Chyba pri načítavaní holiday:", error);
+                }
+            };
+        },[])
+      
     return (
         <div
             data-theme={USER_DATA.appTheme}

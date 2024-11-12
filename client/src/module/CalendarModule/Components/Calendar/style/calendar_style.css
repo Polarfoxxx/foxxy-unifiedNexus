@@ -98,7 +98,7 @@
 /* calendar content */
 .rbc-month-view,
 .rbc-time-view {
-    background-color: var(--appThemeColorTertiary);
+    background-color: var(--appThemeColorSecondary);
 }
 
 .rbc-time-gutter.rbc-time-column,

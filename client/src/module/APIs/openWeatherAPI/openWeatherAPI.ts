@@ -11,7 +11,6 @@ async function openWeatherAPI(): Promise<Type_for_WeatherData | undefined> {
 
     try {
         const data = await axios.get(`${baseUrl}/weather?q=${city}&appid=${apiKey}`);
-
         const returnedData = {
             clouds: data.data.clouds.all,
             feels_like: Math.round((data.data.main.feels_like - kelvin) * 10) / 10,
@@ -27,7 +26,7 @@ async function openWeatherAPI(): Promise<Type_for_WeatherData | undefined> {
             timezone: data.data.timezone,
             visibility: data.data.visibility,
             description: data.data.weather[0].description,
-            icon: `https://openweathermap.org/img/wn/${data.data.weather[0].icon}@2x.png`,
+            icon: `https://openweathermap.org/img/wn/${data.data.weather[0].icon}@4x.png`,
             main: data.data.weather[0].main,
             deg: data.data.wind.deg,
             gust: data.data.wind.gust,
