@@ -41,7 +41,10 @@ export type Type_SetMessageDataAction = {
 //! types pre weatherData
 export type Type_SetWeatherDataAction = {
   type: "setWeatherData";
-  payload: Type_for_WeatherData;
+  payload: {
+    weatherData: Type_for_WeatherData,
+    timeUpdateWeatherData: Date
+  }
 };
 
 //! types pre holidays

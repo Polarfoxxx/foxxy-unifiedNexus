@@ -3,7 +3,7 @@ import { Type_RootState } from "../../../../redux";
 import { useSelector } from "react-redux";
 
 function WeatherInfo(): JSX.Element {
-    const weather = useSelector((state: Type_RootState) => state.weatherData);
+    const weather = useSelector((state: Type_RootState) => state.weatherData.weatherData);
 
     return (
         <div className=" w-full h-[80%] flex items-center justify-center  text-thems-defaultTextColorDark gap-2">

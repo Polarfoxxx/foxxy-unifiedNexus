@@ -6,16 +6,15 @@ import { Type_RootState } from "../../../redux";
 
 
 function Weather(): JSX.Element {
-    const weatherInfo = useSelector((state: Type_RootState) => state.weatherData);
+    const weatherInfo = useSelector((state: Type_RootState) => state.weatherData.weatherData);
+    const timeUpdateweatherInfo = useSelector((state: Type_RootState) => state.weatherData.timeUpdateWeatherData);
     const dispatch = useDispatch();
 
     React.useEffect(() => {
         console.log("run");
+        console.log(weatherInfo);
 
     }, [])
-    console.log(weatherInfo);
-
-
 
     return (
         <div className=" w-[100%] h-[100%] bg-thems-appThemeColorSecondary flex justify-center items-center flex-col ">
@@ -44,7 +43,10 @@ function Weather(): JSX.Element {
                                         <h3>{weatherInfo.country}</h3>
                                     </div>
                                     <div>
-                                        <h3>{new Date().toLocaleDateString()}</h3>
+                                        <h3>{timeUpdateweatherInfo.toLocaleDateString()}</h3>
+                                    </div>
+                                    <div>
+                                        <h3>{timeUpdateweatherInfo.toLocaleTimeString()}</h3>
                                     </div>
                                 </div>
                                 <div className=" w-full h-[100%] flex items-center justify-start overflow-hidden bg-amber-400">
@@ -61,9 +63,30 @@ function Weather(): JSX.Element {
                             </div>
 
                         </div>
-                        <div className=" w-full h-full flex items-center justify-center bg-orange-400">
-
-
+                        <div className=" w-full h-full flex items-center justify-center bg-orange-400 flex-row">
+                            <div className=" w-full h-full flex justify-center items-center bg-slate-700">
+                                {/* empty block*/}
+                            </div>
+                            <div className=" w-full h-full flex justify-center items-start bg-slate-400 p-6">
+                                <div className=" w-full h-[50%] flex justify-center items-center bg-slate-500 flex-col">
+                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                                        <span>Feels like:</span>
+                                        <span>{weatherInfo.feels_like}</span>
+                                    </div>
+                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                                        <span className="">Humidity:</span>
+                                        <span className="">{weatherInfo.humidity}</span>
+                                    </div>
+                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                                        <span>Main:</span>
+                                        <span>{weatherInfo.main}</span>
+                                    </div>
+                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                                        <span>Pressure:</span>
+                                        <span>{weatherInfo.pressure}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className=" w-full h-[90%] flex items-center justify-center bg-slate-100">

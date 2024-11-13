@@ -3,7 +3,7 @@ import { Type_for_WeatherData } from "../../HeaderModule";
 
 
 
-async function openWeatherAPI(): Promise<Type_for_WeatherData | undefined> {
+async function openWeatherAPI(): Promise<Type_for_WeatherData["weatherData"] | undefined> {
     const baseUrl = "http://api.openweathermap.org/data/2.5";
     const apiKey = process.env.REACT_APP_API_KEY_FOR_WEATHER_API;
     const city = "Skalica";

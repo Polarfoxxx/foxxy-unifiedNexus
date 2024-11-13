@@ -44,7 +44,7 @@ function Content(): JSX.Element {
         async function readUserData() {
             try {
                 const load_userData = await readData_API();
-                if (load_userData?.status === 200 ) {
+                if (load_userData?.status === 200) {
                     dispatch(setUserLogData({
                         userName: load_userData.data.userData.userName,
                         appTheme: load_userData.data.userData.colorTheme
@@ -77,37 +77,45 @@ function Content(): JSX.Element {
         };
     }, []);
 
-        //! weather data..........................................
-        React.useEffect(()=> {
-            loadWeathetAPI();
-            async function loadWeathetAPI() {
-                try {
-                    const load_data = await openWeatherAPI();
-                    if (load_data) {
-                        dispatch(setWeatherData(load_data));
-                    };
-                } catch (error) {
-                    console.log("Chyba pri načítavaní udalostí:", error);
+    //! weather data..........................................
+    React.useEffect(() => {
+        loadWeathetAPI()
+      const interval =  setInterval(() => {
+        loadWeathetAPI();
+        }, 1800000);
+        const currentDateAndTime = new Date();
+        async function loadWeathetAPI() {
+            try {
+                const load_data = await openWeatherAPI();
+                if (load_data) {
+                    dispatch(setWeatherData({
+                        weatherData: load_data,
+                        timeUpdateWeatherData: currentDateAndTime
+                    }));
                 };
+            } catch (error) {
+                console.log("Chyba pri načítavaní udalostí:", error);
             };
-        },[])
-       
+        };
+        return clearInterval(interval)
+    }, [])
 
-        //! dayHoliday...........................................
-        React.useEffect(()=> {
-            loadDayHoliday();
-            async function loadDayHoliday() {
-                try {
-                    const data = await dayAndHoliday();
-                    if (data) {
-                        dispatch(setAllHoliday(data));
-                    };
-                } catch (error) {
-                    console.log("Chyba pri načítavaní holiday:", error);
-                }
-            };
-        },[])
-      
+
+    //! dayHoliday...........................................
+    React.useEffect(() => {
+        loadDayHoliday();
+        async function loadDayHoliday() {
+            try {
+                const data = await dayAndHoliday();
+                if (data) {
+                    dispatch(setAllHoliday(data));
+                };
+            } catch (error) {
+                console.log("Chyba pri načítavaní holiday:", error);
+            }
+        };
+    }, [])
+
     return (
         <div
             data-theme={USER_DATA.appTheme}
