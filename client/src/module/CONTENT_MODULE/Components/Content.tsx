@@ -8,7 +8,7 @@ import { readData_API } from "../../APIs/index.";
 import { useDispatch, useSelector } from 'react-redux';
 import { readExistingExpCookie } from "../../APIs/index.";
 import { LittleCalendar, LittleMessage, LittleWeather } from "../../LittleAppComponents";
-import { openWeatherAPI, dayAndHoliday } from "../../APIs/index.";
+import { currentWeatherAPI, dayAndHoliday } from "../../APIs/index.";
 import { Weather } from "../../WeatherModule";
 import { Header } from "../../HeaderModule";
 import { Type_RootState } from "../../../redux";
@@ -86,7 +86,7 @@ function Content(): JSX.Element {
         const currentDateAndTime = new Date();
         async function loadWeathetAPI() {
             try {
-                const load_data = await openWeatherAPI();
+                const load_data = await currentWeatherAPI();
                 if (load_data) {
                     dispatch(setWeatherData({
                         weatherData: load_data,

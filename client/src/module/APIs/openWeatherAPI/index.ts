@@ -1,3 +1,2 @@
-//! apis
-export { default as openWeatherAPI } from "./openWeatherAPI";
-
+export * from "./currentWeather";
+export * from "./forecastWeather";
