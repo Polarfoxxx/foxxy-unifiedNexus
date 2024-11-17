@@ -25,7 +25,7 @@ export type Type_for_WeatherData = {
         id: number;
         weather: string;
     },
-    timeUpdateWeatherData: Date
+    timeUpdateWeatherData: string
 };
 
 export type Type_for_weatherInfo = {

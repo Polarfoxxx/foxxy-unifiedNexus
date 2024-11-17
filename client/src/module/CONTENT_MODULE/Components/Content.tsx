@@ -83,7 +83,7 @@ function Content(): JSX.Element {
       const interval =  setInterval(() => {
         loadWeathetAPI();
         }, 1800000);
-        const currentDateAndTime = new Date();
+        const currentDateAndTime = new Date().toISOString()
         async function loadWeathetAPI() {
             try {
                 const load_data = await openWeatherAPI();
@@ -146,7 +146,7 @@ function Content(): JSX.Element {
                         <div className="w-[500px] h-[300px] flex flex-col justify-between items-center gap-3">
                             <div className="w-[100%] h-[145px] rounded-[15px] border border-thems-littleComponent_border relative overflow-hidden shadow-miniApp">
                                 <NavLink
-                                    className=" absolute w-full h-full bg-transparent cursor-pointer z-[60]"
+                                    className=" absolute w-full h-full bg-transparent cursor-pointer z-[60] hover:shadow-miniApp"
                                     to="Weather">
                                 </NavLink>
                                 <LittleWeather />
@@ -189,7 +189,7 @@ function Content(): JSX.Element {
                                 </ParentForOpenApplication>
                             } />
                         <Route
-                            path="Weather"
+                            path="Weather/*"
                             element={
                                 <ParentForOpenApplication>
                                     <Weather />

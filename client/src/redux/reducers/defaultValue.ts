@@ -36,7 +36,7 @@ export const defaultWeatherData = {
         id: 0,
         weather: ""
     },
-    timeUpdateWeatherData: new Date()
+    timeUpdateWeatherData: ""
 };
 
 export const defaultAllHolidayData = {

@@ -43,7 +43,7 @@ export type Type_SetWeatherDataAction = {
   type: "setWeatherData";
   payload: {
     weatherData: Type_for_WeatherData,
-    timeUpdateWeatherData: Date
+    timeUpdateWeatherData: string
   }
 };
 

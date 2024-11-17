@@ -2,8 +2,8 @@ import React from "react";
 import { NavigateBarInOpenApplication } from "../../Shared";
 import { useSelector, useDispatch } from 'react-redux';
 import { Type_RootState } from "../../../redux";
-
-
+import { NavLink, Routes, Route } from "react-router-dom";
+import WeatherTepmerature from "./routes/Tepmerature";
 
 function Weather(): JSX.Element {
     const weatherInfo = useSelector((state: Type_RootState) => state.weatherData.weatherData);
@@ -32,10 +32,10 @@ function Weather(): JSX.Element {
                     <NavigateBarInOpenApplication />
                 </div>
                 <div className=" w-[100%] h-[100%] items-center justify-center flex flex-col">
-                    <div className=" w-full h-full flex items-center justify-center bg-slate-200 flex-row">
-                        <div className=" w-full h-full flex items-center justify-start bg-red-300">
-                            <div className=" w-[450px] h-full flex items-center justify-center bg-slate-200 flex-col">
-                                <div className=" w-full min-h-[20%] h-[20%] flex items-center justify-center bg-amber-200 text-[20px] gap-3">
+                    <div className=" w-full h-full flex items-center justify-center flex-row">
+                        <div className=" w-full h-full flex items-center justify-start">
+                            <div className=" w-[450px] h-full flex items-center justify-center flex-col">
+                                <div className=" w-full min-h-[20%] h-[20%] flex items-center justify-center text-[20px] gap-3">
                                     <div>
                                         <h3>{weatherInfo.name}</h3>
                                     </div>
@@ -43,57 +43,68 @@ function Weather(): JSX.Element {
                                         <h3>{weatherInfo.country}</h3>
                                     </div>
                                     <div>
-                                        <h3>{timeUpdateweatherInfo.toLocaleDateString()}</h3>
-                                    </div>
-                                    <div>
-                                        <h3>{timeUpdateweatherInfo.toLocaleTimeString()}</h3>
+                                        <h3>{timeUpdateweatherInfo}</h3>
                                     </div>
                                 </div>
-                                <div className=" w-full h-[100%] flex items-center justify-start overflow-hidden bg-amber-400">
-                                    <div className=" h-full flex justify-center items-start border relative top-[-50px]">
+                                <div className=" w-full h-[100%] flex items-center justify-start overflow-hidden">
+                                    <div className=" h-full flex justify-center items-start relative top-[-50px]">
                                         <img src={weatherInfo.icon} alt="weather icon" />
                                     </div>
-                                    <div className=" text-[120px] h-full flex justify-center items-start border font-bold font-anta">
-                                        <h1 className=" bg-slate-50 leading-[150px]">{weatherInfo.temp}</h1>
+                                    <div className=" text-[120px] h-full flex justify-center items-start font-bold font-anta">
+                                        <h1 className="leading-[150px]">{weatherInfo.temp}</h1>
                                     </div>
-                                    <div className=" h-full flex justify-center items-start border text-[40px] font-anta font-bold">
+                                    <div className=" h-full flex justify-center items-start text-[40px] font-anta font-bold">
                                         <h1>°C</h1>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div className=" w-full h-full flex items-center justify-center bg-orange-400 flex-row">
-                            <div className=" w-full h-full flex justify-center items-center bg-slate-700">
+                        <div className=" w-full h-full flex items-center justify-center flex-row">
+                            <div className=" w-full h-full flex justify-center items-center">
                                 {/* empty block*/}
                             </div>
-                            <div className=" w-full h-full flex justify-center items-start bg-slate-400 p-6">
-                                <div className=" w-full h-[50%] flex justify-center items-center bg-slate-500 flex-col">
-                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                            <div className=" w-full h-full flex justify-center items-start p-6">
+                                <div className=" w-full h-[60%] flex justify-center items-center flex-col font-light text-[17px]">
+                                    <div className=" w-full h-full flex justify-center items-center gap-2">
                                         <span>Feels like:</span>
-                                        <span>{weatherInfo.feels_like}</span>
+                                        <span className=" font-bold"> {weatherInfo.feels_like}</span>
                                     </div>
-                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                                    <div className=" w-full h-full flex justify-center items-cente gap-2">
                                         <span className="">Humidity:</span>
-                                        <span className="">{weatherInfo.humidity}</span>
+                                        <span className=" font-bold">{weatherInfo.humidity}</span>
                                     </div>
-                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                                    <div className=" w-full h-full flex justify-center items-center gap-2">
                                         <span>Main:</span>
-                                        <span>{weatherInfo.main}</span>
+                                        <span className=" font-bold">{weatherInfo.main}</span>
                                     </div>
-                                    <div className=" w-full h-full flex justify-center items-center bg-slate-200 gap-2">
+                                    <div className=" w-full h-full flex justify-center items-center gap-2">
                                         <span>Pressure:</span>
-                                        <span>{weatherInfo.pressure}</span>
+                                        <span className=" font-bold">{weatherInfo.pressure}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className=" w-full h-[90%] flex items-center justify-center bg-slate-100">
-
+                        <NavLink
+                            to="Temperature">
+                            temp
+                        </NavLink>
                     </div>
                     <div className=" w-full h-full flex items-center justify-center bg-slate-300">
-
+                        <Routes>
+                            <Route
+                                path="Temperature"
+                                element={
+                                    <WeatherTepmerature />
+                                } />
+                            <Route
+                                path="Temperature"
+                                element={
+                                    <WeatherTepmerature />
+                                } />
+                        </Routes>
                     </div>
                 </div>
             </div>
