@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Type_RootState } from "../../../redux";
 import { forecastWeatherAPI } from "../../APIs/openWeatherAPI";
 import { NavLink, Routes, Route } from "react-router-dom";
-import WeatherTepmerature from "./routes/Tepmerature";
+import WeatherTepmerature from "./routes/Temperature/Tepmerature";
 
 function Weather(): JSX.Element {
     const weatherInfo = useSelector((state: Type_RootState) => state.weatherData.weatherData);
@@ -13,14 +13,17 @@ function Weather(): JSX.Element {
 
     React.useEffect(() => {
        loadForecastWeather()
-        console.log(weatherInfo);
-
     }, []);
 
     async function loadForecastWeather() {
         const coutryID = weatherInfo.id;
-        const data = await forecastWeatherAPI(coutryID);
-        console.log(data);
+        try {
+            const data = await forecastWeatherAPI(coutryID);
+            console.log(data);
+        } catch (error) {
+            
+        }
+      
         
     };
 
@@ -40,7 +43,7 @@ function Weather(): JSX.Element {
                     <NavigateBarInOpenApplication />
                 </div>
                 <div className=" w-[100%] h-[100%] items-center justify-center flex flex-col">
-                    <div className=" w-full h-full flex items-center justify-center flex-row">
+                    <div className=" w-full h-[230px] flex items-center justify-center flex-row">
                         <div className=" w-full h-full flex items-center justify-start">
                             <div className=" w-[450px] h-full flex items-center justify-center flex-col">
                                 <div className=" w-full min-h-[20%] h-[20%] flex items-center justify-center text-[20px] gap-3">
@@ -94,13 +97,14 @@ function Weather(): JSX.Element {
                             </div>
                         </div>
                     </div>
-                    <div className=" w-full h-[90%] flex items-center justify-center bg-slate-100">
+                    <div className=" w-full h-[100%] min-h-[280px] flex items-center justify-center bg-slate-100 flex-col">
+                        <div className=" w-full h-[30px] bg-slate-200">
                         <NavLink
                             to="Temperature">
                             temp
                         </NavLink>
-                    </div>
-                    <div className=" w-full h-full flex items-center justify-center bg-slate-300">
+                        </div>
+                        <div className=" w-[100%] h-[250px]">
                         <Routes>
                             <Route
                                 path="Temperature"
@@ -113,6 +117,10 @@ function Weather(): JSX.Element {
                                     <WeatherTepmerature />
                                 } />
                         </Routes>
+                        </div>
+                    </div>
+                    <div className=" w-full h-full flex items-center justify-center bg-slate-300">
+                       
                     </div>
                 </div>
             </div>
