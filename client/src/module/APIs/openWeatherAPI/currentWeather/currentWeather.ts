@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Type_for_WeatherData } from "../../HeaderModule";
+import { Type_for_WeatherData } from "../../../HeaderModule";
+import { forecastWeatherAPI } from "../forecastWeather";
 
 
-
-async function openWeatherAPI(): Promise<Type_for_WeatherData["weatherData"] | undefined> {
+async function currentWeatherAPI(): Promise<Type_for_WeatherData["weatherData"] | undefined> {
     const baseUrl = "http://api.openweathermap.org/data/2.5";
     const apiKey = process.env.REACT_APP_API_KEY_FOR_WEATHER_API;
     const city = "Skalica";
@@ -35,7 +35,7 @@ async function openWeatherAPI(): Promise<Type_for_WeatherData["weatherData"] | u
             lat: data.data.coord.lat,
             id: data.data.id,
             weather: data.data.weather[0].description
-        }
+        };
         return returnedData;
 
     } catch (error) {
@@ -43,7 +43,7 @@ async function openWeatherAPI(): Promise<Type_for_WeatherData["weatherData"] | u
     };
 };
 
-export default openWeatherAPI;
+export default currentWeatherAPI;
 
 
 

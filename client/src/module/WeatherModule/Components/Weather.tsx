@@ -2,6 +2,7 @@ import React from "react";
 import { NavigateBarInOpenApplication } from "../../Shared";
 import { useSelector, useDispatch } from 'react-redux';
 import { Type_RootState } from "../../../redux";
+import { forecastWeatherAPI } from "../../APIs/openWeatherAPI";
 import { NavLink, Routes, Route } from "react-router-dom";
 import WeatherTepmerature from "./routes/Tepmerature";
 
@@ -11,10 +12,17 @@ function Weather(): JSX.Element {
     const dispatch = useDispatch();
 
     React.useEffect(() => {
-        console.log("run");
+       loadForecastWeather()
         console.log(weatherInfo);
 
-    }, [])
+    }, []);
+
+    async function loadForecastWeather() {
+        const coutryID = weatherInfo.id;
+        const data = await forecastWeatherAPI(coutryID);
+        console.log(data);
+        
+    };
 
     return (
         <div className=" w-[100%] h-[100%] bg-thems-appThemeColorSecondary flex justify-center items-center flex-col ">
