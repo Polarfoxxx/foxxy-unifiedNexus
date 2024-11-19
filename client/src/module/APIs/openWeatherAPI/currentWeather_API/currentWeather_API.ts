@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Type_for_WeatherData } from "../../../HeaderModule";
-import { forecastWeatherAPI } from "../forecastWeather";
+import { forecastWeatherAPI } from "../forecastWeather_API";
 
 
 async function currentWeatherAPI(): Promise<Type_for_WeatherData["weatherData"] | undefined> {

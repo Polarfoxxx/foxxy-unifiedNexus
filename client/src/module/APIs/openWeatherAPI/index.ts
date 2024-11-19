@@ -1,2 +1,2 @@
-export * from "./currentWeather";
-export * from "./forecastWeather";
+export * from "./currentWeather_API";
+export * from "./forecastWeather_API";

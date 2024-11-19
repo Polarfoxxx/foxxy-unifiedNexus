@@ -5,26 +5,29 @@ import { Type_RootState } from "../../../redux";
 import { forecastWeatherAPI } from "../../APIs/openWeatherAPI";
 import { NavLink, Routes, Route } from "react-router-dom";
 import WeatherTepmerature from "./routes/Temperature/Tepmerature";
+import { Type_for_weatherForecast } from "../../APIs/openWeatherAPI";
+
 
 function Weather(): JSX.Element {
     const weatherInfo = useSelector((state: Type_RootState) => state.weatherData.weatherData);
     const timeUpdateweatherInfo = useSelector((state: Type_RootState) => state.weatherData.timeUpdateWeatherData);
     const dispatch = useDispatch();
+    const [weatherForecastList, setWeatherForecastList] = React.useState<Array<Type_for_weatherForecast>>([]);
 
     React.useEffect(() => {
-       loadForecastWeather()
+        loadForecastWeather();
     }, []);
 
     async function loadForecastWeather() {
         const coutryID = weatherInfo.id;
         try {
-            const data = await forecastWeatherAPI(coutryID);
-            console.log(data);
+            const responseForecast = await forecastWeatherAPI(coutryID);
+            if (responseForecast) {
+                setWeatherForecastList(responseForecast);
+            }
         } catch (error) {
-            
+            console.log(error);
         }
-      
-        
     };
 
     return (
@@ -99,28 +102,28 @@ function Weather(): JSX.Element {
                     </div>
                     <div className=" w-full h-[100%] min-h-[280px] flex items-center justify-center bg-slate-100 flex-col">
                         <div className=" w-full h-[30px] bg-slate-200">
-                        <NavLink
-                            to="Temperature">
-                            temp
-                        </NavLink>
+                            <NavLink
+                                to="Temperature">
+                                temp
+                            </NavLink>
                         </div>
                         <div className=" w-[100%] h-[250px]">
-                        <Routes>
-                            <Route
-                                path="Temperature"
-                                element={
-                                    <WeatherTepmerature />
-                                } />
-                            <Route
-                                path="Temperature"
-                                element={
-                                    <WeatherTepmerature />
-                                } />
-                        </Routes>
+                            <Routes>
+                                <Route
+                                    path="Temperature"
+                                    element={
+                                        <WeatherTepmerature weatherForecastList = {weatherForecastList} />
+                                    } />
+                                <Route
+                                    path="Temperature"
+                                    element={
+                                        <WeatherTepmerature weatherForecastList = {weatherForecastList} />
+                                    } />
+                            </Routes>
                         </div>
                     </div>
                     <div className=" w-full h-full flex items-center justify-center bg-slate-300">
-                       
+
                     </div>
                 </div>
             </div>
