@@ -23,6 +23,8 @@ function Weather(): JSX.Element {
         try {
             const responseForecast = await forecastWeatherAPI(coutryID);
             if (responseForecast) {
+                console.log(responseForecast);
+                
                 setWeatherForecastList(responseForecast);
             }
         } catch (error) {
@@ -101,21 +103,29 @@ function Weather(): JSX.Element {
                         </div>
                     </div>
                     <div className=" w-full h-[100%] min-h-[280px] flex items-center justify-center bg-slate-100 flex-col">
-                        <div className=" w-full h-[30px] bg-slate-200">
+                        <div className=" w-full h-[30px] bg-slate-200 flex justify-start items-center gap-4 pl-5 text-[13px] font-thin text-thems-defaultTextColor">
+                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
                             <NavLink
-                                to="Temperature">
-                                temp
+                                to="TemperatureForecast">
+                                Temperature
                             </NavLink>
+                            </div>
+                         <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                         <NavLink
+                                to="RainForecast">
+                                Rain
+                            </NavLink>
+                         </div>
                         </div>
-                        <div className=" w-[100%] h-[250px]">
+                        <div className=" w-[100%] h-[250px] ">
                             <Routes>
                                 <Route
-                                    path="Temperature"
+                                    path="TemperatureForecast"
                                     element={
                                         <WeatherTepmerature weatherForecastList = {weatherForecastList} />
                                     } />
                                 <Route
-                                    path="Temperature"
+                                    path="RainForecast"
                                     element={
                                         <WeatherTepmerature weatherForecastList = {weatherForecastList} />
                                     } />
