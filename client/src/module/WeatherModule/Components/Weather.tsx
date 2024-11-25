@@ -4,8 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Type_RootState } from "../../../redux";
 import { forecastWeatherAPI } from "../../APIs/openWeatherAPI";
 import { NavLink, Routes, Route } from "react-router-dom";
-import WeatherTepmerature from "./routes/Temperature/Tepmerature";
 import { Type_for_weatherForecast } from "../../APIs/openWeatherAPI";
+import {
+    WeatherPressure,
+    WeatherTepmerature,
+    WeatherDayTepmerature,
+    WeatherWind
+} from "./routes";
 
 
 function Weather(): JSX.Element {
@@ -24,7 +29,7 @@ function Weather(): JSX.Element {
             const responseForecast = await forecastWeatherAPI(coutryID);
             if (responseForecast) {
                 console.log(responseForecast);
-                
+
                 setWeatherForecastList(responseForecast);
             }
         } catch (error) {
@@ -105,29 +110,51 @@ function Weather(): JSX.Element {
                     <div className=" w-full h-[100%] min-h-[280px] flex items-center justify-center bg-slate-100 flex-col">
                         <div className=" w-full h-[30px] bg-slate-200 flex justify-start items-center gap-4 pl-5 text-[13px] font-thin text-thems-defaultTextColor">
                             <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
-                            <NavLink
-                                to="TemperatureForecast">
-                                Temperature
-                            </NavLink>
+                                <NavLink
+                                    to="TemperatureForecast">
+                                    Temperature hours
+                                </NavLink>
                             </div>
-                         <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
-                         <NavLink
-                                to="RainForecast">
-                                Rain
-                            </NavLink>
-                         </div>
+                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                                <NavLink
+                                    to="TemperatureDayForecast">
+                                    Temperature day
+                                </NavLink>
+                            </div>
+                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                                <NavLink
+                                    to="PressureForecast">
+                                    Pressure
+                                </NavLink>
+                            </div>
+                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                                <NavLink
+                                    to="WindForecast">
+                                    Wind
+                                </NavLink>
+                            </div>
                         </div>
                         <div className=" w-[100%] h-[250px] ">
                             <Routes>
                                 <Route
                                     path="TemperatureForecast"
                                     element={
-                                        <WeatherTepmerature weatherForecastList = {weatherForecastList} />
+                                        <WeatherTepmerature weatherForecastList={weatherForecastList} />
                                     } />
                                 <Route
-                                    path="RainForecast"
+                                    path="TemperatureDayForecast"
                                     element={
-                                        <WeatherTepmerature weatherForecastList = {weatherForecastList} />
+                                        <WeatherDayTepmerature weatherForecastList={weatherForecastList} />
+                                    } />
+                                <Route
+                                    path="PressureForecast"
+                                    element={
+                                        <WeatherPressure weatherForecastList={weatherForecastList} />
+                                    } />
+                                <Route
+                                    path="WindForecast"
+                                    element={
+                                        <WeatherWind weatherForecastList={weatherForecastList} />
                                     } />
                             </Routes>
                         </div>

@@ -1,19 +1,20 @@
 import React, { PureComponent } from 'react';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Type_forTemperatureGraphProps } from './types';
+import { Type_forTemperatureDayGraphProps } from './types';
 
-class TemperatureGraph extends PureComponent<Type_forTemperatureGraphProps> {
+
+class TemperatureDayGraph extends PureComponent<Type_forTemperatureDayGraphProps> {
   static demoUrl = 'https://codesandbox.io/p/sandbox/simple-bar-chart-72d7y5';
 
   render() {
-    const { weatherDataFor_temperature } = this.props;
+    const { weatherDataFor_dayTemperature } = this.props;
 
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
           height={250}
-          data={weatherDataFor_temperature}
+          data={weatherDataFor_dayTemperature}
           margin={{
             top: 5,
             right: 30,
@@ -22,7 +23,7 @@ class TemperatureGraph extends PureComponent<Type_forTemperatureGraphProps> {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" fontSize={9} angle={-45} />
+          <XAxis dataKey="name" fontSize={12}/>
           <YAxis />
           <Tooltip />
           <Legend wrapperStyle={{ width:"100%", height:"40px", fontSize: "15px", display: "flex", justifyContent: "center", alignItems:"end"}} />
@@ -33,4 +34,4 @@ class TemperatureGraph extends PureComponent<Type_forTemperatureGraphProps> {
     );
   }
 }
-export default TemperatureGraph;
+export default TemperatureDayGraph;

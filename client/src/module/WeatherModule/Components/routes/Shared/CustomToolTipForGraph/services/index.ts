@@ -1,0 +1,1 @@
+export { default as services_numberInWeekToDayName } from "./services_numberInWeekToDayName";
