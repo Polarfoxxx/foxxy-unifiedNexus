@@ -13,7 +13,7 @@ function services_numberInWeekToDayName(dayNumber: number): string {
       return "Friday";
     case 6:
       return "Saturday";
-    case 7:
+    case 0:
       return "Sunday";
     default:
       return "Invalid day number";
