@@ -1,5 +1,16 @@
 import React, { PureComponent } from 'react';
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,ReferenceLine } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  Rectangle,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  ReferenceLine
+} from 'recharts';
 import { Type_forTemperatureGraphProps } from './types';
 import { CustomTooltip } from '../Shared';
 
@@ -25,13 +36,22 @@ class TemperatureGraph extends PureComponent<Type_forTemperatureGraphProps> {
             right: 30,
             left: 20,
             bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" fontSize={9} angle={-45} />
+          }}>
+          <CartesianGrid
+            strokeDasharray="3 3" />
+          <XAxis
+            dataKey="name"
+            fontSize={9}
+            angle={-45} />
           <YAxis />
-          <Tooltip content={<CustomTooltip units={"hpma"}/>} />
-          
+          <Tooltip
+            content={
+              <CustomTooltip
+                weatherParameters='temperature'
+                units="°C"
+                secWeatherParameters='feels like'
+                secUnits="°C" />
+            } />
           {
             weatherDataFor_temperature.filter((item) => extractTime(item.name) === "0:00:00").map((midnightItem, index) => {
               const [_date, day, _time] = midnightItem.name.split(" ");
@@ -40,13 +60,40 @@ class TemperatureGraph extends PureComponent<Type_forTemperatureGraphProps> {
                   key={index}
                   x={midnightItem.name}
                   stroke="red"
-                  label={day} />
+                  label={{
+                    value: day,
+                    dy: -60,
+                    fill: "black",
+                    fontSize: 15,
+                  }} />
               );
             })
           }
-          <Legend wrapperStyle={{ width:"100%", height:"40px", fontSize: "15px", display: "flex", justifyContent: "center", alignItems:"end"}} />
-          <Bar dataKey="temperature" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-          <Bar dataKey="feels_like" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+          <Legend
+            wrapperStyle={{
+              width: "100%",
+              height: "40px",
+              fontSize: "15px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "end"
+            }} />
+          <Bar
+            dataKey="temperature"
+            fill="#8884d8"
+            activeBar={
+              <Rectangle
+                fill="pink"
+                stroke="blue" />}
+          />
+          <Bar
+            dataKey="feels_like"
+            fill="#82ca9d"
+            activeBar={
+              <Rectangle
+                fill="gold"
+                stroke="purple" />}
+          />
         </BarChart>
       </ResponsiveContainer>
     );

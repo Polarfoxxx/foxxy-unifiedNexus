@@ -18,7 +18,7 @@ class WindGraph extends PureComponent<Type_forWindGraphProps> {
 
   render() {
     const { weatherDataFor_wind } = this.props;
-   
+
     const extractTime = (name: string) => {
       const [_date, _day, time] = name.split(" ");
       return time;
@@ -55,7 +55,12 @@ class WindGraph extends PureComponent<Type_forWindGraphProps> {
                   key={index}
                   x={midnightItem.name}
                   stroke="red"
-                  label={day} />
+                  label={{
+                    value: day,
+                    dy: -60,
+                    fill: "black",
+                    fontSize: 15,
+                  }} />
               );
             })
           }

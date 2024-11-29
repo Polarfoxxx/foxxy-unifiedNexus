@@ -5,8 +5,10 @@ function CustomTooltip({
     active,
     payload,
     label,
+    weatherParameters,
     units,
     recalculate,
+    secWeatherParameters,
     secUnits,
     secRecalculate
 }: Type_forCustomTooltip): JSX.Element | null {
@@ -19,70 +21,81 @@ function CustomTooltip({
 
     if (active && payload && payload.length) {
         return (
-            <div
-                style={{ backgroundColor: "white", padding: "10px", borderRadius: "5px", border: "1px solid black" }}
-                className="custom-tooltip">
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", gap: "5px" }} >
-                        <div>
-                            <p
-                                style={{ fontWeight: "bold" }}
-                                className="label">
+            <div className=" w-auto h-auto bg-thems-appThemeColorSecondary p-[11px] rounded-[5px] border border-black font-oswald">
+                <div className="w-auto h-auto flex flex-col">
+                    <div className=" w-auto h-auto flex flex-row gap-1">
+                        <div className="w-auto h-auto flex justify-center items-center">
+                            <p className=" font-bold">
                                 {date}
                             </p>
                         </div>
-                        <div>
-                            <p
-                                style={{ fontWeight: "bold" }}
-                                className="label">
+                        <div className="w-auto h-auto flex justify-center items-center">
+                            <p className=" font-bold">
                                 {day}
                             </p>
                         </div>
                     </div>
-                    <div>
-                        <p
-                            style={{ fontSize: "13px" }}
-                            className="label">
+                    <div className="w-auto h-auto flex justify-center items-center">
+                        <p className=" text-[13px]">
                             {time}
                         </p>
                     </div>
                 </div>
-
-                <div style={{ backgroundColor: "var(--appThemeColor)", padding: "5px", borderRadius: "4px", color: "var(--defaultTextColor)" }}>
-                    <div style={{ display: "flex", flexDirection: "row" }}>
-                        <div>
-                            <p
-                                style={{ fontWeight: "bold" }}
-                                className="desc">
+                {/* value block----------------------------------------- */}
+                <div className="w-auto h-auto bg-thems-appThemeColor p-1 rounded text-thems-defaultTextColor flex flex-col">
+                    <div className="w-auto h-auto flex-row">
+                        <div className="w-auto h-auto mr-[5px]">
+                            <p>
+                                {weatherParameters}
+                            </p>
+                        </div>
+                        <div className="w-auto h-auto">
+                            <p className=" font-bold">
                                 {payload[0].value}
                             </p>
                         </div>
-                        <div>
-                            <p style={{ fontSize: "12px", display: "flex", justifyContent: "center", alignItems: "center", marginLeft: "5px" }}>
+                        <div className="w-auto h-auto flex justify-center items-center ml-1">
+                            <p className=" text-[13px]">
                                 {units}
                             </p>
                         </div>
                     </div>
-                    <div>
-                        {
-                            secUnits && secRecalculate
-                             &&
-                            <div style={{ display: "flex", flexDirection: "row" }}>
-                                <div>
-                                    <p
-                                        className="desc"
-                                        style={{ fontWeight: "bold" }}>
-                                        {(payload[0].value * secRecalculate).toFixed(1)}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p style={{ fontSize: "12px", display: "flex", justifyContent: "center", alignItems: "center", marginLeft: "5px" }}>
-                                        {secUnits}
-                                    </p>
-                                </div>
+                    {
+                        payload[1] !== undefined &&
+                        <div className=" w-auto h-auto flex flex-row">
+                            <div className="w-auto h-auto mr-[5px]">
+                                <p>
+                                    {secWeatherParameters}
+                                </p>
                             </div>
-                        }
-                    </div>
+                            <div className="w-auto h-auto">
+                                <p className=" font-bold">
+                                    {payload[1].value}
+                                </p>
+                            </div>
+                            <div className="w-auto h-auto mr-[5px] flex justify-center items-center ml-1">
+                                <p className="text-[13px]">
+                                    {units}
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    {
+                        secUnits && secRecalculate
+                        &&
+                        <div className=" w-auto h-auto flex  flex-row">
+                            <div className=" w-auto h-auto">
+                                <p className=" font-bold">
+                                    {(payload[0].value * secRecalculate).toFixed(1)}
+                                </p>
+                            </div>
+                            <div className="w-auto h-auto mr-[5px] flex justify-center items-center ml-1">
+                                <p className="text-[13px]">
+                                    {secUnits}
+                                </p>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         );
