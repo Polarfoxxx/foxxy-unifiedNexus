@@ -28,8 +28,6 @@ function Weather(): JSX.Element {
         try {
             const responseForecast = await forecastWeatherAPI(coutryID);
             if (responseForecast) {
-                console.log(responseForecast);
-
                 setWeatherForecastList(responseForecast);
             }
         } catch (error) {
@@ -42,12 +40,12 @@ function Weather(): JSX.Element {
             {/* header */}
             <div className=" w-full h-[7%] flex justify-start items-start bg-thems-appThemeColor">
                 <div className=" w-[250px] h-[100%] text-center flex justify-center items-center bg-thems-appThemeColorSecondary">
-                    <h2 className="text-[33px] text-thems-defaultTextColorDark font-oswald ">
+                    <h2 className="text-[33px] text-thems-defaultTextColorSec font-oswald ">
                         Weather
                     </h2>
                 </div>
             </div>
-            {/* content */}
+            {/* content--------------------------------- */}
             <div className=" w-full h-full flex flex-row justify-center items-center">
                 <div className=' w-[100%] xl:w-[75px] h-full items-center justify-center '>
                     <NavigateBarInOpenApplication />
@@ -56,7 +54,7 @@ function Weather(): JSX.Element {
                     <div className=" w-full h-[230px] flex items-center justify-center flex-row">
                         <div className=" w-full h-full flex items-center justify-start">
                             <div className=" w-[450px] h-full flex items-center justify-center flex-col">
-                                <div className=" w-full min-h-[20%] h-[20%] flex items-center justify-center text-[20px] gap-3">
+                                <div className=" w-full min-h-[20%] h-[20%] flex items-center justify-center text-[20px] gap-3 font-oswald font-bold">
                                     <div>
                                         <h3>{weatherInfo.name}</h3>
                                     </div>
@@ -79,36 +77,38 @@ function Weather(): JSX.Element {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div className=" w-full h-full flex items-center justify-center flex-row">
-                            <div className=" w-full h-full flex justify-center items-center">
-                                {/* empty block*/}
+                            <div className=" w-full h-full flex justify-center items-center bg-black">
+                                {/* empty block---------------------------*/}
                             </div>
-                            <div className=" w-full h-full flex justify-center items-start p-6">
+                            <div className=" w-full h-full flex justify-center items-center p-2 bg-slate-100">
                                 <div className=" w-full h-[60%] flex justify-center items-center flex-col font-light text-[17px]">
-                                    <div className=" w-full h-full flex justify-center items-center gap-2">
+                                    <div className=" w-full h-full flex justify-start items-center gap-1">
                                         <span>Feels like:</span>
                                         <span className=" font-bold"> {weatherInfo.feels_like}</span>
+                                        <span className=" text-[13px]">°C</span>
                                     </div>
-                                    <div className=" w-full h-full flex justify-center items-cente gap-2">
+                                    <div className=" w-full h-full flex justify-start items-cente gap-1">
                                         <span className="">Humidity:</span>
                                         <span className=" font-bold">{weatherInfo.humidity}</span>
+                                        <span className=" text-[13px]">%</span>
                                     </div>
-                                    <div className=" w-full h-full flex justify-center items-center gap-2">
+                                    <div className=" w-full h-full flex justify-start items-center gap-1">
                                         <span>Main:</span>
                                         <span className=" font-bold">{weatherInfo.main}</span>
                                     </div>
-                                    <div className=" w-full h-full flex justify-center items-center gap-2">
+                                    <div className=" w-full h-full flex justify-start items-center gap-1">
                                         <span>Pressure:</span>
                                         <span className=" font-bold">{weatherInfo.pressure}</span>
+                                        <span className=" text-[13px]">hPa</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className=" w-full h-[100%] min-h-[280px] flex items-center justify-center bg-slate-100 flex-col">
-                        <div className=" w-full h-[30px] bg-slate-200 flex justify-start items-center gap-4 pl-5 text-[13px] font-thin text-thems-defaultTextColor">
+                    <div className=" w-full h-[100%] min-h-[280px] flex items-center justify-center flex-col">
+                        <div className=" w-full h-[30px] flex justify-start items-center gap-4 pl-5 text-[13px] font-thin text-thems-defaultTextColor">
                             <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
                                 <NavLink
                                     to="TemperatureForecast">
@@ -159,7 +159,7 @@ function Weather(): JSX.Element {
                             </Routes>
                         </div>
                     </div>
-                    <div className=" w-full h-full flex items-center justify-center bg-slate-300">
+                    <div className=" w-full h-full flex items-center justify-center ">
 
                     </div>
                 </div>

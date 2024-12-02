@@ -39,7 +39,8 @@ module.exports = {
           appThemeColorFourth: "var(--appThemeColorFourth)",
           //! textColor........................
           defaultTextColor: 'var(--defaultTextColor)',
-          defaultTextColorDark: 'var(--defaultTextColorDark)',
+          defaultTextColorSec: 'var(--defaultTextColorSec)',
+          defaultTextColorThree: "var(--defaultTextColorThree)",
           current_day: "var(--current_day)",
           //! inputStyle........................
           inputBorder: "var(--inputBorder)",
@@ -52,22 +53,28 @@ module.exports = {
 
 
           /* -------------------------- */
-          //! CalendarBackGround.............
+          //! Calendar........................
           eventBackground_selected: "var(--eventBackground_selected)",
           current_time_line: "var(--current_time_line)",
           InvalidDay_Background: "var(--InvalidDay_Background)",
           currentDayBlock: "var(--currentDayBlock)",
           allEventOpossiteBackground: "var(--allEventOpossiteBackground)",
-          //! littleComponent...............
+          //! littleComponent.................
           littleComponent_Background: "var(--littleComponent_Background)",
           littleComponent_border: "var(--littleComponent_border)",
           littleComponent_oppositeColor: "var(--littleComponent_oppositeColor)",
-          //! MessageBackGround.............
+          //! Message.........................
           messageContent_background: "var(--messageContent_background)",
           newMessageForm_Background: "var(--newMessageForm_Background)",
           itemHeader_Background: "var(--itemHeader_Background)",
           item_Background: "var(--item_Background)",
-
+          //! Weather.........................
+          weatherTemperatureGraph_Warm: "var(--weatherTemperatureGraph_Warm)",
+          weatherTemperatureGraph_Cool: "var(--weatherTemperatureGraph_Cool)",
+          weatherFeelsLikeGraph_Warm: "var(--weatherFeelsLikeGraph_Warm)",
+          weatherFeelsLikeGraph_Cool: "var(--weatherFeelsLikeGraph_Cool)",
+          weatherPressureLine: "var(--weatherPressureLine)",
+          weatherWindLine: "var(--weatherWindLine)",
         },
       },
     },

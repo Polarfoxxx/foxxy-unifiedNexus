@@ -26,7 +26,7 @@ function NavigateBarInOpenApplication(): JSX.Element {
                 allApplicationFordisplay.map((item, key) =>
                     <div
                         onClick={() => handleClick(item)}
-                        className=" w-[40px] h-[40px] bg-thems-miniNavigationButton text-thems-defaultTextColorTwo font-bold rounded-[50%] flex items-center justify-center cursor-pointer hover:scale-[1.08] border"
+                        className=" w-[40px] h-[40px] bg-thems-miniNavigationButton text-thems-defaultTextColorSec font-bold rounded-[50%] flex items-center justify-center cursor-pointer hover:scale-[1.08] border"
                         key={key}>
                         <h1> {item.icon}</h1>
                     </div>

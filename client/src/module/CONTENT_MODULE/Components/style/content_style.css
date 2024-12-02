@@ -9,7 +9,8 @@ div[data-theme="light"] {
     --appThemeColorFourth: rgb(90, 90, 90);
     /*! textColor */
     --defaultTextColor: rgb(255, 255, 255);
-    --defaultTextColorTwo: rgb(0, 0, 0);
+    --defaultTextColorSec: rgb(0, 0, 0);
+    --defaultTextColorThree: rgb(226, 226, 226);
     --current_day: rgb(255, 0, 0);
     /*! inputStyle */
     --inputBorder: rgb(41, 41, 41);
@@ -22,21 +23,28 @@ div[data-theme="light"] {
 
 
     /* ------------------------------- */
-    /*! CalendarBackGround */
+    /*! Calendar------------------------- */
     --current_time_line: rgb(255, 0, 0);
     --eventBackground_selected: rgb(232, 6, 6);
     --InvalidDay_Background: rgba(56, 56, 56, 0.668);
     --currentDayBlock: rgb(46, 233, 217);
     --allEventOpossiteBackground: rgb(54, 54, 54);
-    /*! littleComponents */
+    /*! littleComponents -----------------*/
     --littleComponent_Background: rgb(246, 246, 246);
     --littleComponent_border: rgba(164, 164, 164, 0.839);
     --littleComponent_oppositeColor: rgb(87, 87, 228);
-    /*! MessageBackGround */
+    /*! Message--------------------------*/
     --messageContent_background: rgb(236, 236, 236);
     --newMessageForm_Background: rgb(240, 240, 240);
     --item_Background: rgb(255, 255, 255);
     --itemHeader_Background: rgb(179, 95, 218);
+   /*! Weather-------------------------- */
+   --weatherTemperatureGraph_Warm: rgb(93, 211, 64);
+   --weatherTemperatureGraph_Cool: rgb(52, 201, 206);
+   --weatherFeelsLikeGraph_Warm: rgb(200, 204, 200);
+   --weatherFeelsLikeGraph_Cool: rgb(160, 240, 243);
+   --weatherPressureLine: rgb(93, 211, 64);
+   --weatherWindLine: rgb(93, 211, 64);
 }
 
 

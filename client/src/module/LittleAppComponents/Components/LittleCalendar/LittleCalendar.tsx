@@ -52,7 +52,7 @@ function LittleCalendar(): JSX.Element {
 
                 </div>
                 <div className=" w-full h-full flex items-center justify-center">
-                    <h2 className="  text-thems-defaultTextColorDark font-bold text-[20px] font-oswald">
+                    <h2 className="  text-thems-defaultTextColorSec font-bold text-[20px] font-oswald">
                         {currentDate}
                     </h2>
                 </div>

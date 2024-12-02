@@ -85,7 +85,7 @@ function MessageList(): JSX.Element {
             className='w-full h-auto xl:h-full flex items-center justify-center flex-col'>
             <div className="w-full h-[7%] flex items-start justify-start bg-thems-appThemeColor">
                 <div className=" w-[250px] h-[100%] text-center flex justify-center items-center bg-thems-appThemeColorSecondary">
-                    <h2 className="text-[33px] text-thems-defaultTextColorDark font-oswald ">
+                    <h2 className="text-[33px] text-thems-defaultTextColorSec font-oswald ">
                         Your messages
                     </h2>
                 </div>
@@ -97,7 +97,7 @@ function MessageList(): JSX.Element {
                 <div className=" w-full h-full flex justify-center items-center flex-col xl:flex-row">
                     {/* -----constrol message side--------- */}
                     <div className=" xl:w-[500px] w-full h-full flex justify-start items-center flex-col bg-thems-appThemeColor">
-                        <div className=" w-full h-[50px] flex justify-center items-center font-oswald text-[25px] text-thems-defaultTextColorDark bg-thems-appThemeColorSecondary">
+                        <div className=" w-full h-[50px] flex justify-center items-center font-oswald text-[25px] text-thems-defaultTextColorSec bg-thems-appThemeColorSecondary">
                             <h3>Create a new message</h3>
                         </div>
                         <div className="w-full h-[300px] flex items-center justify-center flex-col xl:flex-row ">
@@ -195,7 +195,7 @@ function MessageList(): JSX.Element {
                                     className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border rounded-[5px] hover:border-thems-appThemeColor hover:border-2"
                                     style={({ isActive }) => ({
                                         backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorSec)',
                                     })}
                                     to="ValidMessageList">
                                     Your note
@@ -204,7 +204,7 @@ function MessageList(): JSX.Element {
                                     className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border rounded-[5px] hover:border-thems-appThemeColor hover:border-2"
                                     style={({ isActive }) => ({
                                         backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorSec)',
                                     })}
                                     to="InvalidMessageList">
                                     Fulfilled note
@@ -213,7 +213,7 @@ function MessageList(): JSX.Element {
                                     className="m-2 flex justify-center items-center text-[14px] w-[220px] h-[25px] border rounded-[5px] hover:border-thems-appThemeColor hover:border-2"
                                     style={({ isActive }) => ({
                                         backgroundColor: isActive ? 'var(--appThemeColor)' : 'var(--appThemeColorSecondary)',
-                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorDark)',
+                                        color: isActive ? 'var(--defaultTextColor)' : 'var(--defaultTextColorSec)',
                                     })}
                                     to="AllMessageList">
                                     All list

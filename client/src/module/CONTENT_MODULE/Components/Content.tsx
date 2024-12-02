@@ -83,14 +83,14 @@ function Content(): JSX.Element {
       const interval =  setInterval(() => {
         loadWeathetAPI();
         }, 1800000);
-        const currentDateAndTime = new Date().toISOString()
+        const currentDateAndTimeChangeToString = new Date().toLocaleDateString()
         async function loadWeathetAPI() {
             try {
                 const load_data = await currentWeatherAPI();
                 if (load_data) {
                     dispatch(setWeatherData({
                         weatherData: load_data,
-                        timeUpdateWeatherData: currentDateAndTime
+                        timeUpdateWeatherData: currentDateAndTimeChangeToString
                     }));
                 };
             } catch (error) {

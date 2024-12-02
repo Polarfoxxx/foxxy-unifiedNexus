@@ -1,5 +1,4 @@
 
-
 export type Type_forCustomTooltip = {
     active?: boolean,
     payload?: any,
