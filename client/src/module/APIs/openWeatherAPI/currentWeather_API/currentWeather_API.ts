@@ -11,6 +11,7 @@ async function currentWeatherAPI(): Promise<Type_for_WeatherData["weatherData"] 
 
     try {
         const data = await axios.get(`${baseUrl}/weather?q=${city}&appid=${apiKey}`);
+        
         const returnedData = {
             clouds: data.data.clouds.all,
             feels_like: Math.round((data.data.main.feels_like - kelvin) * 10) / 10,

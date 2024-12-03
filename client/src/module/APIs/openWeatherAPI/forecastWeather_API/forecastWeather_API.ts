@@ -9,6 +9,8 @@ async function forecastWeatherAPI(locationID: number): Promise<Array<Type_for_we
     try {
         const responseForecast = await axios.get(`${baseUrl}/forecast?id=${locationID}&appid=${apiKey}`);
         const forecastList = responseForecast.data.list as Array<any>;
+        console.log(responseForecast);
+        
         const forecastReturnedData: Array<Type_for_weatherForecast> = forecastList.map((item: any) => {
             return {
                 dt_txt: item.dt_txt,
@@ -29,7 +31,7 @@ async function forecastWeatherAPI(locationID: number): Promise<Array<Type_for_we
                     temp_max: Math.round((item.main.temp_max - kelvin) * 10) / 10,
                     temp_min: Math.round((item.main.temp_min - kelvin) * 10) / 10,
                 },
-                rain3h: item.rain?.['3h'],
+                rain3h: item.rain?.['3h'] | 0,
                 visibility: item.visibility,
                 weather: {
                     description: item.weather[0].description,

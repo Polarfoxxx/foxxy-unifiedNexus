@@ -1,23 +1,23 @@
 import React from "react";
-import WindGraph from "./WindGraph";
+import CloudsGraph from "./CloudsGraph";
 import {
-    Type_forData_forWindGraph,
-    Type_forWeatherWind
-} from "./types";
+     Type_forData_forCloudsGraph,
+      Type_forWeatherClouds 
+    } from "./types";
 import { services_changeDateToStringFormat } from "../Shared/services";
 
 
-function WeatherWind(props: Type_forWeatherWind): JSX.Element {
+function WeatherClouds(props: Type_forWeatherClouds): JSX.Element {
     const weatherForecastList = props.weatherForecastList;
 
 
-    const weatherDataFor_wind: Array<Type_forData_forWindGraph> = React.useMemo(() => {
+    const weatherDataFor_clouds: Array<Type_forData_forCloudsGraph> = React.useMemo(() => {
         return weatherForecastList.map(item => {
             const { dateString, dayString, timeString } = services_changeDateToStringFormat(item.dt_txt);
 
             return {
                 name: `${dateString} ${dayString} ${timeString}`,
-                wind: item.wind.speed,
+                wind: item.clouds,
             };
         });
     }, [weatherForecastList]);
@@ -25,9 +25,9 @@ function WeatherWind(props: Type_forWeatherWind): JSX.Element {
 
     return (
         <div className=" w-full h-full">
-            <WindGraph weatherDataFor_wind={weatherDataFor_wind} />
+            <CloudsGraph weatherDataFor_clouds={weatherDataFor_clouds} />
         </div>
     )
 };
 
-export default WeatherWind;
+export default WeatherClouds;

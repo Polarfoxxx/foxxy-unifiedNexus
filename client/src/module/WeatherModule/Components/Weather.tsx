@@ -9,9 +9,11 @@ import {
     WeatherPressure,
     WeatherTepmerature,
     WeatherDayTepmerature,
-    WeatherWind
+    WeatherWind,
+    WeatherClouds,
+    WeatherRain
 } from "./routes";
-
+const Compass = require("cardinal-direction");
 
 function Weather(): JSX.Element {
     const weatherInfo = useSelector((state: Type_RootState) => state.weatherData.weatherData);
@@ -79,10 +81,10 @@ function Weather(): JSX.Element {
                             </div>
                         </div>
                         <div className=" w-full h-full flex items-center justify-center flex-row">
-                            <div className=" w-full h-full flex justify-center items-center bg-black">
+                            <div className=" w-full h-full flex justify-center items-center">
                                 {/* empty block---------------------------*/}
                             </div>
-                            <div className=" w-full h-full flex justify-center items-center p-2 bg-slate-100">
+                            <div className=" w-full h-full flex justify-center items-center p-2">
                                 <div className=" w-full h-[60%] flex justify-center items-center flex-col font-light text-[17px]">
                                     <div className=" w-full h-full flex justify-start items-center gap-1">
                                         <span>Feels like:</span>
@@ -95,42 +97,85 @@ function Weather(): JSX.Element {
                                         <span className=" text-[13px]">%</span>
                                     </div>
                                     <div className=" w-full h-full flex justify-start items-center gap-1">
-                                        <span>Main:</span>
-                                        <span className=" font-bold">{weatherInfo.main}</span>
+                                        <span>Description:</span>
+                                        <span className=" font-bold">{weatherInfo.description}</span>
                                     </div>
                                     <div className=" w-full h-full flex justify-start items-center gap-1">
                                         <span>Pressure:</span>
                                         <span className=" font-bold">{weatherInfo.pressure}</span>
                                         <span className=" text-[13px]">hPa</span>
                                     </div>
+                                    <div className=" w-full h-full flex justify-start items-center gap-1">
+                                        <span>Visibility:</span>
+                                        <span className=" font-bold">{weatherInfo.visibility}</span>
+                                        <span className=" text-[13px]">m</span>
+                                    </div>
+                                    <div className=" w-full h-full flex justify-start items-center gap-1">
+                                        <span>Wind:</span>
+                                        <span className=" font-bold">{weatherInfo.speed}</span>
+                                        <span className=" text-[13px]">m/s</span>
+                                    </div>
+                                    <div className=" w-full h-full flex justify-start items-center gap-1">
+                                        <span>Gust:</span>
+                                        <span className=" font-bold">{weatherInfo.gust}</span>
+                                        <span className=" text-[13px]">m/s</span>
+                                    </div>
+                                    <div className=" w-full h-full flex justify-start items-center gap-1">
+                                        <span>Cardinal directions:</span>
+                                        <span className=" font-bold">{Compass.cardinalFromDegree(weatherInfo.visibility)}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className=" w-full h-[100%] min-h-[280px] flex items-center justify-center flex-col">
-                        <div className=" w-full h-[30px] flex justify-start items-center gap-4 pl-5 text-[13px] font-thin text-thems-defaultTextColor">
-                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                        <div className=" w-full h-[30px] flex justify-start items-center gap-4 pl-5 text-[14px] font-oswald text-thems-defaultTextColorDark">
+                            <div className=" w-[150px] h-[25px] flex items-center justify-center bg-thems-appThemeColorTertiary rounded-md overflow-hidden hover:bg-thems-appThemeColor hover:text-thems-defaultTextColor">
                                 <NavLink
+                                    style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
+                                    className={({ isActive }) => isActive ? "bg-thems-appThemeColor text-thems-defaultTextColor" : ""}
                                     to="TemperatureForecast">
                                     Temperature hours
                                 </NavLink>
                             </div>
-                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                            <div className=" w-[150px] h-[25px] flex items-center justify-center bg-thems-appThemeColorTertiary rounded-md overflow-hidden hover:bg-thems-appThemeColor hover:text-thems-defaultTextColor">
                                 <NavLink
+                                    style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
+                                    className={({ isActive }) => isActive ? "bg-thems-appThemeColor text-thems-defaultTextColor" : ""}
                                     to="TemperatureDayForecast">
                                     Temperature day
                                 </NavLink>
                             </div>
-                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                            <div className=" w-[150px] h-[25px] flex items-center justify-center bg-thems-appThemeColorTertiary rounded-md overflow-hidden hover:bg-thems-appThemeColor hover:text-thems-defaultTextColor">
                                 <NavLink
+                                    style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
+                                    className={({ isActive }) => isActive ? "bg-thems-appThemeColor text-thems-defaultTextColor" : ""}
                                     to="PressureForecast">
                                     Pressure
                                 </NavLink>
                             </div>
-                            <div className=" w-[150px] h-[20px] flex items-center justify-center bg-slate-500 rounded-md hover:bg-slate-50">
+                            <div className=" w-[150px] h-[25px] flex items-center justify-center bg-thems-appThemeColorTertiary rounded-md overflow-hidden hover:bg-thems-appThemeColor hover:text-thems-defaultTextColor">
                                 <NavLink
+                                    style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
+                                    className={({ isActive }) => isActive ? "bg-thems-appThemeColor text-thems-defaultTextColor" : ""}
                                     to="WindForecast">
                                     Wind
+                                </NavLink>
+                            </div>
+                            <div className=" w-[150px] h-[25px] flex items-center justify-center bg-thems-appThemeColorTertiary rounded-md overflow-hidden hover:bg-thems-appThemeColor hover:text-thems-defaultTextColor">
+                                <NavLink
+                                    style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
+                                    className={({ isActive }) => isActive ? "bg-thems-appThemeColor text-thems-defaultTextColor" : ""}
+                                    to="RainForecast">
+                                    Rain
+                                </NavLink>
+                            </div>
+                            <div className=" w-[150px] h-[25px] flex items-center justify-center bg-thems-appThemeColorTertiary rounded-md overflow-hidden hover:bg-thems-appThemeColor hover:text-thems-defaultTextColor">
+                                <NavLink
+                                    style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}
+                                    className={({ isActive }) => isActive ? "bg-thems-appThemeColor text-thems-defaultTextColor" : ""}
+                                    to="CloudsForecast">
+                                    Clouds
                                 </NavLink>
                             </div>
                         </div>
@@ -155,6 +200,16 @@ function Weather(): JSX.Element {
                                     path="WindForecast"
                                     element={
                                         <WeatherWind weatherForecastList={weatherForecastList} />
+                                    } />
+                                <Route
+                                    path="RainForecast"
+                                    element={
+                                        <WeatherRain weatherForecastList={weatherForecastList} />
+                                    } />
+                                <Route
+                                    path="CloudsForecast"
+                                    element={
+                                        <WeatherClouds weatherForecastList={weatherForecastList} />
                                     } />
                             </Routes>
                         </div>

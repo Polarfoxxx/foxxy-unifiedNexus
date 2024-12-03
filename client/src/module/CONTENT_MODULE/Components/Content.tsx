@@ -87,6 +87,7 @@ function Content(): JSX.Element {
         async function loadWeathetAPI() {
             try {
                 const load_data = await currentWeatherAPI();
+                
                 if (load_data) {
                     dispatch(setWeatherData({
                         weatherData: load_data,

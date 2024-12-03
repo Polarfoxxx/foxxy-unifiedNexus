@@ -1,6 +1,9 @@
 import React from "react";
 import PressureGraph from "./PressureGraph";
-import { Type_forData_forPressure, Type_forWeatherPressure } from "./types";
+import {
+     Type_forData_forPressure,
+      Type_forWeatherPressure 
+    } from "./types";
 import { services_changeDateToStringFormat } from "../Shared/services";
 
 
