@@ -47,11 +47,9 @@ class CloudsGraph extends PureComponent<Type_forCloudsGraphProps> {
           <YAxis />
           <Tooltip content={
             <CustomTooltip
-            weatherParameters='wind'
-              units={"meter/sec"}
-              secWeatherParameters='wind'
-              secUnits={"km/h"}
-              secRecalculate={3.6} />
+              weatherParameters='clouds'
+              units={"%"}
+              secWeatherParameters='wind' />
           } />
           <Legend wrapperStyle={{
             width: "100%",
@@ -78,9 +76,9 @@ class CloudsGraph extends PureComponent<Type_forCloudsGraphProps> {
             })}
           <Area
             type="monotone"
-            dataKey="wind"
-            stroke="var(--weatherWindLine)"
-            fill="var(--weatherWindLine)"
+            dataKey="clouds"
+            stroke="var(--weatherGlobalGraphLine)"
+            fill="var(--weatherGlobalGraphLine)"
             fillOpacity={0.2} />
         </AreaChart>
       </ResponsiveContainer>

@@ -80,8 +80,8 @@ class WindGraph extends PureComponent<Type_forWindGraphProps> {
           <Area
             type="monotone"
             dataKey="wind"
-            stroke="var(--weatherWindLine)"
-            fill="var(--weatherWindLine)"
+            stroke="var(--weatherGlobalGraphLine)"
+            fill="var(--weatherGlobalGraphLine)"
             fillOpacity={0.2} />
         </AreaChart>
       </ResponsiveContainer>

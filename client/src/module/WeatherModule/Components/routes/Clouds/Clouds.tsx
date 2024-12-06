@@ -17,7 +17,7 @@ function WeatherClouds(props: Type_forWeatherClouds): JSX.Element {
 
             return {
                 name: `${dateString} ${dayString} ${timeString}`,
-                wind: item.clouds,
+                clouds: item.clouds,
             };
         });
     }, [weatherForecastList]);

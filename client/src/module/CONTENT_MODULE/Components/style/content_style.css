@@ -43,8 +43,7 @@ div[data-theme="light"] {
    --weatherTemperatureGraph_Cool: rgb(52, 201, 206);
    --weatherFeelsLikeGraph_Warm: rgb(200, 204, 200);
    --weatherFeelsLikeGraph_Cool: rgb(160, 240, 243);
-   --weatherPressureLine: rgb(93, 211, 64);
-   --weatherWindLine: rgb(93, 211, 64);
+   --weatherGlobalGraphLine: rgb(93, 211, 64);
 }
 
 

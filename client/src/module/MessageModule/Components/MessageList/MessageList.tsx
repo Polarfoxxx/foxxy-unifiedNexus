@@ -134,7 +134,6 @@ function MessageList(): JSX.Element {
                                                     <option value="finance">Finance</option>
                                                     <option value="other">Other</option>
                                                 </select>
-
                                             </div>
                                         </div>
                                         <div className="w-[300px] h-[100%] flex justify-center items-center flex-col">

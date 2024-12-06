@@ -47,11 +47,8 @@ class RainGraph extends PureComponent<Type_forRainGraphProps> {
           <YAxis />
           <Tooltip content={
             <CustomTooltip
-            weatherParameters='wind'
-              units={"meter/sec"}
-              secWeatherParameters='wind'
-              secUnits={"km/h"}
-              secRecalculate={3.6} />
+            weatherParameters='rain'
+              units={"mm"}/>
           } />
           <Legend wrapperStyle={{
             width: "100%",
@@ -78,9 +75,9 @@ class RainGraph extends PureComponent<Type_forRainGraphProps> {
             })}
           <Area
             type="monotone"
-            dataKey="wind"
-            stroke="var(--weatherWindLine)"
-            fill="var(--weatherWindLine)"
+            dataKey="rain"
+            stroke="var(--weatherGlobalGraphLine)"
+            fill="var(--weatherGlobalGraphLine)"
             fillOpacity={0.2} />
         </AreaChart>
       </ResponsiveContainer>

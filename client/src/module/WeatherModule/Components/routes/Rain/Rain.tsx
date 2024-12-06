@@ -17,7 +17,7 @@ function WeatherRain(props: Type_forWeatherRain): JSX.Element {
 
             return {
                 name: `${dateString} ${dayString} ${timeString}`,
-                wind: item.rain3h,
+                rain: item.rain3h,
             };
         });
     }, [weatherForecastList]);

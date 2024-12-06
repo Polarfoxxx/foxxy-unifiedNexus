@@ -76,8 +76,8 @@ class PressureAndCloudsGraph extends PureComponent<Type_forPressueGraphProps> {
           <Area
             type="monotone"
             dataKey="pressure"
-            stroke="var(--weatherPressureLine)"
-            fill="var(--weatherPressureLine)"
+            stroke="var(--weatherGlobalGraphLine)"
+            fill="var(--weatherGlobalGraphLine)"
             fillOpacity={0.2} />
         </AreaChart>
       </ResponsiveContainer>
