@@ -1,6 +1,6 @@
 import services_changeStringToDateFormat from "../servicesChangeStringToDateFormat/services_chengeStringToDateFormat";
 import { Type_for_newEventFor_API } from "../../CalendarModule";
-import { Type_for_newMessageFor_API } from "../../MessageModule/Components/MessageList/types";
+import { Type_for_newMessageFor_API } from "../../MessageModule";
 
 type Type_for_Constructor = {
     startDate_event?: string;

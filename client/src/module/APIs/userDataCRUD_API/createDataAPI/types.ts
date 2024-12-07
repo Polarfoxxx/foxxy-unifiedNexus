@@ -1,6 +1,6 @@
 import { Type_for_newEventFor_API } from "../../../CalendarModule";
 import { Type_for_saveDataTheme } from "../../../HeaderModule";
-import { Type_for_newMessageFor_API } from "../../../MessageModule/Components/MessageList/types";
+import { Type_for_newMessageFor_API } from "../../../MessageModule";
 
 export type Type_for_createData_API = {
     loginUserName: string,

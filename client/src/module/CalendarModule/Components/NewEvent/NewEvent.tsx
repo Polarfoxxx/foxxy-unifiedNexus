@@ -6,7 +6,7 @@ import { faDownLong } from '@fortawesome/free-solid-svg-icons';
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { Type_for_newEventFor_API } from "./type";
-import { Type_for_newMessageFor_API } from "../../../MessageModule/Components/MessageList/types";
+import { Type_for_newMessageFor_API } from "../../../MessageModule";
 import { NewRequest } from "../../../utils";
 import { createData_API } from "../../../APIs/userDataCRUD_API";
 import { setAllEvent } from "../../../../redux";

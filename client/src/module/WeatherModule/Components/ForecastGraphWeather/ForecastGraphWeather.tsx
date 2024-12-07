@@ -7,7 +7,7 @@ import {
     WeatherWind,
     WeatherClouds,
     WeatherRain
-} from "../routes";
+} from "./routes";
 import { Type_forForecastGraphWeatherAndForecastIconWeather } from "./types";
 
 function ForecastGraphWeather({ weatherForecastList }: Type_forForecastGraphWeatherAndForecastIconWeather): JSX.Element {

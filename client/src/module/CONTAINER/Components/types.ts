@@ -1,5 +1,5 @@
 import { Type_for_newEventFrom_DB } from "../../CalendarModule";
-import { Type_for_newMesssageFrom_DB } from "../../MessageModule/Components/MessageList/types";
+import { Type_for_newMesssageFrom_DB } from "../../MessageModule";
 
 export type Type_forProvider = {
     children: JSX.Element | JSX.Element[]
