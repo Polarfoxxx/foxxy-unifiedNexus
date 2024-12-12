@@ -36,6 +36,7 @@ const userLogDataReducer = (state = defaultValueforUserData, action: Type_SetUse
       return {
         userName: action.payload.userName,
         appTheme: action.payload.appTheme,
+        userFoto: action.payload.userFoto,
       };
     default:
       return state;

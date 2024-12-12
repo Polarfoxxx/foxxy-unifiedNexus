@@ -13,7 +13,7 @@ async function readData_API(): Promise<Type_for_readData_API | undefined> {
             data: {
                 events: reqData.data.events,
                 messages: reqData.data.message,
-                userData: reqData.data.userData
+                userData: reqData.data.userData,
             }
         };
     } catch (error) {

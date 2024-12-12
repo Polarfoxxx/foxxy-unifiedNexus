@@ -9,7 +9,8 @@ export type Type_for_readData_API = {
         userData: {
             userName: string,
             status: boolean,
-            colorTheme: string
+            colorTheme: string,
+            userFoto: string,
         }
     }
 };

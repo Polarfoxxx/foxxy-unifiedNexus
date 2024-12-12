@@ -47,7 +47,8 @@ function Content(): JSX.Element {
                 if (load_userData?.status === 200) {
                     dispatch(setUserLogData({
                         userName: load_userData.data.userData.userName,
-                        appTheme: load_userData.data.userData.colorTheme
+                        appTheme: load_userData.data.userData.colorTheme,
+                        userFoto: load_userData.data.userData.userFoto
                     }));
                 } else {
                     console.log("bad login and read userData", load_userData?.status);

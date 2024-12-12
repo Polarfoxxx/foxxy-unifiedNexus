@@ -1,11 +1,11 @@
 div[data-theme="light"] {
     /*! appBackGround */
-    --background_content: rgb(196, 196, 196);
+    --background_content: rgb(216, 216, 216);
     --parentComponentBackg: rgba(139, 139, 139, 0.778);
     --parentComponentBorder: rgb(238, 238, 238);
     --appThemeColor: rgb(25, 97, 91);
     --appThemeColorSecondary: rgb(255, 255, 255);
-    --appThemeColorTertiary: rgb(230, 230, 230);
+    --appThemeColorTertiary: rgb(204, 204, 204);
     --appThemeColorFourth: rgb(90, 90, 90);
     /*! textColor */
     --defaultTextColor: rgb(255, 255, 255);

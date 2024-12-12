@@ -8,6 +8,7 @@ export type Type_RootState = {
   userLogData: {
     userName: string;
     appTheme: string;
+    userFoto: string;
   };
   allEvents: Type_for_newEventFrom_DB[],
   allMessages: Type_for_newMesssageFrom_DB[];
@@ -23,6 +24,7 @@ export type Type_SetUserLogDataAction = {
   payload: {
     userName: string;
     appTheme: string;
+    userFoto: string;
   };
 };
 

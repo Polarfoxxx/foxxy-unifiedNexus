@@ -22,14 +22,14 @@ function Clock(): JSX.Element {
     }, []);
 
     return (
-        <div className="w-auto h-[80%] p-3 rounded-[10px] flex flex-col items-center justify-center bg-thems-appThemeColor text-thems-defaultTextColor">
-            <div className=" w-auto h-full flex items-center justify-center">
-                <h1 className="text-[16px]">
+        <div className="w-[200px] h-[80%] rounded-[10px] flex flex-row items-center justify-center text-thems-defaultTextColor overflow-hidden">
+            <div className=" w-full h-full flex items-center justify-center bg-thems-appThemeColor">
+                <h1 className="text-[20px] font-bold font-oswald">
                     {time}
                 </h1>
             </div>
-            <div className=" w-auto h-full flex items-center justify-center">
-                <h1 className="text-[13px]">
+            <div className=" w-full h-full flex items-center justify-center bg-thems-background_content">
+                <h1 className="text-[18px] font-light font-oswald text-thems-defaultTextColorSec">
                     {date}
                 </h1>
             </div>

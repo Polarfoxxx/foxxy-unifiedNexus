@@ -6,9 +6,9 @@ function WeatherInfo(): JSX.Element {
     const weather = useSelector((state: Type_RootState) => state.weatherData.weatherData);
 
     return (
-        <div className=" w-full h-[80%] flex items-center justify-center  text-thems-defaultTextColorSec gap-2">
+        <div className=" w-full h-[80%] flex items-center justify-center text-thems-defaultTextColorSec gap-2 bg-thems-background_content rounded-[10px]">
             <div className=" w-[100%] h-[100%] flex items-center justify-center">
-                <h1 className=" text-[16px]">
+                <h1 className=" text-[19px] font-oswald">
                     {weather.name}
                 </h1>
             </div>
@@ -22,7 +22,7 @@ function WeatherInfo(): JSX.Element {
             </div>
             <div className=" w-[100%] h-[100%] flex items-center justify-start">
                 <img
-                    className=" w-[100%] h-[auto]"
+                    className=" w-[80%] h-[auto]"
                     src={weather.icon} alt="weather icon" />
             </div>
         </div>

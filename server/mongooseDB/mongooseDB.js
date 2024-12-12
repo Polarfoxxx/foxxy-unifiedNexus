@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
     userData: {
         userName: String,
         logStatus: Boolean,
-        colorTheme: String
+        colorTheme: String,
+        userFoto: String,
     },
     data: {
         events: [

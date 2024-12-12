@@ -3,7 +3,8 @@ import { Type_for_newEventFrom_DB } from "../../module/CalendarModule";
 
 export const defaultValueforUserData = {
     userName: '',
-    appTheme: ''
+    appTheme: '',
+    userFoto: ""
 };
 
 export const defaultValueForCalendarEvent: Type_for_newEventFrom_DB[] = [];

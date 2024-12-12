@@ -1,6 +1,6 @@
 import React from "react";
 import { NavigateBarInOpenApplication } from "../../Shared";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Type_RootState } from "../../../redux";
 import { forecastWeatherAPI } from "../../APIs/openWeatherAPI";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,6 @@ import {
 function Weather(): JSX.Element {
     const weatherData = useSelector((state: Type_RootState) => state.weatherData.weatherData);
     const timeUpdateWeatherData = useSelector((state: Type_RootState) => state.weatherData.timeUpdateWeatherData);
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [weatherForecastList, setWeatherForecastList] = React.useState<Array<Type_for_weatherForecast>>([]);
 
