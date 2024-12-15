@@ -26,9 +26,9 @@ function ColorSwitcher(): JSX.Element {
 
 
     return (
-        <div className=' w-full h-full flex flex-col items-center justify-end bg-transparent p-2'>
+        <div className=' w-full h-full flex flex-col items-center justify-center bg-transparent p-1'>
             <label
-                className=' text-thems-defaultTextColorSec text-[12px]'
+                className=' text-thems-defaultTextColor text-[12px]'
                 htmlFor="colorSwitcher">
                 Color theme:
             </label>

@@ -6,7 +6,7 @@ function HeaderTittle(): JSX.Element {
     return (
         <div className=" w-full h-full  flex items-center justify-center ">
             <div className="w-full h-full flex justify-center items-center">
-                <h3 className=" text-[40px] font-dancing text-thems-defaultTextColorSec">
+                <h3 className=" text-[40px] font-dancing text-thems-defaultTextColor">
                     Welcome back
                 </h3>
             </div>

@@ -7,10 +7,11 @@ import { ParentForOpenApplication } from "../../Shared";
 import { readData_API } from "../../APIs/index.";
 import { useDispatch, useSelector } from 'react-redux';
 import { readExistingExpCookie } from "../../APIs/index.";
-import { LittleCalendar, LittleMessage, LittleWeather } from "../../LittleAppComponents";
+import { LittleCalendar, LittleMessage, LittleWeather, LittleMyWallet } from "../../LittleAppComponents";
 import { currentWeatherAPI, dayAndHoliday } from "../../APIs/index.";
 import { Weather } from "../../WeatherModule";
 import { Header } from "../../HeaderModule";
+
 import { Type_RootState } from "../../../redux";
 import {
     setAllMessages,
@@ -19,6 +20,7 @@ import {
     setAllHoliday,
     setAllEvent
 } from "../../../redux";
+import { MyWallet } from "../../MyWalletModule";
 
 
 function Content(): JSX.Element {
@@ -81,14 +83,14 @@ function Content(): JSX.Element {
     //! weather data..........................................
     React.useEffect(() => {
         loadWeathetAPI()
-      const interval =  setInterval(() => {
-        loadWeathetAPI();
+        const interval = setInterval(() => {
+            loadWeathetAPI();
         }, 1800000);
         const currentDateAndTimeChangeToString = new Date().toLocaleDateString()
         async function loadWeathetAPI() {
             try {
                 const load_data = await currentWeatherAPI();
-                
+
                 if (load_data) {
                     dispatch(setWeatherData({
                         weatherData: load_data,
@@ -126,8 +128,8 @@ function Content(): JSX.Element {
                 <header className=" w-full h-[70px] min-h-[70px] flex items-center justify-center p-2 ">
                     <Header />
                 </header>
-                <nav className="w-full h-[auto] flex items-start justify-start p-3 ">
-                    <div className="w-full flex items-start justify-center flex-wrap gap-3">
+                <nav className="w-full h-[auto] flex items-start justify-start p-1 ">
+                    <div className="w-full flex items-start justify-center flex-wrap gap-2 p-2">
                         {/* calendar----------------------------------------------------------------- */}
                         <div className="w-[500px] h-[300px] rounded-[15px] border border-thems-littleComponent_border relative overflow-hidden shadow-miniApp">
                             <NavLink
@@ -137,15 +139,15 @@ function Content(): JSX.Element {
                             <LittleCalendar />
                         </div>
                         {/* messageList------------------------------------------------------------------ */}
-                        <div className="w-[500px] h-[300px] rounded-[15px] border border-thems-littleComponent_border relative  overflow-hidden">
+                        <div className="xl:w-[430px] w-[500px] h-[300px] rounded-[15px] border border-thems-littleComponent_border relative  overflow-hidden">
                             <NavLink
                                 className=" absolute w-full h-full bg-transparent cursor-pointer z-[60] hover:shadow-miniApp"
                                 to="MessageList">
                             </NavLink>
                             <LittleMessage />
                         </div>
-                        {/* weather--------------------------------------------------------------------- */}
                         <div className="w-[500px] h-[300px] flex flex-col justify-between items-center gap-3">
+                            {/* weather--------------------------------------------------------------------- */}
                             <div className="w-[100%] h-[145px] rounded-[15px] border border-thems-littleComponent_border relative overflow-hidden shadow-miniApp">
                                 <NavLink
                                     className=" absolute w-full h-full bg-transparent cursor-pointer z-[60] hover:shadow-miniApp"
@@ -153,11 +155,16 @@ function Content(): JSX.Element {
                                 </NavLink>
                                 <LittleWeather />
                             </div>
-                            <div className="w-[100%] h-[145px] rounded-[15px] bg-white border border-black">
-
+                            {/* My wallet--------------------------------------------------------------------- */}
+                            <div className="w-[100%] h-[145px] rounded-[15px] border border-thems-littleComponent_border relative overflow-hidden shadow-miniApp">
+                                <NavLink
+                                    className=" absolute w-full h-full bg-transparent cursor-pointer z-[60] hover:shadow-miniApp"
+                                    to="MyWallet">
+                                </NavLink>
+                                <LittleMyWallet />
                             </div>
                         </div>
-                        <div className="w-[500px] h-[300px] rounded-[30px] bg-white border border-black">
+                        <div className="xl:w-[350px] w-[500px] h-[300px] rounded-[30px] bg-white border border-black">
 
                         </div>
                         <div className="w-[500px] h-[300px] rounded-[30px] bg-white border border-black">
@@ -195,6 +202,13 @@ function Content(): JSX.Element {
                             element={
                                 <ParentForOpenApplication>
                                     <Weather />
+                                </ParentForOpenApplication>
+                            } />
+                        <Route
+                            path="MyWallet/*"
+                            element={
+                                <ParentForOpenApplication>
+                                    <MyWallet />
                                 </ParentForOpenApplication>
                             } />
                     </Routes>

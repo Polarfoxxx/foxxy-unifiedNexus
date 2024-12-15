@@ -1,6 +1,5 @@
 import {
     LogOut,
-    ColorSwitcher,
     Clock,
     WeatherInfo,
     HeaderTittle
@@ -18,17 +17,14 @@ function Header(): JSX.Element {
                     <WeatherInfo />
                 </div>
             </div>
-            <div className=" w-[100%] h-[100%] flex items-center justify-center">
+            <div className=" xl:w-[100%] w-0 h-[100%] xl:visible invisible flex items-center justify-center">
                 <div className=" w-auto h-[100%] flex items-center justify-center ">
                     <HeaderTittle />
                 </div>
             </div>
-            <div className=" w-[100%] h-[100%] flex items-center justify-end gap-2 ">
-                <div className=" w-[200px] h-[100%] flex items-center justify-center ">
+            <div className="xl:w-[100%] w-0 h-[100%] xl:visible invisible flex items-center justify-end ">
+                <div className="w-[230px] h-[100%] flex items-center justify-center ">
                     <Clock />
-                </div>
-                <div className=" w-auto h-[100%] flex items-center justify-center ">
-                    <ColorSwitcher />
                 </div>
             </div>
         </div>

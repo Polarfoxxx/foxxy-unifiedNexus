@@ -32,9 +32,7 @@ function ParentForOpenApplication(props: Type_for_ParentAllMiniContent): JSX.Ele
                             onClick={handleClickHomePage} />
                     </ButtonComponent.ButtonBox>
                 </div>
-                {
-                    props.children
-                }
+                {props.children}
             </div>
         </div>
     )

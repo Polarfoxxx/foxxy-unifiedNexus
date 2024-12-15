@@ -15,4 +15,9 @@ export const allApplication = [
         icon: "We",
         route: "/Content/Weather"
     },
+    {
+        name: "MyWallet",
+        icon: "Wa",
+        route: "/Content/MyWallet"
+    },
 ]
