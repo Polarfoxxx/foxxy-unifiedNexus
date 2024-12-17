@@ -1,9 +1,10 @@
 div[data-theme="light"] {
     /*! appBackGround */
-    --background_content: rgb(255, 255, 255);
+    --background_content: white;
     --parentComponentBackg: rgba(139, 139, 139, 0.778);
     --parentComponentBorder: rgb(238, 238, 238);
-    --appThemeColor: rgb(25, 97, 91);
+    --appThemeColor: rgb(100, 130, 173);
+    /* --appThemeColor: rgb(25, 97, 91); */
     --appThemeColorSecondary: rgb(255, 255, 255);
     --appThemeColorTertiary: rgb(204, 204, 204);
     --appThemeColorFourth: rgb(90, 90, 90);
@@ -30,7 +31,7 @@ div[data-theme="light"] {
     --currentDayBlock: rgb(46, 233, 217);
     --allEventOpossiteBackground: rgb(54, 54, 54);
     /*! littleComponents -----------------*/
-    --littleComponent_Background: rgb(57, 129, 123);
+    --littleComponent_Background:rgb(100, 130, 173);
     --littleComponent_border: rgb(238, 238, 238);
     --littleComponent_oppositeColor: rgb(87, 87, 228);
     /*! Message--------------------------*/

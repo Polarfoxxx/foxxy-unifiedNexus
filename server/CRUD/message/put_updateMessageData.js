@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../mongooseDB/mongooseDB");
+const User = require("../../mongooseDB/mongooseDB");
 
 
 router.put('/data', async (req, res) => {

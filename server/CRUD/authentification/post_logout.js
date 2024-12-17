@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../mongooseDB/mongooseDB");
+const User = require("../../mongooseDB/mongooseDB");
 
 router.post("/user", async (req, res) => {
     const { username } = req.body;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../mongooseDB/mongooseDB");
+const User = require("../../mongooseDB/mongooseDB");
 
 router.put('/data', async (req, res) => {
     const { userName, updateUserData } = req.body;
@@ -13,7 +13,6 @@ router.put('/data', async (req, res) => {
         } else {
             let userData = user.userData;
             userData.colorTheme = updateUserData;
-
             //! save........................
             await user.save();
             res.status(200).json({

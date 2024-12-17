@@ -1,15 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../mongooseDB/mongooseDB");
+const User = require("../../mongooseDB/mongooseDB");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 
 router.post("/user", async (req, res) => {
     const { username, password } = req.body;
-    const cookies = req.cookies;
-    console.log(cookies);
-
-
     try {
         //!validate user.......................
         const user = await User.findOne({ username });

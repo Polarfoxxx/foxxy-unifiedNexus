@@ -36,9 +36,16 @@ const userSchema = new mongoose.Schema({
                 status: Boolean
             },
         ],
+        myWallet: [
+            {
+                type_Transaction: String,
+                detail_Transaction: String,
+                date_Transaction: Date,
+                value_Transaction: String,
+            },
+        ]
     }
 }, { collection: 'users' });
-
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

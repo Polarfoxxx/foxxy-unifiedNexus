@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../mongooseDB/mongooseDB");
+const User = require("../../mongooseDB/mongooseDB");
 
 
 router.get('/data', async (req, res) => {
@@ -12,14 +12,10 @@ router.get('/data', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'the user does not existing' });
         } else {
-            const events = user.data.events;
-            const messages = user.data.messages;
-            const userData = user.userData;
-            
             return res.status(200).json({
-                events: events,
-                message: messages,
-                userData: userData
+                events: user.data.events,
+                message: user.data.messages,
+                userData: user.userData
             })
         };
     } catch
